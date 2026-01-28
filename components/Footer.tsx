@@ -8,6 +8,7 @@ export default function Footer() {
       { label: 'Use Cases', href: '#use-cases' },
     ],
     support: [
+      { label: 'User Guide', href: '/user-guide' },
       { label: 'Help Center', href: '#' },
       { label: 'Contact Us', href: '#' },
       { label: 'System Requirements', href: '#' },

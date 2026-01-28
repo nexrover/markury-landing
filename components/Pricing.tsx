@@ -102,9 +102,12 @@ export default function Pricing() {
         </div>
 
         {/* Trust indicators */}
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center space-y-1">
           <p className="text-gray-500 text-sm">
             Secure payment via Stripe • Instant download after purchase • macOS 12.0+
+          </p>
+          <p className="text-gray-400 text-xs">
+            Windows support is planned and currently in development.
           </p>
         </div>
       </div>
