@@ -49,9 +49,9 @@ export default function Header() {
           <div className="hidden md:block">
             <Link
               href="/#pricing"
-              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-gray-900 bg-yellow-400 rounded-lg hover:bg-yellow-500 transition-colors shadow-md"
             >
-              Get Markury — $99
+              Start highlighting
             </Link>
           </div>
 
@@ -103,9 +103,9 @@ export default function Header() {
               <a
                 href="#pricing"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors mt-2"
+                className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-gray-900 bg-yellow-400 rounded-lg hover:bg-yellow-500 transition-colors mt-2 shadow-md"
               >
-                Get Markury — $99
+                Start highlighting
               </a>
             </div>
           </div>
