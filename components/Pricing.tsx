@@ -68,7 +68,7 @@ export default function Pricing() {
               {/* CTA */}
               <a
                 href="#"
-                className="block w-full text-center px-8 py-4 text-lg font-semibold text-white bg-gray-900 rounded-xl hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 mb-8"
+                className="btn-primary block w-full text-center mb-8"
               >
                 Get Markury Pro
                 <svg className="w-5 h-5 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">

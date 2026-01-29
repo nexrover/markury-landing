@@ -15,10 +15,6 @@ export default function Hero() {
       <div className="container-narrow">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700 mb-8">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            Now available for Mac
-          </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-6">
@@ -29,7 +25,7 @@ export default function Hero() {
           {/* Subheadline */}
           <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
             Draw, highlight, and present directly on your screen. 
-            <span className="text-gray-900 font-medium"> No more awkward pointing</span> — just clear, visual communication.
+            
           </p>
 
           {/* CTAs */}
