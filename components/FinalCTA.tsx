@@ -18,13 +18,13 @@ export default function FinalCTA() {
           {/* Content */}
           <div className="relative">
             {/* Icon */}
-            <div className="w-20 h-20 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-2xl">
+            <div className="w-20 h-20 rounded-2xl mx-auto mb-8">
               <Image
                 src="/logo.png"
                 alt="Markury"
-                width={40}
-                height={40}
-                className="w-10 h-10"
+                width={100}
+                height={100}
+                className="w-100 h-100"
               />
             </div>
 
