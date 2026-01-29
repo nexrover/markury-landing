@@ -17,7 +17,7 @@ export default function WhyMarkury() {
     },
     {
       aspect: "Pricing",
-      markury: "One-time $99, yours forever",
+      markury: "One-time $49, yours forever",
       others: "Subscriptions or per-seat licensing",
     },
     {

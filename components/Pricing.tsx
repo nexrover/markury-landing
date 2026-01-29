@@ -60,7 +60,7 @@ export default function Pricing() {
               {/* Price */}
               <div className="text-center mb-8">
                 <div className="flex items-baseline justify-center gap-2">
-                  <span className="text-6xl font-bold text-gray-900">$99</span>
+                  <span className="text-6xl font-bold text-gray-900">$49</span>
                 </div>
                 <p className="text-gray-500 mt-2">One-time payment • Yours forever</p>
               </div>
