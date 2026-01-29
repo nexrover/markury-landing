@@ -96,12 +96,18 @@ export default function Hero() {
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-yellow-200 rounded-full opacity-50 blur-2xl" />
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-200 rounded-full opacity-50 blur-2xl" />
+            <div className="absolute -top-4 -left-4 w-24 h-24 bg-yellow-200 rounded-full opacity-40 blur-2xl" />
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-200 rounded-full opacity-40 blur-2xl" />
 
-            {/* Hand-drawn accents (very subtle) */}
-            <ScribbleCircle className="absolute -top-10 right-6 w-28 h-20 text-red-500 opacity-20 rotate-6" stroke="#ef4444" />
-            <ScribbleArrow className="absolute -bottom-12 left-6 w-28 h-20 opacity-20 -rotate-6" stroke="#3b82f6" />
+            {/* Hand-drawn accents (subtle, like marker doodles) */}
+            <ScribbleCircle
+              className="absolute -top-12 right-4 w-32 h-24 opacity-40 rotate-6"
+              stroke="#ffffff"
+            />
+            <ScribbleArrow
+              className="absolute -bottom-14 left-2 w-32 h-20 opacity-40 -rotate-6"
+              stroke="#ffffff"
+            />
           </div>
         </div>
       </div>

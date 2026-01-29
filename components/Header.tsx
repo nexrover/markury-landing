@@ -27,8 +27,10 @@ export default function Header() {
               height={40}
               className="w-9 h-9 sm:w-10 sm:h-10"
             />
-            <span className="text-xl sm:text-2xl font-bold text-gray-900 text-highlight text-highlight--thin">
-              Markury
+            <span className="relative text-xl sm:text-2xl font-bold text-gray-900">
+              <span>Markury</span>
+              {/* Freehand-style underline */}
+              <span className="pointer-events-none absolute left-0 right-0 -bottom-1 h-[3px] rounded-full bg-yellow-300/80" />
             </span>
           </Link>
 
