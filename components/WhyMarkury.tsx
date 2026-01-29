@@ -72,45 +72,45 @@ export default function WhyMarkury() {
   ]
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-32 bg-gray-900 text-white">
+    <section className="relative overflow-hidden py-20 sm:py-32 bg-yellow-50">
       {/* Background accent */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-24 top-20 w-80 h-80 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl opacity-60 float-slower" />
+        <div className="absolute -left-24 top-16 w-80 h-80 bg-gradient-to-br from-yellow-200/70 via-amber-200/60 to-white rounded-full blur-3xl opacity-80 float-slower" />
       </div>
 
       <div className="container-narrow relative">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-gray-900">
             Why professionals choose{' '}
             <span className="marker-underline marker-underline--cyan">Markury</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             A modern alternative to outdated annotation tools. Designed for how you work today.
           </p>
         </div>
 
         {/* Comparison Table */}
-        <div className="bg-white/5 backdrop-blur rounded-2xl border border-white/10 overflow-hidden mb-16">
+        <div className="bg-white rounded-3xl border border-yellow-100 shadow-sm overflow-hidden mb-16">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-white/10">
-                  <th className="text-left p-4 sm:p-6 text-gray-400 font-medium">Feature</th>
-                  <th className="text-left p-4 sm:p-6 text-cyan-400 font-semibold">Markury</th>
+                <tr className="border-b border-gray-100 bg-yellow-50/40">
+                  <th className="text-left p-4 sm:p-6 text-gray-500 font-medium text-sm uppercase tracking-wide">Feature</th>
+                  <th className="text-left p-4 sm:p-6 text-gray-900 font-semibold">Markury</th>
                   <th className="text-left p-4 sm:p-6 text-gray-500 font-medium">Others</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisons.map((row, index) => (
-                  <tr key={index} className={index < comparisons.length - 1 ? 'border-b border-white/5' : ''}>
-                    <td className="p-4 sm:p-6 text-gray-300 font-medium">{row.aspect}</td>
+                  <tr key={index} className={index < comparisons.length - 1 ? 'border-b border-gray-100' : ''}>
+                    <td className="p-4 sm:p-6 text-gray-700 font-medium">{row.aspect}</td>
                     <td className="p-4 sm:p-6">
                       <div className="flex items-center gap-2">
-                        <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-white">{row.markury}</span>
+                        <span className="text-gray-900">{row.markury}</span>
                       </div>
                     </td>
                     <td className="p-4 sm:p-6 text-gray-500">{row.others}</td>
@@ -125,11 +125,11 @@ export default function WhyMarkury() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((highlight, index) => (
             <div key={index} className="text-center sm:text-left">
-              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-4 mx-auto sm:mx-0">
+              <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-700 mb-4 mx-auto sm:mx-0">
                 {highlight.icon}
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">{highlight.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{highlight.description}</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{highlight.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{highlight.description}</p>
             </div>
           ))}
         </div>
