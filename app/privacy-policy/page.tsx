@@ -1,19 +1,24 @@
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
 export default function PrivacyPolicyPage() {
   return (
-    <main className="bg-white text-gray-900">
-      <section className="py-16 md:py-24 border-b border-gray-100">
-        <div className="container-narrow">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Privacy Policy
-          </h1>
-          <p className="text-gray-600 max-w-2xl mb-10">
-            This Privacy Policy explains how Markury (&quot;we&quot;, &quot;our&quot;, or
-            &quot;us&quot;) collects, uses, and protects your information when you use
-            our website, desktop application, and related services (collectively,
-            the &quot;Service&quot;).
-          </p>
+    <>
+      <Header />
+      <main className="bg-white text-gray-900 pt-20 sm:pt-24">
+        <section className="py-16 md:py-24 border-b border-gray-100">
+          <div className="container-narrow">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Privacy Policy
+            </h1>
+            <p className="text-gray-600 max-w-2xl mb-10">
+              This Privacy Policy explains how Markury (&quot;we&quot;, &quot;our&quot;, or
+              &quot;us&quot;) collects, uses, and protects your information when you use
+              our website, desktop application, and related services (collectively,
+              the &quot;Service&quot;).
+            </p>
 
-          <div className="space-y-8 text-gray-700 text-sm md:text-base leading-relaxed">
+            <div className="space-y-8 text-gray-700 text-sm md:text-base leading-relaxed">
             <section>
               <h2 className="text-lg font-semibold text-gray-900 mb-3">
                 1. Information We Collect
@@ -98,9 +103,11 @@ export default function PrivacyPolicyPage() {
                 of the updated policy.
               </p>
             </section>
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+      <Footer />
+    </>
   )
 }

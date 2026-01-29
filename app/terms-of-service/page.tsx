@@ -1,8 +1,13 @@
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
 export default function TermsOfServicePage() {
   return (
-    <main className="bg-white text-gray-900">
-      <section className="py-16 md:py-24 border-b border-gray-100">
-        <div className="container-narrow">
+    <>
+      <Header />
+      <main className="bg-white text-gray-900 pt-20 sm:pt-24">
+        <section className="py-16 md:py-24 border-b border-gray-100">
+          <div className="container-narrow">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
             Terms of Service
           </h1>
@@ -114,8 +119,10 @@ export default function TermsOfServicePage() {
               </p>
             </section>
           </div>
-        </div>
-      </section>
-    </main>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   )
 }
