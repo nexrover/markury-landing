@@ -1,3 +1,5 @@
+import { ScribbleStroke } from '@/components/AnnotationAccents'
+
 export default function HowItWorks() {
   const steps = [
     {
@@ -44,8 +46,14 @@ export default function HowItWorks() {
   ]
 
   return (
-    <section id="how-it-works" className="py-20 sm:py-32">
-      <div className="container-narrow">
+    <section id="how-it-works" className="relative overflow-hidden py-20 sm:py-32">
+      {/* Background accent */}
+      <ScribbleStroke
+        className="absolute left-1/2 -translate-x-1/2 top-10 w-[520px] h-[120px] opacity-60 float-slow"
+        stroke="#fbbf24"
+      />
+
+      <div className="container-narrow relative">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">

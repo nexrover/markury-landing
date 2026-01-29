@@ -1,3 +1,5 @@
+import { ScribbleCircle } from '@/components/AnnotationAccents'
+
 export default function Features() {
   const featureGroups = [
     {
@@ -130,13 +132,19 @@ export default function Features() {
   ]
 
   return (
-    <section id="features" className="py-20 sm:py-32 bg-gray-50">
-      <div className="container-narrow">
+    <section id="features" className="relative overflow-hidden py-20 sm:py-32 bg-gray-50">
+      {/* Background accent */}
+      <ScribbleCircle
+        className="absolute -left-10 top-28 w-[280px] h-[200px] opacity-[0.07] rotate-6 float-slower"
+        stroke="#a855f7"
+      />
+
+      <div className="container-narrow relative">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
             Everything you need to{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+            <span className="marker-underline marker-underline--purple">
               communicate visually
             </span>
           </h2>

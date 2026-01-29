@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Header() {
@@ -18,7 +19,7 @@ export default function Header() {
       <nav className="container-narrow">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="/logo.png"
               alt="Markury Logo"
@@ -26,30 +27,32 @@ export default function Header() {
               height={40}
               className="w-9 h-9 sm:w-10 sm:h-10"
             />
-            <span className="text-xl sm:text-2xl font-bold text-gray-900">Markury</span>
-          </a>
+            <span className="text-xl sm:text-2xl font-bold text-gray-900 text-highlight text-highlight--thin">
+              Markury
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <a
-              href="#pricing"
+            <Link
+              href="/#pricing"
               className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
             >
               Get Markury — $99
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}

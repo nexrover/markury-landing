@@ -1,20 +1,31 @@
+import Image from 'next/image'
+import { ScribbleArrow } from '@/components/AnnotationAccents'
+
 export default function FinalCTA() {
   return (
-    <section className="py-20 sm:py-32 bg-gradient-to-b from-gray-50 to-white">
+    <section className="relative overflow-hidden py-20 sm:py-32 bg-gradient-to-b from-gray-50 to-white">
       <div className="container-narrow">
         <div className="relative max-w-4xl mx-auto text-center">
           {/* Background decoration */}
           <div className="absolute inset-0 -z-10">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-cyan-200 to-blue-200 rounded-full opacity-30 blur-3xl" />
+            <ScribbleArrow
+              className="absolute -right-10 -top-10 w-[260px] h-[180px] opacity-[0.08] rotate-6 float-slower"
+              stroke="#0ea5e9"
+            />
           </div>
 
           {/* Content */}
           <div className="relative">
             {/* Icon */}
             <div className="w-20 h-20 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-2xl">
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-              </svg>
+              <Image
+                src="/logo.png"
+                alt="Markury"
+                width={40}
+                height={40}
+                className="w-10 h-10"
+              />
             </div>
 
             {/* Headline */}

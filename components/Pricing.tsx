@@ -1,3 +1,5 @@
+import { ScribbleStroke } from '@/components/AnnotationAccents'
+
 export default function Pricing() {
   const features = [
     "All drawing tools (freehand, highlighter, eraser)",
@@ -17,13 +19,19 @@ export default function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="py-20 sm:py-32">
-      <div className="container-narrow">
+    <section id="pricing" className="relative overflow-hidden py-20 sm:py-32">
+      {/* Background accent */}
+      <ScribbleStroke
+        className="absolute -left-6 bottom-24 w-[520px] h-[120px] opacity-70 rotate-3 float-slow"
+        stroke="#22c55e"
+      />
+
+      <div className="container-narrow relative">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
             Simple pricing,{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">
+            <span className="marker-underline marker-underline--soft">
               complete package
             </span>
           </h2>

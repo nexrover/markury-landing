@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { LaserPointer, ScribbleArrow, ScribbleCircle } from '@/components/AnnotationAccents'
 
 export default function Hero() {
   return (
@@ -22,12 +23,7 @@ export default function Hero() {
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-6">
             Screen annotation{' '}
-            <span className="relative">
-              <span className="relative z-10">made simple</span>
-              <svg className="absolute -bottom-2 left-0 w-full h-3 text-yellow-300" viewBox="0 0 200 12" preserveAspectRatio="none">
-                <path d="M0,8 Q50,0 100,8 T200,8" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
-              </svg>
-            </span>
+            <span className="text-highlight">made simple</span>
           </h1>
 
           {/* Subheadline */}
@@ -55,6 +51,9 @@ export default function Hero() {
             <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 sm:p-8">
               {/* Screen mockup */}
               <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl relative overflow-hidden">
+                {/* Subtle animated laser pointer */}
+                <LaserPointer className="opacity-70" />
+
                 {/* Annotation demonstration */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center p-8">
@@ -103,6 +102,10 @@ export default function Hero() {
             {/* Decorative elements */}
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-yellow-200 rounded-full opacity-50 blur-2xl" />
             <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-200 rounded-full opacity-50 blur-2xl" />
+
+            {/* Hand-drawn accents (very subtle) */}
+            <ScribbleCircle className="absolute -top-10 right-6 w-28 h-20 text-red-500 opacity-20 rotate-6" stroke="#ef4444" />
+            <ScribbleArrow className="absolute -bottom-12 left-6 w-28 h-20 opacity-20 -rotate-6" stroke="#3b82f6" />
           </div>
         </div>
       </div>

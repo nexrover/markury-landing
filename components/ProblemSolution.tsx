@@ -1,3 +1,5 @@
+import { ScribbleArrow } from '@/components/AnnotationAccents'
+
 export default function ProblemSolution() {
   const problems = [
     {
@@ -39,15 +41,19 @@ export default function ProblemSolution() {
   ]
 
   return (
-    <section className="py-20 sm:py-32 bg-gray-50">
-      <div className="container-narrow">
+    <section className="relative overflow-hidden py-20 sm:py-32 bg-gray-50">
+      {/* Background accent */}
+      <ScribbleArrow
+        className="absolute -top-10 right-0 w-[260px] h-[180px] opacity-[0.08] -rotate-12 float-slower"
+        stroke="#3b82f6"
+      />
+
+      <div className="container-narrow relative">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
             From frustration to{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
-              clarity
-            </span>
+            <span className="marker-underline marker-underline--cyan">clarity</span>
           </h2>
           <p className="section-subheading">
             We built Markury because visual communication shouldn&apos;t be complicated.

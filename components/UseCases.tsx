@@ -69,13 +69,18 @@ export default function UseCases() {
   ]
 
   return (
-    <section id="use-cases" className="py-20 sm:py-32">
-      <div className="container-narrow">
+    <section id="use-cases" className="relative overflow-hidden py-20 sm:py-32">
+      {/* Background accent */}
+      <div className="pointer-events-none absolute -z-10 inset-0">
+        <div className="absolute -right-16 top-24 w-72 h-72 bg-gradient-to-br from-orange-200 to-red-200 rounded-full blur-3xl opacity-25 float-slow" />
+      </div>
+
+      <div className="container-narrow relative">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
             Built for people who{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">
+            <span className="marker-underline marker-underline--soft">
               explain things
             </span>
           </h2>

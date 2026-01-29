@@ -72,15 +72,18 @@ export default function WhyMarkury() {
   ]
 
   return (
-    <section className="py-20 sm:py-32 bg-gray-900 text-white">
-      <div className="container-narrow">
+    <section className="relative overflow-hidden py-20 sm:py-32 bg-gray-900 text-white">
+      {/* Background accent */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-24 top-20 w-80 h-80 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl opacity-60 float-slower" />
+      </div>
+
+      <div className="container-narrow relative">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
             Why professionals choose{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-              Markury
-            </span>
+            <span className="marker-underline marker-underline--cyan">Markury</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
             A modern alternative to outdated annotation tools. Designed for how you work today.
