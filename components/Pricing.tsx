@@ -7,7 +7,7 @@ export default function Pricing() {
     "Shape tools (line, rectangle, circle, arrow)",
     "Text annotations",
     "Laser pointer for presentations",
-    "Whiteboard mode with 16 colors",
+    "Whiteboard mode with 4 colors",
     "Full screen & region screenshots",
     "4 customizable quick colors",
     "Fully customizable keyboard shortcuts",

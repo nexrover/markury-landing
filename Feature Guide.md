@@ -351,23 +351,41 @@ Access Settings by clicking the **gear icon** in the toolbar.
 
 ### General Settings
 
+Settings → **General** tab.
+
+**Screenshot Storage**
+- **Clipboard** — Copy screenshots for pasting (e.g. ⌘V elsewhere)
+- **Folder** — Save screenshots to a specific location
+- When Folder is selected: **Save Location** shows the path (default **~/Downloads**); use **Browse** to pick another folder
+
+**Preferences**
+- **Remember content after exit** — Restore drawings when the app restarts
+- **Show cursor highlight** — Display a pulsing ring around the cursor
+- **Mouse wheel selects from tool groups** — Scroll to cycle freehand, shapes, and stroke widths
+- **Start on system login** — Launch Markury when you log in
+- **Send crash data to Markury** — Help improve stability with anonymous reports
+- **Check for updates on startup** — Automatically look for new versions
+
+**Reset Settings**
+- Tap to reveal a confirmation, then **Reset** to restore all settings and content to factory defaults (cannot be undone), or **Cancel** to keep current settings
+
+### Appearance Settings
+
+Settings → **Appearance** tab.
+
 **Theme**
 - **Light** — Bright toolbar appearance
 - **Dark** — Dark toolbar appearance
 - **Auto** — Matches your system setting
 
+**Theme Color**
+- Compact row of preset accent colors: **Lime**, **Purple**, **Cyan**, **Yellow**, **Pink**, **Orange**, and **Grey**
+- Tap any circle to set the app accent color (toolbar, buttons, highlights)
+- Selected color is indicated with a checkmark
+
 **Toolbar Orientation**
 - **Vertical** — Toolbar arranged top-to-bottom
 - **Horizontal** — Toolbar arranged left-to-right
-
-**Screenshot Storage**
-- **Clipboard** — Copy screenshots for pasting
-- **Folder** — Save screenshots to a specific location
-- **Browse** — Choose your save folder
-
-**Window Controls**
-- **Minimize** — Hide Markury temporarily
-- **Quit** — Close the application
 
 ### Tools Settings
 
@@ -393,6 +411,11 @@ Customize which tools appear in your toolbar:
 - View all available shortcuts
 - Click any shortcut to record a new key combination
 - Clear shortcuts you don't want
+
+### License
+
+- Enter or change your **license key** in the License tab to unlock Pro/Basic features
+- If you see **"This license key has reached the activation limit"**, the app will suggest managing your license in your **Account** — use the **Account** link shown below the message to open [Lemon Squeezy My Orders](https://app.lemonsqueezy.com/my-orders), where you can deactivate an old device or manage activations
 
 ---
 
@@ -540,6 +563,9 @@ Markury needs Accessibility permission for global shortcuts. Go to System Prefer
 
 ### Drawings Not Visible
 Click the visibility toggle to ensure drawings are shown, not hidden.
+
+### License Activation Limit Reached
+If activation fails with "This license key has reached the activation limit", your key is already in use on another device. Use the **Account** link shown in the License tab (or go to [app.lemonsqueezy.com/my-orders](https://app.lemonsqueezy.com/my-orders)) to manage your orders and deactivate an old activation, or upgrade your plan for more activations.
 
 ---
 
