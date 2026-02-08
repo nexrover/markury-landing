@@ -1,37 +1,38 @@
+import Image from 'next/image'
 import { ScribbleArrow } from '@/components/AnnotationAccents'
-import { 
-  Cursor02Icon, 
-  LayoutLeftIcon, 
-  FlashIcon, 
-  VideoReplayIcon,
-  Cancel01Icon,
-  ArrowRight02Icon
-} from 'hugeicons-react'
+
+const testimonials = [
+  {
+    name: 'Sarah Chen',
+    designation: 'High School Math Teacher',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=128&h=128&fit=crop',
+    problem: 'During remote lessons I kept saying "look here, no — here" while waving my mouse. Students got confused and I lost their attention.',
+    solution: 'With Markury I draw circles and arrows right on the screen. Everyone sees exactly what I mean, and class time actually feels productive.',
+  },
+  {
+    name: 'Marcus Webb',
+    designation: 'Product Lead, Tech Startup',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=128&h=128&fit=crop',
+    problem: 'I was constantly switching between my deck, Figma, and a separate annotation tool. It broke my flow and made demos feel clunky.',
+    solution: "Markury's toolbar floats over everything. I annotate the live product or our designs without leaving the app. One tool, no context switching.",
+  },
+  {
+    name: 'Priya Sharma',
+    designation: 'YouTube Creator, Tutorials',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=128&h=128&fit=crop',
+    problem: 'Viewers kept asking "which button?" or "where do I click?" My recordings lacked clear visual guidance.',
+    solution: 'I record with Markury now — I highlight steps and circle the exact button as I go. Comments like "so easy to follow" have gone way up.',
+  },
+  {
+    name: 'James Okonkwo',
+    designation: 'Senior Developer',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop',
+    problem: 'Code review feedback was either vague or buried in long comments. Pointing at the right line in a call was tedious.',
+    solution: 'I draw on the screen during pair sessions and paste annotated screenshots into PRs. Fast and simple — no learning curve, just clarity.',
+  },
+]
 
 export default function ProblemSolution() {
-  const problems = [
-    {
-      problem: "Pointing at your screen during calls looks awkward and unclear",
-      solution: "Draw directly on screen with precise circles, arrows, and highlights",
-      icon: <Cursor02Icon className="w-6 h-6" />,
-    },
-    {
-      problem: "Switching between presentation tools breaks your flow",
-      solution: "A floating toolbar that works over any app, always ready when you need it",
-      icon: <LayoutLeftIcon className="w-6 h-6" />,
-    },
-    {
-      problem: "Complex annotation tools slow down your explanations",
-      solution: "Instant access to simple, beautiful tools — draw, highlight, done",
-      icon: <FlashIcon className="w-6 h-6" />,
-    },
-    {
-      problem: "Screen recordings lack visual guidance for viewers",
-      solution: "Add live annotations that guide attention exactly where it matters",
-      icon: <VideoReplayIcon className="w-6 h-6" />,
-    },
-  ]
-
   return (
     <section className="relative overflow-hidden py-20 sm:py-32 bg-gray-50">
       {/* Background accent */}
@@ -48,42 +49,36 @@ export default function ProblemSolution() {
             <span className="marker-underline marker-underline--cyan">clarity</span>
           </h2>
           <p className="section-subheading">
-            We built Markury because visual communication shouldn&apos;t be complicated.
+            Real people, real problems — and how Markury helps them communicate visually without the hassle.
           </p>
         </div>
 
-        {/* Problems & Solutions Grid */}
-        <div className="grid gap-6 lg:gap-8">
-          {problems.map((item, index) => (
+        {/* Testimonials Grid */}
+        <div className="grid gap-8 md:grid-cols-2">
+          {testimonials.map((person, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+              className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
             >
-              <div className="grid md:grid-cols-2 gap-6 items-center">
-                {/* Problem */}
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500">
-                    <Cancel01Icon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-red-500 uppercase tracking-wider mb-1">The Problem</div>
-                    <p className="text-gray-700 font-medium">{item.problem}</p>
-                  </div>
+              <div className="flex gap-4 sm:gap-5">
+                <div className="flex-shrink-0">
+                  <Image
+                    src={person.avatar}
+                    alt={person.name}
+                    width={64}
+                    height={64}
+                    className="rounded-full object-cover w-14 h-14 sm:w-16 sm:h-16 ring-2 ring-gray-100"
+                  />
                 </div>
-
-                {/* Arrow (hidden on mobile) */}
-                <div className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2">
-                  <ArrowRight02Icon className="w-8 h-8 text-gray-300" />
-                </div>
-
-                {/* Solution */}
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-500">
-                    {item.icon}
-                  </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-gray-700 leading-relaxed mb-5">
+                    <span className="text-red-600 font-medium">&ldquo;{person.problem}&rdquo;</span>
+                    <span className="text-gray-500"> … </span>
+                    <span className="text-green-700 font-medium">&ldquo;{person.solution}&rdquo;</span>
+                  </p>
                   <div>
-                    <div className="text-xs font-semibold text-green-600 uppercase tracking-wider mb-1">Markury Solution</div>
-                    <p className="text-gray-700 font-medium">{item.solution}</p>
+                    <p className="font-semibold text-gray-900">{person.name}</p>
+                    <p className="text-sm text-gray-500">{person.designation}</p>
                   </div>
                 </div>
               </div>
