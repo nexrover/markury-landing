@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { Menu01Icon, Cancel01Icon } from 'hugeicons-react'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -21,7 +22,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/logo.png"
+              src="/new_logo.svg"
               alt="Markury Logo"
               width={40}
               height={40}
@@ -63,28 +64,11 @@ export default function Header() {
             className="md:hidden p-2 text-gray-600 hover:text-gray-900"
             aria-label="Toggle menu"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+            {mobileMenuOpen ? (
+              <Cancel01Icon className="w-6 h-6" />
+            ) : (
+              <Menu01Icon className="w-6 h-6" />
+            )}
           </button>
         </div>
 

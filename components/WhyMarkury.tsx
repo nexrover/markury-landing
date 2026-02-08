@@ -1,3 +1,11 @@
+import { 
+  ComputerIcon, 
+  SecurityLockIcon, 
+  MoneyBag02Icon, 
+  RepeatIcon,
+  CheckmarkCircle02Icon
+} from 'hugeicons-react'
+
 export default function WhyMarkury() {
   const comparisons = [
     {
@@ -36,38 +44,22 @@ export default function WhyMarkury() {
     {
       title: "Made for macOS (Windows coming soon)",
       description: "Native app that feels right at home on your Mac. Fast, smooth, and respects your system preferences. Windows support is in active development.",
-      icon: (
-        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
+      icon: <ComputerIcon className="w-7 h-7" />,
     },
     {
       title: "Privacy First",
       description: "No accounts, no analytics, no cloud. Your annotations stay on your machine where they belong.",
-      icon: (
-        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-        </svg>
-      ),
+      icon: <SecurityLockIcon className="w-7 h-7" />,
     },
     {
       title: "One-Time Purchase",
       description: "Pay once, own it forever. No subscriptions, no hidden fees, no recurring charges.",
-      icon: (
-        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
+      icon: <MoneyBag02Icon className="w-7 h-7" />,
     },
     {
       title: "Instant Updates",
       description: "Always improving. Get new features and improvements as they ship, included in your purchase.",
-      icon: (
-        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-        </svg>
-      ),
+      icon: <RepeatIcon className="w-7 h-7" />,
     },
   ]
 
@@ -107,9 +99,7 @@ export default function WhyMarkury() {
                     <td className="p-4 sm:p-6 text-gray-700 font-medium">{row.aspect}</td>
                     <td className="p-4 sm:p-6">
                       <div className="flex items-center gap-2">
-                        <svg className="w-5 h-5 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
+                        <CheckmarkCircle02Icon className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                         <span className="text-gray-900">{row.markury}</span>
                       </div>
                     </td>

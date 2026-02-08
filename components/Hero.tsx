@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { LaserPointer, ScribbleArrow, ScribbleCircle } from '@/components/AnnotationAccents'
+import { ArrowRight02Icon, PencilEdit02Icon, Menu01Icon } from 'hugeicons-react'
 
 export default function Hero() {
   return (
@@ -32,9 +33,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <a href="#pricing" className="btn-primary w-full sm:w-auto">
               Get Markury Pro — $49
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <ArrowRight02Icon className="w-5 h-5 ml-2" />
             </a>
             <a href="#how-it-works" className="btn-secondary w-full sm:w-auto">
               See how it works
@@ -75,20 +74,16 @@ export default function Hero() {
                 
                 {/* Floating toolbar indicator */}
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-lg shadow-lg px-3 py-2 flex items-center gap-2">
-                  <Image src="/logo.png" alt="" width={20} height={20} className="w-5 h-5" />
+                  <Image src="/new_logo.svg" alt="" width={20} height={20} className="w-5 h-5" />
                   <div className="flex gap-1">
                     <div className="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
-                      <svg className="w-3.5 h-3.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                      </svg>
+                      <PencilEdit02Icon className="w-3.5 h-3.5 text-gray-600" />
                     </div>
                     <div className="w-6 h-6 bg-yellow-100 rounded flex items-center justify-center">
                       <div className="w-3 h-1.5 bg-yellow-500 rounded-full" />
                     </div>
                     <div className="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
-                      <svg className="w-3.5 h-3.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                      </svg>
+                      <Menu01Icon className="w-3.5 h-3.5 text-gray-600" />
                     </div>
                   </div>
                 </div>

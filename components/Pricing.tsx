@@ -1,4 +1,5 @@
 import { ScribbleStroke } from '@/components/AnnotationAccents'
+import { ArrowRight02Icon, CheckmarkCircle02Icon, AiSecurity01Icon } from 'hugeicons-react'
 
 export default function Pricing() {
   const features = [
@@ -71,9 +72,7 @@ export default function Pricing() {
                 className="btn-primary block w-full text-center mb-8"
               >
                 Get Markury Pro
-                <svg className="w-5 h-5 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                <ArrowRight02Icon className="w-5 h-5 ml-2 inline" />
               </a>
 
               {/* Features list */}
@@ -82,9 +81,7 @@ export default function Pricing() {
                 <ul className="grid grid-cols-1 gap-3">
                   {features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                      <CheckmarkCircle02Icon className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-600">{feature}</span>
                     </li>
                   ))}
@@ -96,9 +93,7 @@ export default function Pricing() {
             <div className="bg-gray-50 px-8 sm:px-10 py-6 border-t border-gray-100">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
+                  <AiSecurity01Icon className="w-6 h-6 text-green-600" />
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">30-Day Money-Back Guarantee</p>
