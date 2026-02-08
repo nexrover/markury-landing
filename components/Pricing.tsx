@@ -67,7 +67,7 @@ export default function Pricing() {
 
               {/* CTA */}
               <a
-                href="#"
+                href="https://nexrover.lemonsqueezy.com/checkout/buy/f8632404-ee60-4d46-8782-c64e310bb943"
                 className="btn-primary block w-full text-center mb-8"
               >
                 Get Markury Pro
