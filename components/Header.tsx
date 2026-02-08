@@ -29,9 +29,9 @@ export default function Header() {
               className="w-8 h-8 sm:w-9 sm:h-9"
             />
             <span className="relative text-xl sm:text-2xl font-bold text-gray-900">
-              <span>Markury</span>
+              <span className="text-highlight text-highlight--soft">Mark</span>ury
               {/* Freehand-style underline */}
-              <span className="pointer-events-none absolute left-0 right-0 -bottom-1 h-[3px] rounded-full bg-yellow-300/80" />
+              {/* <span className="pointer-events-none absolute left-0 right-0 -bottom-1 h-[3px] rounded-full bg-yellow-300/80" /> */}
             </span>
           </Link>
 
