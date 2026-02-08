@@ -8,7 +8,7 @@ function cx(...classes: ClassValue[]) {
 
 export function ScribbleCircle({
   className,
-  stroke = '#ef4444',
+  stroke = '#FB7185',
 }: {
   className?: string
   stroke?: string
@@ -42,7 +42,7 @@ export function ScribbleCircle({
 
 export function ScribbleArrow({
   className,
-  stroke = '#3b82f6',
+  stroke = '#22D3EE',
 }: {
   className?: string
   stroke?: string
@@ -91,7 +91,7 @@ export function LaserPointer({
 
 export function ScribbleStroke({
   className,
-  stroke = '#f59e0b',
+  stroke = '#FACC15',
 }: {
   className?: string
   stroke?: string

@@ -38,7 +38,7 @@ export default function ProblemSolution() {
       {/* Background accent */}
       <ScribbleArrow
         className="absolute -top-10 right-0 w-[260px] h-[180px] opacity-[0.08] -rotate-12 float-slower"
-        stroke="#3b82f6"
+        stroke="#22D3EE"
       />
 
       <div className="container-narrow relative">

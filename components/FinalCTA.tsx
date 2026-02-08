@@ -9,10 +9,10 @@ export default function FinalCTA() {
         <div className="relative max-w-4xl mx-auto text-center">
           {/* Background decoration */}
           <div className="absolute inset-0 -z-10">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-cyan-200 to-blue-200 rounded-full opacity-30 blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-markury-cyan/50 to-markury-purple/30 rounded-full opacity-30 blur-3xl" />
             <ScribbleArrow
               className="absolute -right-10 -top-10 w-[260px] h-[180px] opacity-[0.08] rotate-6 float-slower"
-              stroke="#0ea5e9"
+              stroke="#22D3EE"
             />
           </div>
 

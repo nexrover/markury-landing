@@ -101,7 +101,7 @@ export default function Features() {
       {/* Background accent */}
       <ScribbleCircle
         className="absolute -left-10 top-28 w-[280px] h-[200px] opacity-[0.07] rotate-6 float-slower"
-        stroke="#a855f7"
+        stroke="#C084FC"
       />
 
       <div className="container-narrow relative">

@@ -64,10 +64,10 @@ export default function WhyMarkury() {
   ]
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-32 bg-yellow-50">
+    <section className="relative overflow-hidden py-20 sm:py-32 bg-markury-yellow/10">
       {/* Background accent */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-24 top-16 w-80 h-80 bg-gradient-to-br from-yellow-200/70 via-amber-200/60 to-white rounded-full blur-3xl opacity-80 float-slower" />
+        <div className="absolute -left-24 top-16 w-80 h-80 bg-gradient-to-br from-markury-yellow/40 via-markury-orange/30 to-white rounded-full blur-3xl opacity-80 float-slower" />
       </div>
 
       <div className="container-narrow relative">
@@ -83,11 +83,11 @@ export default function WhyMarkury() {
         </div>
 
         {/* Comparison Table */}
-        <div className="bg-white rounded-3xl border border-yellow-100 shadow-sm overflow-hidden mb-16">
+        <div className="bg-white rounded-3xl border border-markury-yellow/30 shadow-sm overflow-hidden mb-16">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-100 bg-yellow-50/40">
+                <tr className="border-b border-gray-100 bg-markury-yellow/10">
                   <th className="text-left p-4 sm:p-6 text-gray-500 font-medium text-sm uppercase tracking-wide">Feature</th>
                   <th className="text-left p-4 sm:p-6 text-gray-900 font-semibold">Markury</th>
                   <th className="text-left p-4 sm:p-6 text-gray-500 font-medium">Others</th>
@@ -99,7 +99,7 @@ export default function WhyMarkury() {
                     <td className="p-4 sm:p-6 text-gray-700 font-medium">{row.aspect}</td>
                     <td className="p-4 sm:p-6">
                       <div className="flex items-center gap-2">
-                        <CheckmarkCircle02Icon className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                        <CheckmarkCircle02Icon className="w-5 h-5 text-markury-lime flex-shrink-0" />
                         <span className="text-gray-900">{row.markury}</span>
                       </div>
                     </td>
@@ -115,7 +115,7 @@ export default function WhyMarkury() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((highlight, index) => (
             <div key={index} className="text-center sm:text-left">
-              <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-700 mb-4 mx-auto sm:mx-0">
+              <div className="w-14 h-14 bg-markury-yellow/20 rounded-2xl flex items-center justify-center text-gray-800 mb-4 mx-auto sm:mx-0">
                 {highlight.icon}
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">{highlight.title}</h3>

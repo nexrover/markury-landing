@@ -40,7 +40,7 @@ export default function HowItWorks() {
       {/* Background accent */}
       <ScribbleStroke
         className="absolute left-1/2 -translate-x-1/2 top-10 w-[520px] h-[120px] opacity-60 float-slow"
-        stroke="#fbbf24"
+        stroke="#FACC15"
       />
 
       <div className="container-narrow relative">

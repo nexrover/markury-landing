@@ -8,6 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        /* App theme colors (match Markury app) */
+        markury: {
+          lime: '#A3F635',
+          purple: '#C084FC',
+          cyan: '#22D3EE',
+          yellow: '#FACC15',
+          pink: '#FB7185',
+          orange: '#FB923C',
+        },
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',

@@ -57,17 +57,17 @@ export default function Hero() {
                     {/* Simulated annotations */}
                     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet">
                       {/* Circle annotation */}
-                      <ellipse cx="200" cy="90" rx="60" ry="30" fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="0" />
+                      <ellipse cx="200" cy="90" rx="60" ry="30" fill="none" stroke="#FB7185" strokeWidth="3" strokeDasharray="0" />
                       
                       {/* Arrow */}
-                      <path d="M280 90 L340 60" fill="none" stroke="#3b82f6" strokeWidth="3" strokeLinecap="round" />
-                      <polygon points="340,60 330,58 335,68" fill="#3b82f6" />
+                      <path d="M280 90 L340 60" fill="none" stroke="#22D3EE" strokeWidth="3" strokeLinecap="round" />
+                      <polygon points="340,60 330,58 335,68" fill="#22D3EE" />
                       
                       {/* Highlight */}
-                      <rect x="120" y="140" width="160" height="20" fill="#fbbf24" fillOpacity="0.4" rx="4" />
+                      <rect x="120" y="140" width="160" height="20" fill="#FACC15" fillOpacity="0.4" rx="4" />
                       
                       {/* Freehand underline */}
-                      <path d="M100 180 Q150 175 200 182 T300 178" fill="none" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" />
+                      <path d="M100 180 Q150 175 200 182 T300 178" fill="none" stroke="#A3F635" strokeWidth="3" strokeLinecap="round" />
                     </svg>
                   </div>
                 </div>
@@ -79,8 +79,8 @@ export default function Hero() {
                     <div className="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
                       <PencilEdit02Icon className="w-3.5 h-3.5 text-gray-600" />
                     </div>
-                    <div className="w-6 h-6 bg-yellow-100 rounded flex items-center justify-center">
-                      <div className="w-3 h-1.5 bg-yellow-500 rounded-full" />
+                    <div className="w-6 h-6 bg-markury-yellow/20 rounded flex items-center justify-center">
+                      <div className="w-3 h-1.5 bg-markury-yellow rounded-full" />
                     </div>
                     <div className="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
                       <Menu01Icon className="w-3.5 h-3.5 text-gray-600" />
@@ -91,8 +91,8 @@ export default function Hero() {
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-yellow-200 rounded-full opacity-40 blur-2xl" />
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-200 rounded-full opacity-40 blur-2xl" />
+            <div className="absolute -top-4 -left-4 w-24 h-24 bg-markury-yellow/50 rounded-full opacity-40 blur-2xl" />
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-markury-cyan/50 rounded-full opacity-40 blur-2xl" />
 
             {/* Hand-drawn accents (subtle, like marker doodles) */}
             <ScribbleCircle

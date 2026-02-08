@@ -24,7 +24,7 @@ export default function Pricing() {
       {/* Background accent */}
       <ScribbleStroke
         className="absolute -left-6 bottom-24 w-[520px] h-[120px] opacity-70 rotate-3 float-slow"
-        stroke="#22c55e"
+        stroke="#A3F635"
       />
 
       <div className="container-narrow relative">
@@ -81,7 +81,7 @@ export default function Pricing() {
                 <ul className="grid grid-cols-1 gap-3">
                   {features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <CheckmarkCircle02Icon className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <CheckmarkCircle02Icon className="w-5 h-5 text-markury-lime flex-shrink-0 mt-0.5" />
                       <span className="text-gray-600">{feature}</span>
                     </li>
                   ))}

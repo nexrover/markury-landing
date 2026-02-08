@@ -5,6 +5,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @layer base {
+  :root {
+    /* Markury app theme colors */
+    --markury-lime: #A3F635;
+    --markury-purple: #C084FC;
+    --markury-cyan: #22D3EE;
+    --markury-yellow: #FACC15;
+    --markury-pink: #FB7185;
+    --markury-orange: #FB923C;
+  }
   html {
     scroll-behavior: smooth;
   }
@@ -25,14 +34,15 @@
   }
   .text-highlight::before {
     content: '';
-    @apply absolute left-[-0.15em] right-[-0.15em] bottom-[0.05em] h-[0.7em] bg-yellow-300 -z-10 rounded-[0.35em];
+    @apply absolute left-[-0.15em] right-[-0.15em] bottom-[0.05em] h-[0.7em] -z-10 rounded-[0.35em];
+    background: var(--markury-yellow);
     transform: rotate(-1.2deg);
   }
   .text-highlight--thin::before {
     @apply h-[0.55em] bottom-[0.12em];
   }
   .text-highlight--soft::before {
-    @apply bg-yellow-200;
+    background: color-mix(in srgb, var(--markury-yellow) 70%, transparent);
   }
 
   /* Clean marker underline (subtle stroke under text) */
@@ -42,14 +52,23 @@
   .marker-underline::after {
     content: '';
     @apply absolute left-[-0.1em] right-[-0.1em] bottom-[0.08em] h-[0.28em] -z-10 rounded-full opacity-90;
-    background: var(--marker-color, rgb(253 224 71)); /* yellow-300 fallback */
+    background: var(--marker-color, var(--markury-yellow));
     transform: rotate(-0.6deg);
   }
   .marker-underline--cyan::after {
-    background: rgb(103 232 249); /* cyan-300 */
+    background: var(--markury-cyan);
   }
   .marker-underline--purple::after {
-    background: rgb(216 180 254); /* purple-300 */
+    background: var(--markury-purple);
+  }
+  .marker-underline--lime::after {
+    background: var(--markury-lime);
+  }
+  .marker-underline--pink::after {
+    background: var(--markury-pink);
+  }
+  .marker-underline--orange::after {
+    background: var(--markury-orange);
   }
   .marker-underline--soft::after {
     opacity: 0.6;
@@ -65,11 +84,20 @@
   }
   
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 bg-yellow-400 rounded-xl hover:bg-yellow-500 transition-all duration-200 shadow-lg hover:shadow-yellow-300 hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5;
+    background-color: var(--markury-yellow);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.05);
   }
   
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 bg-white border-2 border-yellow-300 rounded-xl hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-200;
+    @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 bg-white border-2 rounded-xl transition-all duration-200;
+    border-color: var(--markury-yellow);
+  }
+  .btn-secondary:hover {
+    border-color: var(--markury-orange);
+    background-color: color-mix(in srgb, var(--markury-yellow) 12%, white);
   }
   
   .section-heading {

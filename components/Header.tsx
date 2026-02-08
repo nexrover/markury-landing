@@ -52,7 +52,7 @@ export default function Header() {
           <div className="hidden md:block">
             <Link
               href="/#pricing"
-              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-gray-900 bg-yellow-400 rounded-lg hover:bg-yellow-500 transition-colors shadow-md"
+              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors shadow-md"
             >
               Start highlighting
             </Link>
@@ -89,7 +89,7 @@ export default function Header() {
               <a
                 href="#pricing"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-gray-900 bg-yellow-400 rounded-lg hover:bg-yellow-500 transition-colors mt-2 shadow-md"
+                className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors mt-2 shadow-md"
               >
                 Start highlighting
               </a>
