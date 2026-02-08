@@ -74,7 +74,7 @@ export default function Hero() {
                 
                 {/* Floating toolbar indicator */}
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-lg shadow-lg px-3 py-2 flex items-center gap-2">
-                  <Image src="/new_logo.svg" alt="" width={20} height={20} className="w-5 h-5" />
+                  <Image src="/new_logo.svg" alt="" width={16} height={16} className="w-4 h-4" />
                   <div className="flex gap-1">
                     <div className="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
                       <PencilEdit02Icon className="w-3.5 h-3.5 text-gray-600" />

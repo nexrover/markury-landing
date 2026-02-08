@@ -20,13 +20,13 @@ export default function Header() {
       <nav className="container-narrow">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src="/new_logo.svg"
               alt="Markury Logo"
-              width={40}
-              height={40}
-              className="w-9 h-9 sm:w-10 sm:h-10"
+              width={32}
+              height={32}
+              className="w-8 h-8 sm:w-9 sm:h-9"
             />
             <span className="relative text-xl sm:text-2xl font-bold text-gray-900">
               <span>Markury</span>

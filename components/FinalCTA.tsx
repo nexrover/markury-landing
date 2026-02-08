@@ -19,13 +19,13 @@ export default function FinalCTA() {
           {/* Content */}
           <div className="relative">
             {/* Icon */}
-            <div className="w-20 h-20 rounded-2xl mx-auto mb-8">
+            <div className="w-20 h-20 mx-auto mb-8">
               <Image
                 src="/new_logo.svg"
                 alt="Markury"
-                width={100}
-                height={100}
-                className="w-100 h-100"
+                width={80}
+                height={80}
+                className="w-20 h-20"
               />
             </div>
 

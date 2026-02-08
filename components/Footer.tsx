@@ -28,13 +28,13 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <a href="#" className="flex items-center gap-3 mb-4">
+            <a href="#" className="flex items-center gap-2 mb-4">
               <Image
                 src="/new_logo.svg"
                 alt="Markury Logo"
-                width={40}
-                height={40}
-                className="w-10 h-10"
+                width={32}
+                height={32}
+                className="w-8 h-8"
               />
               <span className="text-xl font-bold text-highlight text-highlight--thin">
                 Markury
