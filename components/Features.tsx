@@ -1,18 +1,4 @@
 import { ScribbleCircle } from '@/components/AnnotationAccents'
-import { 
-  PencilEdit02Icon, 
-  HighlighterIcon, 
-  LayoutLeftIcon,
-  Edit02Icon,
-  Cursor02Icon,
-  PresentationBarChart01Icon,
-  Camera01Icon,
-  MouseScroll01Icon,
-  PaintBucketIcon,
-  Settings02Icon,
-  DashboardSquare01Icon,
-  ArrowTurnBackwardIcon
-} from 'hugeicons-react'
 
 export default function Features() {
   const featureGroups = [
@@ -23,22 +9,22 @@ export default function Features() {
         {
           name: "Freehand Drawing",
           description: "Draw smooth strokes naturally with your mouse or stylus. Perfect for circling, underlining, and sketching.",
-          icon: <PencilEdit02Icon className="w-6 h-6" />,
+          gif: "/features/freehand.gif",
         },
         {
           name: "Highlighter",
           description: "Emphasize text and areas with semi-transparent highlights that keep content readable underneath.",
-          icon: <HighlighterIcon className="w-6 h-6" />,
+          gif: "/features/highlight.gif",
         },
         {
           name: "Shape Tools",
           description: "Create clean lines, rectangles, circles, and arrows for professional-looking annotations.",
-          icon: <LayoutLeftIcon className="w-6 h-6" />,
+          gif: "/features/shape.gif",
         },
         {
           name: "Text Annotations",
           description: "Add typed labels, notes, and callouts anywhere on screen for clear explanations.",
-          icon: <Edit02Icon className="w-6 h-6" />,
+          gif: "/features/text.gif",
         },
       ],
     },
@@ -49,22 +35,22 @@ export default function Features() {
         {
           name: "Laser Pointer",
           description: "A virtual laser that follows your cursor with a fading trail. Perfect for guiding attention without leaving marks.",
-          icon: <Cursor02Icon className="w-6 h-6" />,
+          gif: "/features/laser.gif",
         },
         {
           name: "Whiteboard Mode",
           description: "Transform your screen into a clean canvas with 16 background colors for focused explanations.",
-          icon: <PresentationBarChart01Icon className="w-6 h-6" />,
+          gif: "/features/whiteboard.gif",
         },
         {
           name: "Screenshots",
           description: "Capture your annotated screen instantly. Full screen or region selection, saved to clipboard or folder.",
-          icon: <Camera01Icon className="w-6 h-6" />,
+          gif: "/features/screenshot.gif",
         },
         {
           name: "Click-Through Mode",
           description: "Switch back to normal cursor instantly. Annotations stay visible while you interact with apps underneath.",
-          icon: <MouseScroll01Icon className="w-6 h-6" />,
+          gif: "/features/cursor.gif",
         },
       ],
     },
@@ -75,22 +61,22 @@ export default function Features() {
         {
           name: "Quick Colors",
           description: "Four customizable color slots accessible with keyboard shortcuts. Switch colors in an instant.",
-          icon: <PaintBucketIcon className="w-6 h-6" />,
+          gif: "/features/color.gif",
         },
         {
           name: "Keyboard Shortcuts",
           description: "Fully customizable global shortcuts that work even when Markury isn't in focus.",
-          icon: <Settings02Icon className="w-6 h-6" />,
+          gif: "/features/shortcuts.gif",
         },
         {
           name: "Flexible Toolbar",
           description: "Vertical or horizontal layout. Show only the tools you use. Position it anywhere on screen.",
-          icon: <DashboardSquare01Icon className="w-6 h-6" />,
+          gif: "/features/toolbar.gif",
         },
         {
           name: "Undo & Redo",
           description: "Made a mistake? Undo it. Changed your mind? Redo. Clear all with one click when you're done.",
-          icon: <ArrowTurnBackwardIcon className="w-6 h-6" />,
+          gif: "/features/undo_redo.gif",
         },
       ],
     },
@@ -129,14 +115,20 @@ export default function Features() {
               </div>
 
               {/* Features Grid */}
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-8">
                 {group.features.map((feature, featureIndex) => (
                   <div
                     key={featureIndex}
-                    className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group"
+                    className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group"
                   >
-                    <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-700 mb-4 group-hover:bg-gray-900 group-hover:text-white transition-colors">
-                      {feature.icon}
+                    {/* @ts-ignore */}
+                    <div className="mb-4 rounded-lg overflow-hidden border border-gray-100 bg-gray-50">
+                      <img 
+                        /* @ts-ignore */
+                        src={feature.gif} 
+                        alt={feature.name} 
+                        className="w-full h-auto object-cover mix-blend-multiply"
+                      />
                     </div>
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.name}</h4>
                     <p className="text-gray-600 leading-relaxed">{feature.description}</p>
