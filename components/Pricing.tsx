@@ -1,5 +1,5 @@
 import { ScribbleStroke } from '@/components/AnnotationAccents'
-import { ArrowRight02Icon, CheckmarkCircle02Icon, AiSecurity01Icon } from 'hugeicons-react'
+import {  CheckmarkCircle02Icon, AiSecurity01Icon } from 'hugeicons-react'
 
 export default function Pricing() {
   const features = [
@@ -72,7 +72,7 @@ export default function Pricing() {
                 className="btn-primary block w-full text-center mb-8"
               >
                 Get Markury Pro
-                <ArrowRight02Icon className="w-5 h-5 ml-2 inline" />
+                
               </a>
 
               {/* Features list */}

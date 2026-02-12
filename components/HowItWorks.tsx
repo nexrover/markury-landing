@@ -2,9 +2,8 @@ import { ScribbleStroke } from '@/components/AnnotationAccents'
 import { 
   PlayCircleIcon, 
   PaintBucketIcon, 
-  PencilEdit02Icon, 
   Cursor02Icon,
-  ArrowRight02Icon
+  PencilIcon
 } from 'hugeicons-react'
 
 export default function HowItWorks() {
@@ -25,7 +24,7 @@ export default function HowItWorks() {
       number: "03",
       title: "Annotate anything",
       description: "Draw directly on your screen to highlight, circle, underline, or point at exactly what matters.",
-      icon: <PencilEdit02Icon className="w-8 h-8" />,
+      icon: <PencilIcon className="w-8 h-8" />,
     },
     {
       number: "04",
@@ -84,7 +83,7 @@ export default function HowItWorks() {
         <div className="text-center mt-16">
           <a href="#pricing" className="btn-primary">
             Start annotating today
-            <ArrowRight02Icon className="w-5 h-5 ml-2" />
+            
           </a>
         </div>
       </div>

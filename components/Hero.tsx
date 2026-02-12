@@ -1,5 +1,4 @@
 import { ScribbleArrow, ScribbleCircle } from '@/components/AnnotationAccents'
-import { ArrowRight02Icon } from 'hugeicons-react'
 import VideoComparison from '@/components/VideoComparison'
 
 export default function Hero() {
@@ -55,20 +54,6 @@ export default function Hero() {
                 />
               </div>
             </div>
-
-            {/* Decorative elements */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-markury-yellow/50 rounded-full opacity-40 blur-2xl -z-10" />
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-markury-cyan/50 rounded-full opacity-40 blur-2xl -z-10" />
-
-            {/* Hand-drawn accents (subtle, like marker doodles) */}
-            <ScribbleCircle
-              className="absolute -top-12 right-4 w-32 h-24 opacity-40 rotate-6"
-              stroke="#000000"
-            />
-            <ScribbleArrow
-              className="absolute -bottom-14 left-2 w-32 h-20 opacity-40 -rotate-6"
-              stroke="#000000"
-            />
           </div>
       </div>
     </section>

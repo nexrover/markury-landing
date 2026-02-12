@@ -295,14 +295,16 @@ export default function VideoComparison({
         <div className="w-1 h-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
 
         {/* Handle Icon */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none w-12 h-12">
             {/* Pulse Effect */}
-            <div className="absolute w-full h-full bg-blue-400 rounded-full animate-ping opacity-75" />
+            <div className="absolute w-full h-full bg-blue-400 rounded-full animate-[ping_2s_linear_infinite] opacity-75" />
             
-            {/* Button */}
-            <div className="bg-blue-500 rounded-full p-2 shadow-lg flex items-center justify-center relative z-10">
-                <ArrowLeft02Icon className="w-4 h-4 text-white" />
-                <ArrowRight02Icon className="w-4 h-4 text-white" />
+            {/* Circle Button */}
+            <div className="bg-blue-500 rounded-full w-12 h-12 shadow-lg flex items-center justify-center relative z-10 border-4 border-blue-500">
+                <div className="flex flex-row items-center justify-between w-5/6">
+                    <ArrowLeft02Icon className="w-4 h-4 text-white" />
+                    <ArrowRight02Icon className="w-4 h-4 text-white" />
+                </div>
             </div>
         </div>
       </div>
