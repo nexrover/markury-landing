@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import { LaserPointer, ScribbleArrow, ScribbleCircle } from '@/components/AnnotationAccents'
-import { ArrowRight02Icon, PencilEdit02Icon, Menu01Icon } from 'hugeicons-react'
+import { ScribbleArrow, ScribbleCircle } from '@/components/AnnotationAccents'
+import { ArrowRight02Icon } from 'hugeicons-react'
+import VideoComparison from '@/components/VideoComparison'
 
 export default function Hero() {
   return (
@@ -14,7 +14,7 @@ export default function Hero() {
       }} />
 
       <div className="container-narrow">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}
 
           {/* Main Headline */}
@@ -39,72 +39,38 @@ export default function Hero() {
               See how it works
             </a>
           </div>
+        </div>
 
-          {/* Hero Visual */}
-          <div className="relative mx-auto max-w-3xl">
-            {/* Floating toolbar mockup */}
-            <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 sm:p-8">
-              {/* Screen mockup */}
-              <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl relative overflow-hidden">
-                {/* Subtle animated laser pointer */}
-                <LaserPointer className="opacity-70" />
-
-                {/* Annotation demonstration */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="text-2xl sm:text-3xl font-semibold text-gray-400 mb-4">Your Screen Content</div>
-                    
-                    {/* Simulated annotations */}
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet">
-                      {/* Circle annotation */}
-                      <ellipse cx="200" cy="90" rx="60" ry="30" fill="none" stroke="#FB7185" strokeWidth="3" strokeDasharray="0" />
-                      
-                      {/* Arrow */}
-                      <path d="M280 90 L340 60" fill="none" stroke="#22D3EE" strokeWidth="3" strokeLinecap="round" />
-                      <polygon points="340,60 330,58 335,68" fill="#22D3EE" />
-                      
-                      {/* Highlight */}
-                      <rect x="120" y="140" width="160" height="20" fill="#FACC15" fillOpacity="0.4" rx="4" />
-                      
-                      {/* Freehand underline */}
-                      <path d="M100 180 Q150 175 200 182 T300 178" fill="none" stroke="#A3F635" strokeWidth="3" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Floating toolbar indicator */}
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-lg shadow-lg px-3 py-2 flex items-center gap-2">
-                  <Image src="/new_logo.svg" alt="" width={16} height={16} className="w-4 h-4" />
-                  <div className="flex gap-1">
-                    <div className="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
-                      <PencilEdit02Icon className="w-3.5 h-3.5 text-gray-600" />
-                    </div>
-                    <div className="w-6 h-6 bg-markury-yellow/20 rounded flex items-center justify-center">
-                      <div className="w-3 h-1.5 bg-markury-yellow rounded-full" />
-                    </div>
-                    <div className="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
-                      <Menu01Icon className="w-3.5 h-3.5 text-gray-600" />
-                    </div>
-                  </div>
-                </div>
+          {/* Hero Visual - Video Comparison */}
+          <div className="relative mx-auto w-full max-w-[90rem]">
+            {/* Main container with shadow/border */}
+            <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 p-2 sm:p-4">
+              <div className="aspect-video bg-gray-100 rounded-xl overflow-hidden relative isolate">
+                <VideoComparison 
+                  // Placeholder videos - PLEASE REPLACE WITH YOUR ACTUAL URLs
+                  videoSrc1="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" 
+                  videoSrc2="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                  label1="Without Markury"
+                  label2="With Markury"
+                  className="w-full h-full"
+                />
               </div>
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-markury-yellow/50 rounded-full opacity-40 blur-2xl" />
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-markury-cyan/50 rounded-full opacity-40 blur-2xl" />
+            <div className="absolute -top-4 -left-4 w-24 h-24 bg-markury-yellow/50 rounded-full opacity-40 blur-2xl -z-10" />
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-markury-cyan/50 rounded-full opacity-40 blur-2xl -z-10" />
 
             {/* Hand-drawn accents (subtle, like marker doodles) */}
             <ScribbleCircle
               className="absolute -top-12 right-4 w-32 h-24 opacity-40 rotate-6"
-              stroke="#ffffff"
+              stroke="#000000"
             />
             <ScribbleArrow
               className="absolute -bottom-14 left-2 w-32 h-20 opacity-40 -rotate-6"
-              stroke="#ffffff"
+              stroke="#000000"
             />
           </div>
-        </div>
       </div>
     </section>
   )
