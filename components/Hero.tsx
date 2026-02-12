@@ -33,7 +33,6 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <a href="#pricing" className="btn-primary w-full sm:w-auto">
               Get Markury Pro
-              <ArrowRight02Icon className="w-5 h-5 ml-2" />
             </a>
             <a href="#how-it-works" className="btn-secondary w-full sm:w-auto">
               See how it works
