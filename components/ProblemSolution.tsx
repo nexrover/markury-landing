@@ -6,7 +6,7 @@ const testimonials = [
     name: 'Sarah Chen',
     designation: 'High School Math Teacher',
     avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=128&h=128&fit=crop',
-    problem: 'During remote lessons I kept saying "look here, no — here" while waving my mouse. Students got confused and I lost their attention.',
+    problem: 'During remote lessons I kept saying "look here, no, here" while waving my mouse. Students got confused and I lost their attention.',
     solution: 'With Markury I draw circles and arrows right on the screen. Everyone sees exactly what I mean, and class time actually feels productive.',
   },
   {
@@ -21,14 +21,14 @@ const testimonials = [
     designation: 'YouTube Creator, Tutorials',
     avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=128&h=128&fit=crop',
     problem: 'Viewers kept asking "which button?" or "where do I click?" My recordings lacked clear visual guidance.',
-    solution: 'I record with Markury now — I highlight steps and circle the exact button as I go. Comments like "so easy to follow" have gone way up.',
+    solution: 'I record with Markury now, I highlight steps and circle the exact button as I go. Comments like "so easy to follow" have gone way up.',
   },
   {
     name: 'James Okonkwo',
     designation: 'Senior Developer',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop',
     problem: 'Code review feedback was either vague or buried in long comments. Pointing at the right line in a call was tedious.',
-    solution: 'I draw on the screen during pair sessions and paste annotated screenshots into PRs. Fast and simple — no learning curve, just clarity.',
+    solution: 'I draw on the screen during pair sessions and paste annotated screenshots into PRs. Fast and simple, no learning curve, just clarity.',
   },
 ]
 
@@ -49,7 +49,7 @@ export default function ProblemSolution() {
             <span className="marker-underline marker-underline--cyan">clarity</span>
           </h2>
           <p className="section-subheading">
-            Real people, real problems — and how Markury helps them communicate visually without the hassle.
+            Real people, real problems, and how Markury helps them communicate visually without the hassle.
           </p>
         </div>
 

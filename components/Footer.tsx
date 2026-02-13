@@ -10,9 +10,7 @@ export default function Footer() {
     ],
     support: [
       { label: 'User Guide', href: '/user-guide' },
-      { label: 'Help Center', href: '#' },
-      { label: 'Contact Us', href: 'mailto:info@markury.app' },
-      { label: 'System Requirements', href: '#' },
+      { label: 'Contact Us', href: 'mailto:info@markury.app' }
     ],
     legal: [
       { label: 'Privacy Policy', href: '/privacy-policy' },

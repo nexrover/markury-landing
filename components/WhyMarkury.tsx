@@ -20,7 +20,7 @@ export default function WhyMarkury() {
     },
     {
       aspect: "User Experience",
-      markury: "Intuitive — start drawing immediately",
+      markury: "Intuitive, start drawing immediately",
       others: "Steep learning curve, complex menus",
     },
     {
@@ -42,8 +42,8 @@ export default function WhyMarkury() {
 
   const highlights = [
     {
-      title: "Made for macOS and Windows",
-      description: "Native app that feels right at home on your Mac and Windows. Fast, smooth, and respects your system preferences.",
+      title: "Supports macOS and Windows",
+      description: "Native app for Mac and Windows. Fast, smooth, and respects your system preferences.",
       icon: <ComputerIcon className="w-7 h-7" />,
     },
     {
