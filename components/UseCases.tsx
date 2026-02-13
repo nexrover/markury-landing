@@ -25,6 +25,7 @@ export default function UseCases() {
       color: "text-markury-cyan",
       bg: "bg-markury-cyan",
       gradient: "from-markury-cyan/20 to-blue-500/20",
+      image: "/use-cases/teacher.gif",
     },
     {
       title: "Presenters & Speakers",
@@ -133,38 +134,45 @@ export default function UseCases() {
               <div className="relative h-full flex flex-col justify-between p-8 sm:p-12 z-10">
                 
                 <div className="space-y-6 max-w-lg">
-                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/10 backdrop-blur-sm border border-white/10 ${useCases[activeIndex].color.replace('text-', 'text-white ')}`}>
-                    {useCases[activeIndex].title}
-                  </div>
+                  {/* Title removed */}
                   
                   <h3 className="text-3xl sm:text-4xl font-bold leading-tight tracking-tight">
                     {useCases[activeIndex].headline}
                   </h3>
                   
-                  <p className="text-lg text-gray-300 leading-relaxed max-w-md">
+                  <p className="text-lg text-gray-300 leading-relaxed">
                     {useCases[activeIndex].detail}
                   </p>
                   
-                  <button className="group inline-flex items-center gap-2 font-semibold text-white hover:text-gray-100 transition-colors">
-                    Learn more 
-                    <ArrowRight01Icon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </button>
+                  {/* Button removed */}
                 </div>
 
                 {/* Example UI / Visual Placeholder */}
-                <div className="mt-12 relative w-full aspect-video rounded-xl bg-gray-800/50 border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center group cursor-pointer hover:bg-gray-800/70 transition-colors">
-                   <div className={`absolute inset-0 bg-gradient-to-br ${useCases[activeIndex].gradient} opacity-10`} />
-                   
-                   {/* Play Button */}
-                   <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <PlayIcon className="w-6 h-6 text-white ml-1" />
-                   </div>
+                {/* @ts-ignore */}
+                {useCases[activeIndex].image ? (
+                  <div className="mt-12 relative w-full aspect-video rounded-xl bg-gray-900 border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center">
+                    <img 
+                      /* @ts-ignore */
+                      src={useCases[activeIndex].image} 
+                      alt={useCases[activeIndex].title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="mt-12 relative w-full aspect-video rounded-xl bg-gray-800/50 border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center group cursor-pointer hover:bg-gray-800/70 transition-colors">
+                     <div className={`absolute inset-0 bg-gradient-to-br ${useCases[activeIndex].gradient} opacity-10`} />
+                     
+                     {/* Play Button */}
+                     <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <PlayIcon className="w-6 h-6 text-white ml-1" />
+                     </div>
 
-                   {/* Decorative elements representing 'UI' */}
-                   <div className="absolute top-4 left-4 right-4 h-2 bg-white/5 rounded-full" />
-                   <div className="absolute top-8 left-4 w-1/3 h-2 bg-white/5 rounded-full" />
-                   <div className="absolute bottom-4 right-4 w-1/4 h-2 bg-white/5 rounded-full" />
-                </div>
+                     {/* Decorative elements representing 'UI' */}
+                     <div className="absolute top-4 left-4 right-4 h-2 bg-white/5 rounded-full" />
+                     <div className="absolute top-8 left-4 w-1/3 h-2 bg-white/5 rounded-full" />
+                     <div className="absolute bottom-4 right-4 w-1/4 h-2 bg-white/5 rounded-full" />
+                  </div>
+                )}
               </div>
               
               {/* Corner decorative blob */}
