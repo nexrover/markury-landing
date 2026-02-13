@@ -101,26 +101,26 @@ export default function UseCases() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           
           {/* Sidebar Navigation */}
-          <div className="w-full lg:w-1/3 flex flex-col gap-2">
+          <div className="w-full lg:w-1/3 flex lg:flex-col overflow-x-auto lg:overflow-visible gap-2 lg:gap-2 pb-4 lg:pb-0 snap-x">
             {useCases.map((useCase, index) => {
               const isActive = index === activeIndex
               return (
                 <button
                   key={index}
                   onClick={() => setActiveIndex(index)}
-                  className={`group flex items-center gap-4 p-4 text-left rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-gray-900 
+                  className={`group flex-shrink-0 lg:w-full snap-center flex items-center justify-center lg:justify-start gap-2 lg:gap-3 py-1.5 px-4 lg:p-3 text-left rounded-lg lg:rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-gray-900 
                     ${isActive 
-                      ? 'bg-white shadow-md shadow-gray-200/50 scale-[1.02]' 
-                      : 'hover:bg-gray-100/80 hover:scale-[1.01] text-gray-500'
+                      ? 'bg-white shadow-md shadow-gray-200/50' 
+                      : 'bg-white/50 lg:bg-transparent hover:bg-gray-100/80 text-gray-500'
                     }`}
                 >
-                  <div className={`p-2 rounded-lg transition-colors duration-200 flex-shrink-0 
+                  <div className={`p-1.5 lg:p-2 rounded-lg transition-colors duration-200 flex-shrink-0 
                     ${isActive ? 'bg-gray-50' : 'bg-transparent group-hover:bg-gray-100'} 
                     ${isActive ? useCase.color : 'text-gray-400 group-hover:text-gray-600'}`}>
                     {useCase.icon}
                   </div>
                   <div>
-                    <h3 className={`font-semibold text-base transition-colors duration-200 
+                    <h3 className={`font-semibold text-xs lg:text-sm transition-colors duration-200 
                       ${isActive ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'}`}>{useCase.title}</h3>
                   </div>
                 </button>
