@@ -49,7 +49,14 @@ export default function Header() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+
+          <div className="hidden md:flex items-center gap-4">
+            <Link
+              href="http://app.lemonsqueezy.com/my-orders"
+              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Sign in
+            </Link>
             <Link
               href="/#pricing"
               className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors shadow-md"
@@ -86,13 +93,20 @@ export default function Header() {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#pricing"
-                onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors mt-2 shadow-md"
-              >
-                Start highlighting
-              </a>
+                <Link
+                  href="http://app.lemonsqueezy.com/my-orders"
+                  className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign in
+                </Link>
+                <Link
+                  href="/#pricing"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors mt-2 shadow-md"
+                >
+                  Start highlighting
+                </Link>
             </div>
           </div>
         )}
