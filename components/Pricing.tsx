@@ -2,9 +2,26 @@ import { ScribbleStroke } from '@/components/AnnotationAccents'
 import {  CheckmarkCircle02Icon, AiSecurity01Icon } from 'hugeicons-react'
 
 export default function Pricing() {
-  const features = [
+  const proFeatures = [
     "All drawing tools (freehand, highlighter, eraser)",
-    "Shape tools (line, rectangle, circle, arrow)",
+    "Shape tools (line, rectangle, circle, ellipse, arrow)",
+    "Text annotations",
+    "Laser pointer for presentations",
+    "Whiteboard mode with 4 colors",
+    "Full screen & region screenshots",
+    "4 customizable quick colors",
+    "Fully customizable keyboard shortcuts",
+    "Flexible toolbar (vertical/horizontal)",
+    "Tool customization (show/hide/reorder)",
+    "Unlimited undo & redo",
+    "System tray integration",
+    "Dark & light themes",
+    "All future updates included",
+  ]
+
+  const lifetimeFeatures = [
+    "All drawing tools (freehand, highlighter, eraser)",
+    "Shape tools (line, rectangle, circle, ellipse, arrow)",
     "Text annotations",
     "Laser pointer for presentations",
     "Whiteboard mode with 4 colors",
@@ -27,7 +44,7 @@ export default function Pricing() {
         stroke="#A3F635"
       />
 
-      <div className="container-narrow relative">
+      <div className="container mx-auto relative">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
@@ -37,71 +54,124 @@ export default function Pricing() {
             </span>
           </h2>
           <p className="section-subheading">
-            One plan with everything included. Pay once, use forever.
+            Choose the plan that suits you best.
           </p>
         </div>
 
-        {/* Pricing Card */}
-        <div className="max-w-lg mx-auto">
-          <div className="relative bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
-            {/* Popular badge */}
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto px-4">
+          
+          {/* Markury Pro Plan */}
+          <div className="relative bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden flex flex-col">
             <div className="absolute top-0 right-0">
-              <div className="bg-gray-900 text-white text-xs font-semibold px-4 py-1.5 rounded-bl-xl">
-                One-time purchase
+              <div className="bg-markury-yellow text-gray-900 text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wide">
+                Most Popular
               </div>
             </div>
 
-            <div className="p-8 sm:p-10">
-              {/* Plan name */}
-              <div className="text-center mb-8">
+            <div className="p-8 sm:p-10 flex-1 flex flex-col">
+              <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Markury Pro</h3>
-                <p className="text-gray-600">Everything you need, nothing you don&apos;t.</p>
+                <p className="text-highlight text-highlight--soft inline-block font-medium">7 days free trial</p>
               </div>
 
-              {/* Price */}
               <div className="text-center mb-8">
-                <div className="flex items-baseline justify-center gap-2">
-                  <span className="text-6xl font-bold text-gray-900">$49</span>
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-gray-400 line-through text-2xl">$29/year</span>
                 </div>
-                <p className="text-gray-500 mt-2">One-time payment • Yours forever</p>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-5xl font-bold text-gray-900">$19</span>
+                  <span className="text-gray-600 font-medium">/year</span>
+                </div>
+                <p className="text-gray-500 text-sm mt-3 font-medium">Launch pricing — limited time.</p>
               </div>
 
-              {/* CTA */}
               <a
-                href="https://nexrover.lemonsqueezy.com/checkout/buy/f8632404-ee60-4d46-8782-c64e310bb943"
-                className="btn-primary block w-full text-center mb-8"
+                href="https://nexrover.lemonsqueezy.com/buy/081ee812-4d2c-4740-9111-ce03f0b26aa9"
+                className="btn-primary block w-full text-center mb-4"
               >
-                Get Markury Pro
-                
+                Start Free Trial
               </a>
+              <p className="text-gray-500 text-xs text-center mb-8">
+                Locked in price. No price increase for existing users.
+              </p>
 
-              {/* Features list */}
-              <div className="space-y-3">
-                <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Everything included:</p>
-                <ul className="grid grid-cols-1 gap-3">
-                  {features.map((feature, index) => (
+              <div className="space-y-4">
+                <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">What&apos;s included:</p>
+                <ul className="space-y-3">
+                  {proFeatures.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckmarkCircle02Icon className="w-5 h-5 text-markury-lime flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-600">{feature}</span>
+                      <span className="text-gray-600 text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
+          </div>
 
-            {/* Guarantee */}
-            <div className="bg-gray-50 px-8 sm:px-10 py-6 border-t border-gray-100">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <AiSecurity01Icon className="w-6 h-6 text-green-600" />
+          {/* Lifetime Plan */}
+          <div className="relative bg-gray-50 rounded-3xl shadow-lg border border-gray-200 overflow-hidden flex flex-col">
+             <div className="absolute top-0 right-0">
+              <div className="bg-gray-900 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wide">
+                Founders Offer
+              </div>
+            </div>
+
+            <div className="p-8 sm:p-10 flex-1 flex flex-col">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Lifetime</h3>
+                <p className="text-gray-600 font-medium">Pay once, own it forever</p>
+              </div>
+
+              <div className="text-center mb-8">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-gray-400 line-through text-2xl">$79</span>
                 </div>
-                <div>
-                  <p className="font-semibold text-gray-900">30-Day Money-Back Guarantee</p>
-                  <p className="text-sm text-gray-600">Not satisfied? Get a full refund, no questions asked.</p>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-5xl font-bold text-gray-900">$39</span>
+                  <span className="text-gray-600 font-medium">one-time</span>
                 </div>
+                <p className="text-gray-500 text-sm mt-3 font-medium">Launch pricing — limited time.</p>
+              </div>
+
+              <a
+                href="https://nexrover.lemonsqueezy.com/checkout/buy/f8632404-ee60-4d46-8782-c64e310bb943"
+                className="inline-flex items-center justify-center w-full px-8 py-4 text-lg font-semibold text-white bg-gray-900 rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5 hover:bg-gray-800 mb-4"
+              >
+                Get Lifetime Access
+              </a>
+              <p className="text-gray-500 text-xs text-center mb-8">
+                One-time payment. No recurring fees.
+              </p>
+
+               <div className="space-y-4">
+                <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">All features included:</p>
+                <ul className="space-y-3">
+                  {lifetimeFeatures.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckmarkCircle02Icon className="w-5 h-5 text-markury-lime flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
+
+        </div>
+
+        {/* Guarantee */}
+        <div className="max-w-3xl mx-auto mt-16 px-4">
+             <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center flex-shrink-0">
+                <AiSecurity01Icon className="w-8 h-8 text-green-600" />
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-gray-900 mb-1">30-Day Money-Back Guarantee</h4>
+                <p className="text-gray-600">Not satisfied? Get a full refund, no questions asked. We're confident you'll love Markury.</p>
+              </div>
+            </div>
         </div>
 
         {/* Trust indicators */}
