@@ -6,6 +6,18 @@ export const metadata: Metadata = {
   description: 'Draw, highlight, and annotate directly on your screen. The modern desktop annotation tool for teachers, presenters, designers, and remote teams.',
   keywords: 'screen annotation, drawing tool, presentation software, screen marker, digital whiteboard, teaching tool, screen recording',
   authors: [{ name: 'Markury' }],
+  icons: {
+    icon: [
+      { url: '/favicon/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon/favicon.ico' },
+    ],
+    shortcut: '/favicon/favicon.ico',
+    apple: [
+      { url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/favicon/site.webmanifest',
   openGraph: {
     title: 'Markury | Screen Annotation Made Simple',
     description: 'Draw, highlight, and annotate directly on your screen. The modern desktop annotation tool for teachers, presenters, designers, and remote teams.',
