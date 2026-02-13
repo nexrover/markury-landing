@@ -58,6 +58,7 @@ export default function UseCases() {
       color: "text-markury-lime",
       bg: "bg-markury-lime",
       gradient: "from-markury-lime/20 to-green-500/20",
+      image: "/use-cases/remote.gif",
     },
     {
       title: "Content Creators",
@@ -68,6 +69,7 @@ export default function UseCases() {
       color: "text-markury-orange",
       bg: "bg-markury-orange",
       gradient: "from-markury-orange/20 to-amber-500/20",
+      image: "/use-cases/creator.gif",
     },
     {
       title: "Developers",
@@ -78,6 +80,7 @@ export default function UseCases() {
       color: "text-markury-cyan",
       bg: "bg-markury-cyan",
       gradient: "from-cyan-400/20 to-teal-500/20",
+      image: "/use-cases/developer.gif",
     },
   ]
 
