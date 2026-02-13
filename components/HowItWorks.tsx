@@ -1,9 +1,9 @@
 import { ScribbleStroke } from '@/components/AnnotationAccents'
 import { 
   PlayCircleIcon, 
-  PaintBucketIcon, 
   Cursor02Icon,
-  PencilIcon
+  PencilIcon,
+  ShapeCollectionIcon
 } from 'hugeicons-react'
 
 export default function HowItWorks() {
@@ -18,7 +18,7 @@ export default function HowItWorks() {
       number: "02",
       title: "Pick your tool",
       description: "Choose from freehand drawing, highlighter, shapes, text, or laser pointer — whatever fits your need.",
-      icon: <PaintBucketIcon className="w-8 h-8" />,
+      icon: <ShapeCollectionIcon className="w-8 h-8" />,
     },
     {
       number: "03",
