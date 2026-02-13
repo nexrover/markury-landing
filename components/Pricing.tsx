@@ -2,7 +2,7 @@ import { ScribbleStroke } from '@/components/AnnotationAccents'
 import {  CheckmarkCircle02Icon, AiSecurity01Icon } from 'hugeicons-react'
 
 export default function Pricing() {
-  const proFeatures = [
+  const features = [
     "All drawing tools (freehand, highlighter, eraser)",
     "Shape tools (line, rectangle, circle, ellipse, arrow)",
     "Text annotations",
@@ -12,27 +12,8 @@ export default function Pricing() {
     "4 customizable quick colors",
     "Fully customizable keyboard shortcuts",
     "Flexible toolbar (vertical/horizontal)",
-    "Tool customization (show/hide/reorder)",
     "Unlimited undo & redo",
-    "System tray integration",
-    "Dark & light themes",
-    "All future updates included",
-  ]
-
-  const lifetimeFeatures = [
-    "All drawing tools (freehand, highlighter, eraser)",
-    "Shape tools (line, rectangle, circle, ellipse, arrow)",
-    "Text annotations",
-    "Laser pointer for presentations",
-    "Whiteboard mode with 4 colors",
-    "Full screen & region screenshots",
-    "4 customizable quick colors",
-    "Fully customizable keyboard shortcuts",
-    "Flexible toolbar (vertical/horizontal)",
-    "Tool customization (show/hide/reorder)",
-    "Unlimited undo & redo",
-    "System tray integration",
-    "Dark & light themes",
+    "Dark & light themes with 7 accent colors",
     "All future updates included",
   ]
 
@@ -99,7 +80,7 @@ export default function Pricing() {
               <div className="space-y-4">
                 <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">What&apos;s included:</p>
                 <ul className="space-y-3">
-                  {proFeatures.map((feature, index) => (
+                  {features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckmarkCircle02Icon className="w-5 h-5 text-markury-lime flex-shrink-0 mt-0.5" />
                       <span className="text-gray-600 text-sm">{feature}</span>
@@ -148,7 +129,7 @@ export default function Pricing() {
                <div className="space-y-4">
                 <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">All features included:</p>
                 <ul className="space-y-3">
-                  {lifetimeFeatures.map((feature, index) => (
+                  {features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckmarkCircle02Icon className="w-5 h-5 text-markury-lime flex-shrink-0 mt-0.5" />
                       <span className="text-gray-600 text-sm">{feature}</span>
@@ -177,10 +158,7 @@ export default function Pricing() {
         {/* Trust indicators */}
         <div className="mt-12 text-center space-y-1">
           <p className="text-gray-500 text-sm">
-            Secure payment via Stripe • Instant download after purchase • macOS 12.0+
-          </p>
-          <p className="text-gray-400 text-xs">
-            Windows support is planned and currently in development.
+            Secure payment via Stripe • Instant download after purchase • macOS 12.0+ & Windows 10+
           </p>
         </div>
       </div>

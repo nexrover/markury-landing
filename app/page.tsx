@@ -1,6 +1,6 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import ProblemSolution from '@/components/ProblemSolution'
+// import ProblemSolution from '@/components/ProblemSolution'
 import HowItWorks from '@/components/HowItWorks'
 import Features from '@/components/Features'
 import UseCases from '@/components/UseCases'
@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <ProblemSolution />
+        {/* <ProblemSolution /> */}
         <HowItWorks />
         <Features />
         <UseCases />

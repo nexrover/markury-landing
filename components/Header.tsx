@@ -61,7 +61,7 @@ export default function Header() {
               href="/#pricing"
               className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors shadow-md"
             >
-              Start highlighting
+              Start Free Trial
             </Link>
           </div>
 
@@ -105,7 +105,7 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors mt-2 shadow-md"
                 >
-                  Start highlighting
+                  Start Free Trial
                 </Link>
             </div>
           </div>
