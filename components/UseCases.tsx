@@ -36,6 +36,7 @@ export default function UseCases() {
       color: "text-markury-purple",
       bg: "bg-markury-purple",
       gradient: "from-markury-purple/20 to-indigo-500/20",
+      image: "/use-cases/presenter.gif",
     },
     {
       title: "Designers & Reviewers",
@@ -46,6 +47,7 @@ export default function UseCases() {
       color: "text-markury-pink",
       bg: "bg-markury-pink",
       gradient: "from-markury-pink/20 to-rose-500/20",
+      image: "/use-cases/designer.gif",
     },
     {
       title: "Remote Teams",
