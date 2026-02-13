@@ -52,7 +52,7 @@ export default function Header() {
 
           <div className="hidden md:flex items-center gap-4">
             <Link
-              href="http://app.lemonsqueezy.com/my-orders"
+              href="http://app.lemonsqueezy.com/my-orders/login"
               className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
             >
               Sign in
@@ -94,7 +94,7 @@ export default function Header() {
                 </a>
               ))}
                 <Link
-                  href="http://app.lemonsqueezy.com/my-orders"
+                  href="http://app.lemonsqueezy.com/my-orders/login"
                   className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >

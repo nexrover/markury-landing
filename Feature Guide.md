@@ -415,7 +415,7 @@ Customize which tools appear in your toolbar:
 ### License
 
 - Enter or change your **license key** in the License tab to unlock Pro/Basic features
-- If you see **"This license key has reached the activation limit"**, the app will suggest managing your license in your **Account** — use the **Account** link shown below the message to open [Lemon Squeezy My Orders](https://app.lemonsqueezy.com/my-orders), where you can deactivate an old device or manage activations
+- If you see **"This license key has reached the activation limit"**, the app will suggest managing your license in your **Account** — use the **Account** link shown below the message to open [Lemon Squeezy My Orders](https://app.lemonsqueezy.com/my-orders/login), where you can deactivate an old device or manage activations
 
 ---
 
@@ -565,7 +565,7 @@ Markury needs Accessibility permission for global shortcuts. Go to System Prefer
 Click the visibility toggle to ensure drawings are shown, not hidden.
 
 ### License Activation Limit Reached
-If activation fails with "This license key has reached the activation limit", your key is already in use on another device. Use the **Account** link shown in the License tab (or go to [app.lemonsqueezy.com/my-orders](https://app.lemonsqueezy.com/my-orders)) to manage your orders and deactivate an old activation, or upgrade your plan for more activations.
+If activation fails with "This license key has reached the activation limit", your key is already in use on another device. Use the **Account** link shown in the License tab (or go to [app.lemonsqueezy.com/my-orders/login](https://app.lemonsqueezy.com/my-orders/login)) to manage your orders and deactivate an old activation, or upgrade your plan for more activations.
 
 ---
 

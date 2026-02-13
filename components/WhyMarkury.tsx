@@ -42,8 +42,8 @@ export default function WhyMarkury() {
 
   const highlights = [
     {
-      title: "Made for macOS (Windows coming soon)",
-      description: "Native app that feels right at home on your Mac. Fast, smooth, and respects your system preferences. Windows support is in active development.",
+      title: "Made for macOS and Windows",
+      description: "Native app that feels right at home on your Mac and Windows. Fast, smooth, and respects your system preferences.",
       icon: <ComputerIcon className="w-7 h-7" />,
     },
     {
