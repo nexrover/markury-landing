@@ -25,8 +25,8 @@ export default function WhyMarkury() {
     },
     {
       aspect: "Pricing",
-      markury: "One-time $49, yours forever",
-      others: "Subscriptions or per-seat licensing",
+      markury: "Flexible: Yearly or Lifetime",
+      others: "Rigid subscription models",
     },
     {
       aspect: "Toolbar",
@@ -52,8 +52,8 @@ export default function WhyMarkury() {
       icon: <SecurityLockIcon className="w-7 h-7" />,
     },
     {
-      title: "One-Time Purchase",
-      description: "Pay once, own it forever. No subscriptions, no hidden fees, no recurring charges.",
+      title: "Flexible Pricing",
+      description: "Choose between a simple yearly plan or pay once for lifetime access. No hidden fees.",
       icon: <MoneyBag02Icon className="w-7 h-7" />,
     },
     {

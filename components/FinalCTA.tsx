@@ -48,7 +48,7 @@ export default function FinalCTA() {
 
             {/* Trust text */}
             <p className="text-gray-500 text-sm">
-              One-time purchase • 30-day money-back guarantee • All future updates included
+              Yearly or Lifetime access • 30-day money-back guarantee • All future updates included
             </p>
           </div>
         </div>
