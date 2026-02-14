@@ -27,7 +27,7 @@ export default function FAQ() {
     },
     {
       question: "What is your refund policy?",
-      answer: "We offer a no-questions-asked 30-day money-back guarantee. If Markury doesn't improve your workflow, simply email us at info@markury.app for a full refund."
+      answer: "We offer a no-questions-asked 30-day money-back guarantee. If Markury doesn't improve your workflow, simply email us at support@markury.app for a full refund."
     }
   ]
 
@@ -76,7 +76,7 @@ export default function FAQ() {
         <div className="mt-12 text-center">
           <p className="text-gray-600">
             Still have questions?{' '}
-            <a href="mailto:info@markury.app" className="font-semibold text-markury-cyan hover:underline decoration-2 underline-offset-2">
+            <a href="mailto:support@markury.app" className="font-semibold text-markury-cyan hover:underline decoration-2 underline-offset-2">
               Chat with us
             </a>
           </p>
