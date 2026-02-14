@@ -39,10 +39,22 @@ export default function Footer() {
                 Markury
               </span>
             </a>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">
               Screen annotation made simple. Draw, highlight, and present directly on your screen.
             </p>
             
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-gray-500 font-medium">A product by</span>
+              <a href="https://www.nexrover.com" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity">
+                <Image 
+                  src="/nexrover.svg" 
+                  alt="Nexrover" 
+                  width={90} 
+                  height={24} 
+                  className="h-6 w-auto"
+                />
+              </a>
+            </div>
           </div>
 
           {/* Product links */}
@@ -97,7 +109,7 @@ export default function Footer() {
         <div className="border-t border-gray-200 pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm">
-              &copy; {new Date().getFullYear()} Markury. All rights reserved.
+              &copy; {new Date().getFullYear()} <a href="https://www.nexrover.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">Nexrover</a>. All rights reserved.
             </p>
             
             {/* Social links */}
