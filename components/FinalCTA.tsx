@@ -20,7 +20,7 @@ export default function FinalCTA() {
             {/* Icon */}
             <div className="w-20 h-20 mx-auto mb-8">
               <Image
-                src="/new_logo.svg"
+                src="/logo.svg"
                 alt="Markury"
                 width={80}
                 height={80}

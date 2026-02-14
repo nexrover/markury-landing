@@ -76,7 +76,15 @@ export default function FAQ() {
         <div className="mt-12 text-center">
           <p className="text-gray-600">
             Still have questions?{' '}
-            <a href="mailto:support@markury.app" className="font-semibold text-markury-cyan hover:underline decoration-2 underline-offset-2">
+            <a 
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                // @ts-ignore
+                if (window.$crisp) window.$crisp.push(['do', 'chat:open'])
+              }}
+              className="font-semibold text-markury-cyan hover:underline decoration-2 underline-offset-2"
+            >
               Chat with us
             </a>
           </p>

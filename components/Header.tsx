@@ -22,7 +22,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/new_logo.svg"
+              src="/logo.svg"
               alt="Markury Logo"
               width={32}
               height={32}

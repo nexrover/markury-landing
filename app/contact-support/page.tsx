@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Mail01Icon } from 'hugeicons-react'
+import OpenChatButton from '@/components/OpenChatButton'
 
 export const metadata = {
   title: 'Contact Support - Markury',
@@ -29,13 +30,16 @@ export default function ContactSupport() {
                 Send us an email and we'll get back to you as soon as possible. Whether it's a bug report, feature request, or just a question about your license.
               </p>
 
-              <a 
-                href="mailto:support@markury.app" 
-                className="btn-primary inline-flex items-center gap-2"
-              >
-                <Mail01Icon className="w-5 h-5" />
-                support@markury.app
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a 
+                  href="mailto:support@markury.app" 
+                  className="btn-primary inline-flex items-center gap-2 w-full sm:w-auto"
+                >
+                  <Mail01Icon className="w-5 h-5" />
+                  support@markury.app
+                </a>
+                <OpenChatButton />
+              </div>
             </div>
 
             <div className="mt-12 text-gray-500 text-sm">
