@@ -13,7 +13,7 @@ export default function TermsOfServicePage() {
           </h1>
           <p className="text-gray-600 max-w-2xl mb-10">
             These Terms of Service (&quot;Terms&quot;) govern your access to and use of
-            Markury, including our website, desktop application, and related
+            Markury, provided by Nexrover, including our website, desktop application, and related
             services (collectively, the &quot;Service&quot;). By using the Service, you
             agree to be bound by these Terms.
           </p>

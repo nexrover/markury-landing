@@ -12,8 +12,8 @@ export default function PrivacyPolicyPage() {
               Privacy Policy
             </h1>
             <p className="text-gray-600 max-w-2xl mb-10">
-              This Privacy Policy explains how Markury (&quot;we&quot;, &quot;our&quot;, or
-              &quot;us&quot;) collects, uses, and protects your information when you use
+              This Privacy Policy explains how Nexrover (&quot;we&quot;, &quot;our&quot;, or
+              &quot;us&quot;), the provider of Markury, collects, uses, and protects your information when you use
               our website, desktop application, and related services (collectively,
               the &quot;Service&quot;).
             </p>

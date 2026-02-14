@@ -12,8 +12,8 @@ export default function RefundPolicyPage() {
             Refund Policy
           </h1>
           <p className="text-gray-600 max-w-2xl mb-10">
-            We want you to have a great experience with Markury. This Refund
-            Policy explains when and how we can offer refunds for purchases made
+            We want you to have a great experience with Markury, provided by Nexrover. This Refund
+            Policy explains when and how Nexrover (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) can offer refunds for purchases made
             through our website.
           </p>
 
