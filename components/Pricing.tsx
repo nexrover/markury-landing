@@ -14,6 +14,7 @@ export default function Pricing() {
     "Flexible toolbar (vertical/horizontal)",
     "Unlimited undo & redo",
     "Dark & light themes with 7 accent colors",
+    "1 license covers 2 devices",
     "All future updates included",
   ]
 

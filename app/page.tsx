@@ -8,6 +8,7 @@ import WhyMarkury from '@/components/WhyMarkury'
 import Pricing from '@/components/Pricing'
 import FinalCTA from '@/components/FinalCTA'
 import Footer from '@/components/Footer'
+import FAQ from '@/components/FAQ'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <UseCases />
         <WhyMarkury />
         <Pricing />
+        <FAQ />
         <FinalCTA />
       </main>
       <Footer />
