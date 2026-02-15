@@ -1,5 +1,6 @@
 import { ScribbleArrow, ScribbleCircle } from '@/components/AnnotationAccents'
-import VideoComparison from '@/components/VideoComparison'
+// import VideoComparison from '@/components/VideoComparison'
+import VideoShowcase from '@/components/VideoShowcase'
 
 export default function Hero() {
   return (
@@ -39,17 +40,20 @@ export default function Hero() {
           </div>
         </div>
 
-          {/* Hero Visual - Video Comparison */}
+          {/* Hero Visual - Video Showcase */}
           <div className="relative mx-auto w-full max-w-[90rem]">
             {/* Main container with shadow/border */}
             <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 p-2 sm:p-4">
               <div className="aspect-video bg-gray-100 rounded-xl overflow-hidden relative isolate">
-                <VideoComparison 
-                  // Placeholder videos - PLEASE REPLACE WITH YOUR ACTUAL URLs
-                  videoSrc1="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" 
+                {/* <VideoComparison 
+                  videoSrc1="https://ftp.markury.app/Problems.mp4" 
                   videoSrc2="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
                   label1="Without Markury"
                   label2="With Markury"
+                  className="w-full h-full"
+                /> */}
+                <VideoShowcase
+                  videoSrc="https://ftp.markury.app/Problems.mp4"
                   className="w-full h-full"
                 />
               </div>
