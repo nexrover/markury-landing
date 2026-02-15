@@ -322,8 +322,8 @@ export default function VideoShowcase({
           <div className="relative group/play-btn">
              {/* Pulse ring */}
             <div className="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-0 group-hover/play-btn:opacity-100" style={{ animationDuration: '1.5s' }} />
-            <div className="bg-white/90 backdrop-blur-sm rounded-full w-20 h-20 flex items-center justify-center shadow-2xl border border-white/50 transition-transform duration-200 hover:scale-110">
-              <PlayIcon className="w-8 h-8 text-gray-900 ml-1" />
+            <div className="bg-black/60 backdrop-blur-md rounded-full w-20 h-20 flex items-center justify-center shadow-2xl border border-white/10 transition-transform duration-200 hover:scale-110">
+              <PlayIcon className="w-8 h-8 text-white ml-1" />
             </div>
           </div>
         </div>
