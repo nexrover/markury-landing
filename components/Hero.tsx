@@ -43,8 +43,8 @@ export default function Hero() {
           {/* Hero Visual - Video Showcase */}
           <div className="relative mx-auto w-full max-w-[90rem]">
             {/* Main container with shadow/border */}
-            <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 p-2 sm:p-4">
-              <div className="aspect-video bg-gray-100 rounded-xl overflow-hidden relative isolate">
+            <div className="relative bg-white rounded-xl shadow-2xl border border-gray-200 p-1">
+              <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden relative isolate">
                 {/* <VideoComparison 
                   videoSrc1="https://ftp.markury.app/Problems.mp4" 
                   videoSrc2="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
@@ -53,7 +53,7 @@ export default function Hero() {
                   className="w-full h-full"
                 /> */}
                 <VideoShowcase
-                  videoSrc="https://ftp.markury.app/Problems.mp4"
+                  videoSrc="https://ftp.markury.app/markury-demo-final.mp4"
                   className="w-full h-full"
                 />
               </div>

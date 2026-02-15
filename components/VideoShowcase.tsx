@@ -308,87 +308,78 @@ export default function VideoShowcase({
         poster={poster}
         className="w-full h-full object-cover cursor-pointer"
         playsInline
-        loop={false}
+        loop={true}
         muted={isMuted}
         onClick={togglePlay}
       />
 
-      {/* Center Play/Pause overlay (click-to-play) */}
-      {(!isPlaying || isEnded) && (
+      {/* Center Play/Pause overlay (click-to-play) - Only show when paused and NOT seeking/dragging */}
+      {(!isPlaying) && (
         <div
           className="absolute inset-0 flex items-center justify-center cursor-pointer z-10"
           onClick={togglePlay}
         >
-          <div className="relative">
-            {/* Pulse ring */}
-            <div className="absolute inset-0 bg-white/20 rounded-full animate-ping" style={{ animationDuration: '2s' }} />
+          <div className="relative group/play-btn">
+             {/* Pulse ring */}
+            <div className="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-0 group-hover/play-btn:opacity-100" style={{ animationDuration: '1.5s' }} />
             <div className="bg-white/90 backdrop-blur-sm rounded-full w-20 h-20 flex items-center justify-center shadow-2xl border border-white/50 transition-transform duration-200 hover:scale-110">
-              {isEnded ? (
-                <RepeatIcon className="w-8 h-8 text-gray-900" />
-              ) : (
-                <PlayIcon className="w-8 h-8 text-gray-900 ml-1" />
-              )}
+              <PlayIcon className="w-8 h-8 text-gray-900 ml-1" />
             </div>
           </div>
         </div>
       )}
 
-      {/* Gradient overlay at bottom for controls */}
+      {/* Progress Bar (at very bottom) */}
       <div
-        className={`absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none transition-opacity duration-300 ${
-          showControls ? 'opacity-100' : 'opacity-0'
-        }`}
-      />
-
-      {/* Controls bar */}
-      <div
-        className={`absolute bottom-0 left-0 right-0 z-30 px-4 pb-4 pt-8 transition-all duration-300 ${
+        className={`absolute bottom-0 left-0 right-0 z-30 transition-all duration-300 ${
           showControls ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
         }`}
       >
-        {/* Progress Bar */}
-        <div
+         <div
           ref={progressRef}
-          className="relative w-full h-1.5 bg-white/20 rounded-full cursor-pointer mb-3 group/progress hover:h-2.5 transition-all duration-150"
+          className="relative w-full h-1.5 bg-white/20 cursor-pointer group/progress transition-all duration-150"
           onMouseDown={handleProgressMouseDown}
         >
           {/* Buffered */}
           <div
-            className="absolute top-0 left-0 h-full bg-white/20 rounded-full"
+            className="absolute top-0 left-0 h-full bg-white/20"
             style={{ width: `${buffered}%` }}
           />
           {/* Progress */}
           <div
-            className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-none"
+            className="absolute top-0 left-0 h-full bg-blue-500 transition-all duration-75 ease-out"
             style={{ width: `${progress}%` }}
           />
-          {/* Scrubber thumb */}
-          <div
-            className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg border-2 border-blue-500 transition-opacity duration-150 ${
-              isSeeking ? 'opacity-100 scale-125' : 'opacity-0 group-hover/progress:opacity-100'
+           {/* Scrubber thumb - visible on hover */}
+           <div
+            className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg scale-0 group-hover/progress:scale-100 transition-transform duration-150 ${
+                isSeeking ? 'scale-100' : ''
             }`}
-            style={{ left: `${progress}%`, transform: `translate(-50%, -50%)` }}
-          />
+            style={{ left: `${progress}%` }}
+           />
         </div>
+      </div>
 
-        {/* Controls Row */}
-        <div className="flex items-center justify-between">
-          {/* Left controls */}
-          <div className="flex items-center gap-2">
+      {/* Controls Pill (Floating Bottom Center) */}
+      <div
+        className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-2xl transition-all duration-300 ${
+          showControls ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
             {/* Play/Pause */}
             <button
               onClick={togglePlay}
-              className="p-2 hover:bg-white/15 rounded-lg text-white transition-colors duration-150"
-              title={isEnded ? 'Replay' : isPlaying ? 'Pause' : 'Play'}
+              className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors"
+              title={isPlaying ? 'Pause' : 'Play'}
             >
-              {isEnded ? (
-                <RepeatIcon className="w-5 h-5" />
-              ) : isPlaying ? (
+              {isPlaying ? (
                 <PauseIcon className="w-5 h-5" />
               ) : (
                 <PlayIcon className="w-5 h-5" />
               )}
             </button>
+
+            <div className="w-px h-4 bg-white/20 mx-1" />
 
             {/* Volume */}
             <div
@@ -403,7 +394,7 @@ export default function VideoShowcase({
             >
               <button
                 onClick={toggleMute}
-                className="p-2 hover:bg-white/15 rounded-lg text-white transition-colors duration-150"
+                className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors"
                 title={isMuted ? 'Unmute' : 'Mute'}
               >
                 {isMuted ? (
@@ -412,10 +403,10 @@ export default function VideoShowcase({
                   <VolumeHighIcon className="w-5 h-5" />
                 )}
               </button>
-              {/* Volume slider */}
+              {/* Volume slider (expands to right) */}
               <div
-                className={`flex items-center overflow-hidden transition-all duration-200 ${
-                  showVolumeSlider ? 'w-24 opacity-100 ml-1' : 'w-0 opacity-0'
+                className={`flex items-center overflow-hidden transition-all duration-200 ease-out origin-left ${
+                  showVolumeSlider ? 'w-20 opacity-100 ml-2 mr-1' : 'w-0 opacity-0'
                 }`}
               >
                 <input
@@ -425,30 +416,30 @@ export default function VideoShowcase({
                   step="0.01"
                   value={isMuted ? 0 : volume}
                   onChange={handleVolumeChange}
-                  className="w-full h-1 bg-white/30 rounded-full appearance-none cursor-pointer
+                  className="w-full h-1 bg-white/30 rounded-full appearance-none cursor-pointer h-1
                     [&::-webkit-slider-thumb]:appearance-none
-                    [&::-webkit-slider-thumb]:w-3
-                    [&::-webkit-slider-thumb]:h-3
+                    [&::-webkit-slider-thumb]:w-2.5
+                    [&::-webkit-slider-thumb]:h-2.5
                     [&::-webkit-slider-thumb]:bg-white
                     [&::-webkit-slider-thumb]:rounded-full
-                    [&::-webkit-slider-thumb]:shadow-sm
-                    [&::-webkit-slider-thumb]:cursor-pointer"
+                    [&::-webkit-slider-thumb]:shadow-sm"
                 />
               </div>
             </div>
 
-            {/* Time display */}
-            <span className="text-white/70 text-xs font-mono ml-2 tabular-nums">
-              {formatTime(currentTime)} / {formatTime(duration)}
-            </span>
-          </div>
+            <div className="w-px h-4 bg-white/20 mx-1" />
 
-          {/* Right controls */}
-          <div className="flex items-center gap-1">
+             {/* Time Display (Compact) */}
+             <span className="text-white/80 text-[10px] font-medium font-mono tabular-nums px-1">
+                {formatTime(currentTime)}
+             </span>
+
+             <div className="w-px h-4 bg-white/20 mx-1" />
+
             {/* Fullscreen */}
             <button
               onClick={toggleFullscreen}
-              className="p-2 hover:bg-white/15 rounded-lg text-white transition-colors duration-150"
+              className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors"
               title={isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
             >
               {isFullscreen ? (
@@ -457,8 +448,6 @@ export default function VideoShowcase({
                 <ArrowExpand01Icon className="w-5 h-5" />
               )}
             </button>
-          </div>
-        </div>
       </div>
     </div>
   )
