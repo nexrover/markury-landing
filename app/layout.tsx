@@ -1,6 +1,14 @@
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: 'Markury | Screen Annotation Made Simple',
@@ -43,10 +51,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="bg-white text-gray-900">
+    <html lang="en" className={inter.variable}>
+      <body className="bg-white text-gray-900 font-sans">
         {children}
-        <Script id="crisp-chat" strategy="afterInteractive">
+        <Script id="crisp-chat" strategy="lazyOnload">
           {`window.$crisp=[];window.CRISP_WEBSITE_ID="c5564772-c0c5-464c-8f4d-d8cf3baad833";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}
         </Script>
       </body>

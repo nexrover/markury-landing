@@ -53,7 +53,7 @@ export default function Hero() {
                   className="w-full h-full"
                 /> */}
                 <VideoShowcase
-                  videoSrc="https://ftp.markury.app/markury-demo-final.mp4"
+                  videoSrc="https://ftp.markury.app/demo-final.mp4"
                   className="w-full h-full"
                 />
               </div>

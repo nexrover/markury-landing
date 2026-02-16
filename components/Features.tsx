@@ -1,4 +1,5 @@
 import { ScribbleCircle } from '@/components/AnnotationAccents'
+import LazyMedia from '@/components/LazyMedia'
 
 export default function Features() {
   const featureGroups = [
@@ -9,22 +10,22 @@ export default function Features() {
         {
           name: "Freehand Drawing",
           description: "Draw smooth strokes naturally with your mouse or stylus. Perfect for circling, underlining, and sketching.",
-          gif: "/features/freehand.gif",
+          media: "https://ftp.markury.app/features/freehand",
         },
         {
           name: "Highlighter",
           description: "Emphasize text and areas with semi-transparent highlights that keep content readable underneath.",
-          gif: "/features/highlight.gif",
+          media: "https://ftp.markury.app/features/highlight",
         },
         {
           name: "Shape Tools",
           description: "Create clean lines, rectangles, circles, and arrows for professional-looking annotations.",
-          gif: "/features/shape.gif",
+          media: "https://ftp.markury.app/features/shape",
         },
         {
           name: "Text Annotations",
           description: "Add typed labels, notes, and callouts anywhere on screen for clear explanations.",
-          gif: "/features/text.gif",
+          media: "https://ftp.markury.app/features/text",
         },
       ],
     },
@@ -35,22 +36,22 @@ export default function Features() {
         {
           name: "Laser Pointer",
           description: "A virtual laser that follows your cursor with a fading trail. Perfect for guiding attention without leaving marks.",
-          gif: "/features/laser.gif",
+          media: "/features/laser",
         },
         {
           name: "Whiteboard Mode",
           description: "Transform your screen into a clean canvas with 16 background colors for focused explanations.",
-          gif: "/features/whiteboard.gif",
+          media: "/features/whiteboard",
         },
         {
           name: "Screenshots",
           description: "Capture your annotated screen instantly. Full screen or region selection, saved to clipboard or folder.",
-          gif: "/features/screenshot.gif",
+          media: "/features/screenshot",
         },
         {
           name: "Click-Through Mode",
           description: "Switch back to normal cursor instantly. Annotations stay visible while you interact with apps underneath.",
-          gif: "/features/cursor.gif",
+          media: "/features/cursor",
         },
       ],
     },
@@ -61,22 +62,22 @@ export default function Features() {
         {
           name: "Quick Colors",
           description: "Four customizable color slots accessible with keyboard shortcuts. Switch colors in an instant.",
-          gif: "/features/color.gif",
+          media: "/features/color",
         },
         {
           name: "Keyboard Shortcuts",
           description: "Fully customizable global shortcuts that work even when Markury isn't in focus.",
-          gif: "/features/shortcuts.gif",
+          media: "/features/shortcuts",
         },
         {
           name: "Flexible Toolbar",
           description: "Vertical or horizontal layout. Show only the tools you use. Position it anywhere on screen.",
-          gif: "/features/toolbar.gif",
+          media: "/features/toolbar",
         },
         {
           name: "Undo & Redo",
           description: "Made a mistake? Undo it. Changed your mind? Redo. Clear all with one click when you're done.",
-          gif: "/features/undo_redo.gif",
+          media: "/features/undo_redo",
         },
       ],
     },
@@ -121,15 +122,17 @@ export default function Features() {
                     key={featureIndex}
                     className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group"
                   >
-                    {/* @ts-ignore */}
-                    <div className="mb-4 rounded-lg overflow-hidden border border-gray-100 bg-gray-50">
+                    <LazyMedia
+                      className="mb-4 rounded-lg overflow-hidden border border-gray-100 bg-gray-50"
+                      rootMargin="200px"
+                      placeholderClass="min-h-[200px]"
+                    >
                       <img 
-                        /* @ts-ignore */
-                        src={feature.gif} 
+                        src={`${feature.media}.gif`} 
                         alt={feature.name} 
-                        className="w-full h-auto object-cover mix-blend-multiply"
+                        className="w-full h-auto mix-blend-multiply"
                       />
-                    </div>
+                    </LazyMedia>
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.name}</h4>
                     <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                   </div>

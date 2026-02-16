@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { 
   BookOpen01Icon, 
   PresentationBarChart01Icon, 
@@ -9,11 +9,79 @@ import {
   VideoReplayIcon, 
   SourceCodeIcon,
   PlayIcon,
-  ArrowRight01Icon
 } from 'hugeicons-react'
+
+/**
+ * Lazily loaded use-case media. Only loads when:
+ * 1. The section is near the viewport (IntersectionObserver)
+ * 2. The tab is or has been active (preloads on first activation)
+ */
+function UseCaseMedia({ mediaSrc, alt, isActive }: { mediaSrc: string; alt: string; isActive: boolean }) {
+  const [hasBeenActive, setHasBeenActive] = useState(false)
+
+  useEffect(() => {
+    if (isActive && !hasBeenActive) {
+      setHasBeenActive(true)
+    }
+  }, [isActive, hasBeenActive])
+
+  if (!hasBeenActive) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gray-800/50">
+        <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
+          <PlayIcon className="w-6 h-6 text-white ml-1" />
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <img 
+      src={`${mediaSrc}.gif`} 
+      alt={alt}
+      className="w-full h-full object-contain"
+    />
+  )
+}
+
+function UseCaseImage({ mediaSrc, alt }: { mediaSrc: string; alt: string }) {
+  return (
+    <img 
+      src={`${mediaSrc}.gif`} 
+      alt={alt}
+      className="w-full h-full object-contain"
+    />
+  )
+}
 
 export default function UseCases() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const sectionRef = useRef<HTMLElement>(null)
+  const [sectionVisible, setSectionVisible] = useState(false)
+
+  // Only start loading media when section is near viewport
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setSectionVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSectionVisible(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '300px' }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const useCases = [
     {
@@ -25,7 +93,7 @@ export default function UseCases() {
       color: "text-markury-cyan",
       bg: "bg-markury-cyan",
       gradient: "from-markury-cyan/20 to-blue-500/20",
-      image: "/use-cases/teacher.gif",
+      media: "https://ftp.markury.app/use-cases/teacher",
     },
     {
       title: "Presenters & Speakers",
@@ -36,7 +104,7 @@ export default function UseCases() {
       color: "text-markury-purple",
       bg: "bg-markury-purple",
       gradient: "from-markury-purple/20 to-indigo-500/20",
-      image: "/use-cases/presenter.gif",
+      media: "/use-cases/presenter",
     },
     {
       title: "Designers & Reviewers",
@@ -47,7 +115,7 @@ export default function UseCases() {
       color: "text-markury-pink",
       bg: "bg-markury-pink",
       gradient: "from-markury-pink/20 to-rose-500/20",
-      image: "/use-cases/designer.gif",
+      media: "/use-cases/designer",
     },
     {
       title: "Remote Teams",
@@ -58,7 +126,7 @@ export default function UseCases() {
       color: "text-markury-lime",
       bg: "bg-markury-lime",
       gradient: "from-markury-lime/20 to-green-500/20",
-      image: "/use-cases/remote.gif",
+      media: "/use-cases/remote",
     },
     {
       title: "Content Creators",
@@ -69,7 +137,7 @@ export default function UseCases() {
       color: "text-markury-orange",
       bg: "bg-markury-orange",
       gradient: "from-markury-orange/20 to-amber-500/20",
-      image: "/use-cases/creator.gif",
+      media: "/use-cases/creator",
     },
     {
       title: "Developers",
@@ -80,12 +148,12 @@ export default function UseCases() {
       color: "text-markury-cyan",
       bg: "bg-markury-cyan",
       gradient: "from-cyan-400/20 to-teal-500/20",
-      image: "/use-cases/developer.gif",
+      media: "/use-cases/developer",
     },
   ]
 
   return (
-    <section id="use-cases" className="relative py-24 sm:py-32 bg-gray-50/50">
+    <section ref={sectionRef} id="use-cases" className="relative py-24 sm:py-32 bg-gray-50/50">
       <div className="container-narrow relative z-10">
         
         {/* Header */}
@@ -139,8 +207,6 @@ export default function UseCases() {
               <div className="relative h-full flex flex-col justify-between p-8 sm:p-12 z-10">
                 
                 <div className="space-y-6 max-w-lg">
-                  {/* Title removed */}
-                  
                   <h3 className="text-3xl sm:text-4xl font-bold leading-tight tracking-tight">
                     {useCases[activeIndex].headline}
                   </h3>
@@ -148,36 +214,20 @@ export default function UseCases() {
                   <p className="text-lg text-gray-300 leading-relaxed">
                     {useCases[activeIndex].detail}
                   </p>
-                  
-                  {/* Button removed */}
                 </div>
 
-                {/* Example UI / Visual Placeholder */}
-                {/* @ts-ignore */}
-                {useCases[activeIndex].image ? (
-                  <div className="mt-12 relative w-full aspect-video rounded-xl bg-gray-900 border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center">
-                    <img 
-                      /* @ts-ignore */
-                      src={useCases[activeIndex].image} 
+                {/* Media Area - Only loads when section is visible AND tab is/was active */}
+                <div className="mt-12 relative w-full aspect-video rounded-xl bg-gray-900 border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center">
+                  {sectionVisible ? (
+                    <UseCaseMedia
+                      mediaSrc={useCases[activeIndex].media}
                       alt={useCases[activeIndex].title}
-                      className="w-full h-full object-cover"
+                      isActive={true}
                     />
-                  </div>
-                ) : (
-                  <div className="mt-12 relative w-full aspect-video rounded-xl bg-gray-800/50 border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center group cursor-pointer hover:bg-gray-800/70 transition-colors">
-                     <div className={`absolute inset-0 bg-gradient-to-br ${useCases[activeIndex].gradient} opacity-10`} />
-                     
-                     {/* Play Button */}
-                     <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <PlayIcon className="w-6 h-6 text-white ml-1" />
-                     </div>
-
-                     {/* Decorative elements representing 'UI' */}
-                     <div className="absolute top-4 left-4 right-4 h-2 bg-white/5 rounded-full" />
-                     <div className="absolute top-8 left-4 w-1/3 h-2 bg-white/5 rounded-full" />
-                     <div className="absolute bottom-4 right-4 w-1/4 h-2 bg-white/5 rounded-full" />
-                  </div>
-                )}
+                  ) : (
+                    <div className="w-full h-full bg-gray-800/50 animate-pulse" />
+                  )}
+                </div>
               </div>
               
               {/* Corner decorative blob */}
