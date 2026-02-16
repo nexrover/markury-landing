@@ -34,7 +34,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="py-20 sm:py-32 bg-white">
+    <section id="faq" className="py-20 sm:py-32 bg-gray-50">
       <div className="container-narrow">
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">

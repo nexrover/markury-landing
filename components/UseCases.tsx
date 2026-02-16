@@ -153,7 +153,7 @@ export default function UseCases() {
   ]
 
   return (
-    <section ref={sectionRef} id="use-cases" className="relative py-24 sm:py-32 bg-gray-50/50">
+    <section ref={sectionRef} id="use-cases" className="relative py-24 sm:py-32 bg-white">
       <div className="container-narrow relative z-10">
         
         {/* Header */}

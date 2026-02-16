@@ -3,7 +3,7 @@ import { ScribbleArrow } from '@/components/AnnotationAccents'
 
 export default function FinalCTA() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-32 bg-gradient-to-b from-gray-50 to-white">
+    <section className="relative overflow-hidden py-20 sm:py-32 bg-white">
       <div className="container-narrow">
         <div className="relative max-w-4xl mx-auto text-center">
           {/* Background decoration */}

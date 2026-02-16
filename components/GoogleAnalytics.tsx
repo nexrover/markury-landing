@@ -16,6 +16,13 @@ const GoogleAnalytics = () => {
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            
+            // Default consent to denied
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied'
+            });
+
             gtag('js', new Date());
             gtag('config', 'G-P2Y1GP3LT7', {
               page_path: window.location.pathname,
