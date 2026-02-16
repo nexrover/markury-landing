@@ -22,8 +22,11 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-50 text-gray-900 py-16">
-      <div className="container-narrow">
+    <footer className="bg-gray-50 text-gray-900 py-16 relative overflow-hidden">
+      {/* Yellow gradient glow at bottom */}
+      <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-markury-yellow/15 to-transparent pointer-events-none" />
+
+      <div className="container-narrow relative z-10">
         {/* Main footer content */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
