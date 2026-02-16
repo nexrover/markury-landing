@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import CookieBanner from '@/components/CookieBanner'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -59,6 +60,7 @@ export default function RootLayout({
           {`window.$crisp=[];window.CRISP_WEBSITE_ID="c5564772-c0c5-464c-8f4d-d8cf3baad833";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}
         </Script>
         <GoogleAnalytics />
+        <CookieBanner />
       </body>
     </html>
   )
