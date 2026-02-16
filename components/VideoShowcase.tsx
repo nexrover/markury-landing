@@ -301,8 +301,6 @@ export default function VideoShowcase({
     video.play().catch(() => setIsPlaying(false))
   }, [])
 
-  console.log('VideoShowcase render:', { videoSrc, type: typeof videoSrc, isArray: Array.isArray(videoSrc) })
-
   return (
     <div
       ref={containerRef}
