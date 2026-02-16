@@ -12,9 +12,10 @@ export default function Banner() {
   return (
     <div className="relative bg-gray-900 text-white px-4 py-3 sm:px-6 z-50">
       <div className="container-narrow flex items-center justify-between gap-4">
-        <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-center gap-2 sm:gap-6 text-sm sm:text-base text-center sm:text-left mx-auto">
-          <p className="font-medium">
-            🚀 <span className="font-bold text-markury-yellow">Launch Offer:</span> Get 50% off your first month!
+        <div className="flex-1 flex flex-row flex-wrap items-center justify-center gap-x-3 gap-y-1 sm:gap-6 text-xs sm:text-sm md:text-base text-center mx-auto">
+          <p className="font-medium whitespace-nowrap">
+            <span className="hidden sm:inline">🚀 </span>
+            <span className="font-bold text-markury-yellow">Launch Offer:</span> Get 50% off<span className="hidden sm:inline"> your first month</span>!
           </p>
           <Link 
             href="/#pricing" 

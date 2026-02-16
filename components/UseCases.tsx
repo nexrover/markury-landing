@@ -17,7 +17,6 @@ import {
  * 2. The tab is or has been active (preloads on first activation)
  */
 function UseCaseMedia({ mediaSrc, alt, isActive }: { mediaSrc: string; alt: string; isActive: boolean }) {
-  console.log('UseCaseMedia mediaSrc:', mediaSrc)
   const [hasBeenActive, setHasBeenActive] = useState(false)
 
   useEffect(() => {
@@ -170,27 +169,28 @@ export default function UseCases() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           
           {/* Sidebar Navigation */}
-          <div className="w-full lg:w-1/3 flex lg:flex-col overflow-x-auto lg:overflow-visible gap-2 lg:gap-2 pb-4 lg:pb-0 snap-x">
+          {/* Mobile: Horizontal scroll, Desktop: Vertical list */}
+          <div className="w-full lg:w-1/3 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-3 lg:gap-2 pb-4 lg:pb-0 snap-x scrollbar-hide -mx-4 px-4 lg:mx-0 lg:px-0">
             {useCases.map((useCase, index) => {
               const isActive = index === activeIndex
               return (
                 <button
                   key={index}
                   onClick={() => setActiveIndex(index)}
-                  className={`group flex-shrink-0 lg:w-full snap-center flex items-center justify-center lg:justify-start gap-2 lg:gap-3 py-1.5 px-4 lg:p-3 text-left rounded-lg lg:rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-gray-900 
+                  className={`group flex-shrink-0 lg:w-full snap-center flex items-center justify-center lg:justify-start gap-2 lg:gap-3 py-2 px-4 lg:p-3 text-left rounded-full lg:rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-gray-900 border lg:border-transparent whitespace-nowrap
                     ${isActive 
-                      ? 'bg-white shadow-md shadow-gray-200/50' 
-                      : 'bg-white/50 lg:bg-transparent hover:bg-gray-100/80 text-gray-500'
+                      ? 'bg-gray-900 text-white shadow-md lg:bg-white lg:text-gray-900 lg:shadow-gray-200/50 border-transparent' 
+                      : 'bg-white text-gray-600 border-gray-200 lg:bg-transparent lg:border-transparent hover:bg-gray-50 lg:hover:bg-gray-100/80 lg:text-gray-500'
                     }`}
                 >
-                  <div className={`p-1.5 lg:p-2 rounded-lg transition-colors duration-200 flex-shrink-0 
+                  <div className={`p-1.5 lg:p-2 rounded-lg transition-colors duration-200 flex-shrink-0 hidden lg:block
                     ${isActive ? 'bg-gray-50' : 'bg-transparent group-hover:bg-gray-100'} 
                     ${isActive ? useCase.color : 'text-gray-400 group-hover:text-gray-600'}`}>
                     {useCase.icon}
                   </div>
                   <div>
-                    <h3 className={`font-semibold text-xs lg:text-sm transition-colors duration-200 
-                      ${isActive ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'}`}>{useCase.title}</h3>
+                    <h3 className={`font-semibold text-sm transition-colors duration-200 
+                      ${isActive ? 'text-inherit' : 'text-gray-600 group-hover:text-gray-900'}`}>{useCase.title}</h3>
                   </div>
                 </button>
               )
@@ -199,26 +199,30 @@ export default function UseCases() {
 
           {/* Content Area */}
           <div className="w-full lg:w-2/3">
-            <div className="relative overflow-hidden rounded-3xl bg-gray-900 text-white shadow-xl h-full min-h-[480px] transition-all duration-500 ease-in-out">
+            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gray-900 text-white shadow-xl h-full min-h-[400px] sm:min-h-[480px] transition-all duration-500 ease-in-out">
               
               {/* Dynamic Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${useCases[activeIndex].gradient} opacity-20 transition-opacity duration-500`} />
               
               {/* Content Content */}
-              <div className="relative h-full flex flex-col justify-between p-8 sm:p-12 z-10">
+              <div className="relative h-full flex flex-col justify-between p-6 sm:p-12 z-10">
                 
-                <div className="space-y-6 max-w-lg">
-                  <h3 className="text-3xl sm:text-4xl font-bold leading-tight tracking-tight">
+                <div className="space-y-4 sm:space-y-6 max-w-lg">
+                  <div className="lg:hidden w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm border border-white/10 text-white">
+                    {useCases[activeIndex].icon}
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl sm:text-4xl font-bold leading-tight tracking-tight">
                     {useCases[activeIndex].headline}
                   </h3>
                   
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
                     {useCases[activeIndex].detail}
                   </p>
                 </div>
 
                 {/* Media Area - Only loads when section is visible AND tab is/was active */}
-                <div className="mt-12 relative w-full aspect-video rounded-xl bg-gray-900 border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center">
+                <div className="mt-8 sm:mt-12 relative w-full aspect-video rounded-xl bg-gray-900 border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center">
                   {sectionVisible ? (
                     <UseCaseMedia
                       mediaSrc={useCases[activeIndex].media}

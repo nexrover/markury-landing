@@ -88,22 +88,22 @@ export default function WhyMarkury() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-100 bg-markury-yellow/10">
-                  <th className="text-left p-4 sm:p-6 text-gray-500 font-medium text-sm uppercase tracking-wide">Feature</th>
-                  <th className="text-left p-4 sm:p-6 text-gray-900 font-semibold">Markury</th>
-                  <th className="text-left p-4 sm:p-6 text-gray-500 font-medium">Others</th>
+                  <th className="text-left p-3 sm:p-6 text-gray-500 font-medium text-xs sm:text-sm uppercase tracking-wide">Feature</th>
+                  <th className="text-left p-3 sm:p-6 text-gray-900 font-semibold text-sm sm:text-base">Markury</th>
+                  <th className="text-left p-3 sm:p-6 text-gray-500 font-medium text-sm sm:text-base">Others</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisons.map((row, index) => (
                   <tr key={index} className={index < comparisons.length - 1 ? 'border-b border-gray-100' : ''}>
-                    <td className="p-4 sm:p-6 text-gray-700 font-medium">{row.aspect}</td>
-                    <td className="p-4 sm:p-6">
+                    <td className="p-3 sm:p-6 text-gray-700 font-medium text-sm sm:text-base">{row.aspect}</td>
+                    <td className="p-3 sm:p-6">
                       <div className="flex items-center gap-2">
                         <CheckmarkCircle02Icon className="w-5 h-5 text-markury-lime flex-shrink-0" />
-                        <span className="text-gray-900">{row.markury}</span>
+                        <span className="text-gray-900 text-sm sm:text-base">{row.markury}</span>
                       </div>
                     </td>
-                    <td className="p-4 sm:p-6 text-gray-500">{row.others}</td>
+                    <td className="p-3 sm:p-6 text-gray-500 text-sm sm:text-base">{row.others}</td>
                   </tr>
                 ))}
               </tbody>
