@@ -4,7 +4,7 @@ import VideoShowcase from '@/components/VideoShowcase'
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-32 overflow-hidden">
+    <section className="relative pt-40 pb-20 sm:pt-48 sm:pb-32 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white -z-10" />
       

@@ -36,22 +36,22 @@ export default function Features() {
         {
           name: "Laser Pointer",
           description: "A virtual laser that follows your cursor with a fading trail. Perfect for guiding attention without leaving marks.",
-          media: "/features/laser",
+          media: "https://ftp.markury.app/features/laser",
         },
         {
           name: "Whiteboard Mode",
           description: "Transform your screen into a clean canvas with 16 background colors for focused explanations.",
-          media: "/features/whiteboard",
+          media: "https://ftp.markury.app/features/whiteboard",
         },
         {
           name: "Screenshots",
           description: "Capture your annotated screen instantly. Full screen or region selection, saved to clipboard or folder.",
-          media: "/features/screenshot",
+          media: "https://ftp.markury.app/features/screenshot",
         },
         {
           name: "Click-Through Mode",
           description: "Switch back to normal cursor instantly. Annotations stay visible while you interact with apps underneath.",
-          media: "/features/cursor",
+          media: "https://ftp.markury.app/features/cursor",
         },
       ],
     },
@@ -62,22 +62,22 @@ export default function Features() {
         {
           name: "Quick Colors",
           description: "Four customizable color slots accessible with keyboard shortcuts. Switch colors in an instant.",
-          media: "/features/color",
+          media: "https://ftp.markury.app/features/color",
         },
         {
           name: "Keyboard Shortcuts",
           description: "Fully customizable global shortcuts that work even when Markury isn't in focus.",
-          media: "/features/shortcuts",
+          media: "https://ftp.markury.app/features/shortcuts",
         },
         {
           name: "Flexible Toolbar",
           description: "Vertical or horizontal layout. Show only the tools you use. Position it anywhere on screen.",
-          media: "/features/toolbar",
+          media: "https://ftp.markury.app/features/toolbar",
         },
         {
           name: "Undo & Redo",
           description: "Made a mistake? Undo it. Changed your mind? Redo. Clear all with one click when you're done.",
-          media: "/features/undo_redo",
+          media: "https://ftp.markury.app/features/undo_redo",
         },
       ],
     },

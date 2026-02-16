@@ -6,7 +6,7 @@ export default function UserGuidePage() {
   return (
     <>
       <Header />
-      <main className="bg-white text-gray-900 pt-20 sm:pt-24">
+      <main className="bg-white text-gray-900 pt-32 sm:pt-36">
         <div className="container-narrow py-12 md:py-16">
           {/* Header */}
           <div className="mb-12">

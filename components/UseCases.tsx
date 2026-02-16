@@ -104,7 +104,7 @@ export default function UseCases() {
       color: "text-markury-purple",
       bg: "bg-markury-purple",
       gradient: "from-markury-purple/20 to-indigo-500/20",
-      media: "/use-cases/presenter",
+      media: "https://ftp.markury.app/use-cases/presenter",
     },
     {
       title: "Designers & Reviewers",
@@ -115,7 +115,7 @@ export default function UseCases() {
       color: "text-markury-pink",
       bg: "bg-markury-pink",
       gradient: "from-markury-pink/20 to-rose-500/20",
-      media: "/use-cases/designer",
+      media: "https://ftp.markury.app/use-cases/designer",
     },
     {
       title: "Remote Teams",
@@ -126,7 +126,7 @@ export default function UseCases() {
       color: "text-markury-lime",
       bg: "bg-markury-lime",
       gradient: "from-markury-lime/20 to-green-500/20",
-      media: "/use-cases/remote",
+      media: "https://ftp.markury.app/use-cases/remote",
     },
     {
       title: "Content Creators",
@@ -137,7 +137,7 @@ export default function UseCases() {
       color: "text-markury-orange",
       bg: "bg-markury-orange",
       gradient: "from-markury-orange/20 to-amber-500/20",
-      media: "/use-cases/creator",
+      media: "https://ftp.markury.app/use-cases/creator",
     },
     {
       title: "Developers",
@@ -148,7 +148,7 @@ export default function UseCases() {
       color: "text-markury-cyan",
       bg: "bg-markury-cyan",
       gradient: "from-cyan-400/20 to-teal-500/20",
-      media: "/use-cases/developer",
+      media: "https://ftp.markury.app/use-cases/developer",
     },
   ]
 
