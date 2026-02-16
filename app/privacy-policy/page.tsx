@@ -87,7 +87,7 @@ export default function PrivacyPolicyPage() {
                 Depending on your location, you may have certain rights regarding
                 your personal information, such as the right to access, correct,
                 or delete your data. To exercise these rights, please contact us
-                using the contact details on our website.
+                at <a href="mailto:info@markury.app" className="text-markury-cyan hover:underline font-medium">info@markury.app</a>.
               </p>
             </section>
 

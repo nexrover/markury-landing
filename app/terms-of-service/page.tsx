@@ -118,6 +118,15 @@ export default function TermsOfServicePage() {
                 updated Terms.
               </p>
             </section>
+
+            <section>
+              <h2 className="text-lg font-semibold text-gray-900 mb-3">
+                9. Contact Information
+              </h2>
+              <p>
+                If you have any questions about these Terms, please contact us at <a href="mailto:info@markury.app" className="text-markury-cyan hover:underline font-medium">info@markury.app</a>.
+              </p>
+            </section>
           </div>
           </div>
         </section>

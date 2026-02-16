@@ -16,6 +16,7 @@ module.exports = {
           yellow: '#FACC15',
           pink: '#FB7185',
           orange: '#FB923C',
+          gray: '#6B7280',
         },
         primary: {
           50: '#f0f9ff',

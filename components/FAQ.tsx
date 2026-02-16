@@ -7,27 +7,27 @@ export default function FAQ() {
   const faqs = [
     {
       question: "Is Markury a subscription?",
-      answer: "We offer flexible pricing to suit your needs. You can choose a standard yearly subscription or pay once for a lifetime license. Both plans include all features and future updates."
+      answer: <>We offer flexible pricing to suit your needs. You can choose a standard yearly subscription or pay once for a lifetime license. Both plans include all features and future updates.</>
     },
     {
       question: "Does it work on both macOS and Windows?",
-      answer: "Yes! Markury is a native application optimized for both macOS (12.0+) and Windows (10+). It feels right at home on either operating system."
+      answer: <>Yes! Markury is a native application optimized for both macOS (12.0+) and Windows (10+). It feels right at home on either operating system.</>
     },
     {
       question: "Can I use Markury while screen recording or sharing?",
-      answer: "Absolutely. Markury draws directly on your screen overlay, so your annotations are visible to any screen recording tool (like OBS, Loom, QuickTime) and video conferencing apps (Zoom, Teams, Google Meet)."
+      answer: <>Absolutely. Markury draws directly on your screen overlay, so your annotations are visible to any screen recording tool (like OBS, Loom, QuickTime) and video conferencing apps (Zoom, Teams, Google Meet).</>
     },
     {
       question: "Do I need an internet connection?",
-      answer: "You only need an internet connection once to activate your license key. After that, Markury works 100% offline. We respect your privacy and don't send any data to the cloud."
+      answer: <>You only need an internet connection once to activate your license key. After that, Markury works 100% offline. We respect your privacy and don't send any data to the cloud.</>
     },
     {
       question: "Can I install it on multiple computers?",
-      answer: "Yes, 1 license covers 2 devices that you own (e.g., a desktop and a laptop)."
+      answer: <>Yes, 1 license covers 2 devices that you own (e.g., a desktop and a laptop).</>
     },
     {
       question: "What is your refund policy?",
-      answer: "We offer a no-questions-asked 30-day money-back guarantee. If Markury doesn't improve your workflow, simply email us at support@markury.app for a full refund."
+      answer: <>We offer a no-questions-asked 30-day money-back guarantee. If Markury doesn't improve your workflow, simply email us at <a href="mailto:support@markury.app" className="font-medium text-gray-900 underline hover:text-markury-cyan transition-colors">support@markury.app</a> for a full refund.</>
     }
   ]
 
@@ -65,9 +65,9 @@ export default function FAQ() {
                   openIndex === index ? 'max-h-48 opacity-100 mb-6' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className="text-gray-600 leading-relaxed pr-12">
+                <div className="text-gray-600 leading-relaxed pr-12">
                   {faq.answer}
-                </p>
+                </div>
               </div>
             </div>
           ))}

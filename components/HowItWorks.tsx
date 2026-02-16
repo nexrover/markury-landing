@@ -39,7 +39,7 @@ export default function HowItWorks() {
       {/* Background accent */}
       <ScribbleStroke
         className="absolute left-1/2 -translate-x-1/2 top-10 w-[520px] h-[120px] opacity-60 float-slow"
-        stroke="#FACC15"
+        stroke="#FB7185"
       />
 
       <div className="container-narrow relative">
@@ -81,9 +81,8 @@ export default function HowItWorks() {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <a href="#pricing" className="btn-primary">
+          <a href="#pricing" style={{ backgroundColor: 'var(--markury-pink)' }} className="btn-primary hover:brightness-105">
             Start annotating today
-            
           </a>
         </div>
       </div>

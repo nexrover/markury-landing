@@ -10,7 +10,9 @@
     --markury-cyan: #22D3EE;
     --markury-yellow: #FACC15;
     --markury-pink: #FB7185;
+    --markury-pink: #FB7185;
     --markury-orange: #FB923C;
+    --markury-gray: #6B7280;
   }
   html {
     scroll-behavior: smooth;
@@ -40,7 +42,25 @@
     @apply h-[0.55em] bottom-[0.12em];
   }
   .text-highlight--soft::before {
-    background: color-mix(in srgb, var(--markury-yellow) 70%, transparent);
+    opacity: 0.4;
+  }
+  .text-highlight--cyan::before {
+    background: var(--markury-cyan);
+  }
+  .text-highlight--purple::before {
+    background: var(--markury-purple);
+  }
+  .text-highlight--lime::before {
+    background: var(--markury-lime);
+  }
+  .text-highlight--pink::before {
+    background: var(--markury-pink);
+  }
+  .text-highlight--orange::before {
+    background: var(--markury-orange);
+  }
+  .text-highlight--yellow::before {
+    background: var(--markury-yellow);
   }
 
   /* Clean marker underline (subtle stroke under text) */

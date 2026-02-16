@@ -23,7 +23,7 @@ export default function Pricing() {
       {/* Background accent */}
       <ScribbleStroke
         className="absolute -left-6 bottom-24 w-[520px] h-[120px] opacity-70 rotate-3 float-slow"
-        stroke="#A3F635"
+        stroke="#FB923C"
       />
 
       <div className="container mx-auto relative">
@@ -31,7 +31,7 @@ export default function Pricing() {
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
             Simple pricing,{' '}
-            <span className="marker-underline marker-underline--soft">
+            <span className="marker-underline marker-underline--orange">
               complete package
             </span>
           </h2>
@@ -46,7 +46,7 @@ export default function Pricing() {
           {/* Markury Pro Plan */}
           <div className="relative bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden flex flex-col">
             <div className="absolute top-0 right-0">
-              <div className="bg-markury-yellow text-gray-900 text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wide">
+              <div className="bg-markury-orange text-gray-900 text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wide">
                 Most Popular
               </div>
             </div>
@@ -67,12 +67,13 @@ export default function Pricing() {
                 </div>
                 
                 <p className="text-gray-500 text-sm mt-3 font-medium">
-                  We’re Live! Grab <span className="text-green-600 font-bold">34% Off</span> Before It’s Gone.
+                  We’re Live! Grab <span className="text-markury-orange font-bold">34% Off</span> Before It’s Gone.
                 </p>
               </div>
 
               <a
                 href="https://nexrover.lemonsqueezy.com/buy/081ee812-4d2c-4740-9111-ce03f0b26aa9"
+                style={{ backgroundColor: 'var(--markury-orange)' }}
                 className="btn-primary block w-full text-center mb-4"
               >
                 Start Free Trial
@@ -86,7 +87,7 @@ export default function Pricing() {
                 <ul className="space-y-3">
                   {features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <CheckmarkCircle02Icon className="w-5 h-5 text-markury-lime flex-shrink-0 mt-0.5" />
+                      <CheckmarkCircle02Icon className="w-5 h-5 text-markury-orange flex-shrink-0 mt-0.5" />
                       <span className="text-gray-600 text-sm">{feature}</span>
                     </li>
                   ))}

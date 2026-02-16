@@ -121,10 +121,7 @@ export default function Features() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-heading mb-4">
-            Everything you need to{' '}
-            <span className="marker-underline marker-underline--purple">
-              communicate visually
-            </span>
+            Everything you need <span className="marker-underline marker-underline--purple">in one place</span>
           </h2>
           <p className="section-subheading">
             Professional annotation tools that feel effortless. No learning curve, no clutter.

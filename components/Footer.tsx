@@ -39,8 +39,8 @@ export default function Footer() {
                 height={32}
                 className="w-8 h-8"
               />
-              <span className="text-xl font-bold text-highlight text-highlight--thin">
-                Markury
+              <span className="text-xl font-bold">
+                <span className="text-highlight text-highlight--soft">Mark</span>ury
               </span>
             </a>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">

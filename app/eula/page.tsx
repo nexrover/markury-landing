@@ -106,7 +106,7 @@ export default function EULA() {
                   8. Contact Information
                 </h2>
                 <p>
-                  If you have any questions about this Agreement, please contact us at <a href="mailto:support@markury.app" className="text-markury-cyan hover:underline font-medium">support@markury.app</a>.
+                  If you have any questions about this Agreement, please contact us at <a href="mailto:info@markury.app" className="text-markury-cyan hover:underline font-medium">info@markury.app</a>.
                 </p>
               </section>
             </div>
