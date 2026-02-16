@@ -17,6 +17,7 @@ import {
  * 2. The tab is or has been active (preloads on first activation)
  */
 function UseCaseMedia({ mediaSrc, alt, isActive }: { mediaSrc: string; alt: string; isActive: boolean }) {
+  console.log('UseCaseMedia mediaSrc:', mediaSrc)
   const [hasBeenActive, setHasBeenActive] = useState(false)
 
   useEffect(() => {
