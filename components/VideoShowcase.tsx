@@ -11,8 +11,13 @@ import {
   RepeatIcon,
 } from 'hugeicons-react'
 
+interface VideoSource {
+  src: string
+  type: string
+}
+
 interface VideoShowcaseProps {
-  videoSrc: string
+  videoSrc: string | VideoSource[]
   poster?: string
   className?: string
 }
@@ -28,6 +33,7 @@ export default function VideoShowcase({
   poster,
   className,
 }: VideoShowcaseProps) {
+  // ... state declarations ...
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
   const [isFullscreen, setIsFullscreen] = useState(false)
@@ -47,6 +53,9 @@ export default function VideoShowcase({
   const progressRef = useRef<HTMLDivElement>(null)
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const volumeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // ... rest of the component implementation ...
+  // Skipping unchanged parts for replace_file_content match
 
   // Auto-hide controls
   const resetControlsTimeout = useCallback(() => {
@@ -292,6 +301,8 @@ export default function VideoShowcase({
     video.play().catch(() => setIsPlaying(false))
   }, [])
 
+  console.log('VideoShowcase render:', { videoSrc, type: typeof videoSrc, isArray: Array.isArray(videoSrc) })
+
   return (
     <div
       ref={containerRef}
@@ -304,14 +315,23 @@ export default function VideoShowcase({
       {/* Video */}
       <video
         ref={videoRef}
-        src={videoSrc}
         poster={poster}
         className="w-full h-full object-cover cursor-pointer"
         playsInline
         loop={true}
         muted={isMuted}
         onClick={togglePlay}
-      />
+        preload="metadata"
+        suppressHydrationWarning
+      >
+        {Array.isArray(videoSrc) ? (
+          videoSrc.map((source, index) => (
+            <source key={index} src={source.src} type={source.type} />
+          ))
+        ) : typeof videoSrc === 'string' ? (
+          <source src={videoSrc} />
+        ) : null}
+      </video>
 
       {/* Center Play/Pause overlay (click-to-play) - Only show when paused and NOT seeking/dragging */}
       {(!isPlaying) && (

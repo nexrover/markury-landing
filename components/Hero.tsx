@@ -53,7 +53,11 @@ export default function Hero() {
                   className="w-full h-full"
                 /> */}
                 <VideoShowcase
-                  videoSrc="https://ftp.markury.app/demo-final.mp4"
+                  videoSrc={[
+                    { src: 'https://ftp.markury.app/demo-final.webm', type: 'video/webm' },
+                    { src: 'https://ftp.markury.app/demo-final.mp4', type: 'video/mp4' },
+                  ]}
+                  poster="https://ftp.markury.app/demo-final-poster.jpg"
                   className="w-full h-full"
                 />
               </div>
