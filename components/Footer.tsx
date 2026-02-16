@@ -117,14 +117,14 @@ export default function Footer() {
             </p>
             
             {/* Social links */}
-            <div className="flex items-center gap-4">
+            {/* <div className="flex items-center gap-4">
               <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="Twitter">
                 <NewTwitterIcon className="w-5 h-5" />
               </a>
               <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="GitHub">
                 <GithubIcon className="w-5 h-5" />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
