@@ -34,7 +34,7 @@ export default function VideoShowcase({
   className,
 }: VideoShowcaseProps) {
   // Debug videoSrc
-  console.log('VideoShowcase videoSrc:', videoSrc, 'IsArray:', Array.isArray(videoSrc), 'Type:', typeof videoSrc)
+  // console.log('VideoShowcase videoSrc:', videoSrc, 'IsArray:', Array.isArray(videoSrc), 'Type:', typeof videoSrc)
 
   // ... state declarations ...
   const [isPlaying, setIsPlaying] = useState(false)
