@@ -21,7 +21,8 @@ export default function LazyMedia({
   className = '',
   rootMargin = '200px',
   placeholderClass = 'min-h-[200px]',
-}: LazyMediaProps) {
+  icon,
+}: LazyMediaProps & { icon?: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -54,7 +55,9 @@ export default function LazyMedia({
       {isVisible ? (
         children
       ) : (
-        <div className={`${placeholderClass} bg-gray-100 rounded-lg animate-pulse`} />
+        <div className={`${placeholderClass} bg-gray-50/80 rounded-lg flex items-center justify-center`}>
+          {icon && <div className="text-gray-300">{icon}</div>}
+        </div>
       )}
     </div>
   )
