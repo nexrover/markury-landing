@@ -15,10 +15,10 @@ export default function Banner() {
         <div className="flex-1 flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6 text-xs sm:text-sm md:text-base text-center mx-auto">
           
           <div className="flex items-center gap-2.5">
-            <span className="text-lg leading-none animate-wiggle inline-block origin-bottom">🎁</span>
+            <span className="text-lg leading-none animate-wiggle inline-block origin-bottom">🎉</span>
             <p className="font-medium whitespace-nowrap">
-              <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-markury-yellow to-markury-orange">Launch Offer:</span>
-              <span className="text-gray-200 ml-1.5">Get 50% off<span className="hidden sm:inline"> your first month</span>!</span>
+              <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-markury-yellow to-markury-orange">We’re Live!</span>
+              <span className="text-gray-200 ml-1.5">Unlock Lifetime Access at 50% Off</span>
             </p>
           </div>
 
@@ -26,7 +26,7 @@ export default function Banner() {
             href="/#pricing" 
             className="group relative inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-full transition-all duration-300 backdrop-blur-sm hover:shadow-[0_0_15px_-3px_rgba(255,255,255,0.1)]"
           >
-            <span className="font-semibold text-white group-hover:text-markury-yellow transition-colors">Claim Offer</span>
+            <span className="font-semibold text-white group-hover:text-markury-yellow transition-colors">Grab Offer</span>
             <span className="block transition-transform group-hover:translate-x-0.5">&rarr;</span>
           </Link>
         </div>

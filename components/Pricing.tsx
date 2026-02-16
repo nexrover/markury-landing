@@ -58,14 +58,17 @@ export default function Pricing() {
               </div>
 
               <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <span className="text-gray-400 line-through text-2xl">$29/year</span>
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <span className="text-gray-400 line-through text-2xl decoration-2 decoration-gray-900/50">$29/year</span>
                 </div>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-gray-900">$19</span>
+                  <span className="text-5xl font-bold text-gray-900 tracking-tight">$19</span>
                   <span className="text-gray-600 font-medium">/year</span>
                 </div>
-                <p className="text-gray-500 text-sm mt-3 font-medium">Launch pricing — limited time.</p>
+                
+                <p className="text-gray-500 text-sm mt-3 font-medium">
+                  We’re Live! Grab <span className="text-green-600 font-bold">34% Off</span> Before It’s Gone.
+                </p>
               </div>
 
               <a
@@ -107,14 +110,17 @@ export default function Pricing() {
               </div>
 
               <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <span className="text-gray-400 line-through text-2xl">$79</span>
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <span className="text-gray-400 line-through text-2xl decoration-2 decoration-gray-900/50">$79</span>
                 </div>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-gray-900">$39</span>
+                  <span className="text-5xl font-bold text-gray-900 tracking-tight">$39</span>
                   <span className="text-gray-600 font-medium">one-time</span>
                 </div>
-                <p className="text-gray-500 text-sm mt-3 font-medium">Launch pricing — limited time.</p>
+                
+                <p className="text-gray-500 text-sm mt-3 font-medium">
+                  We’re Live! Grab <span className="text-green-600 font-bold">50% Off</span> Before It’s Gone.
+                </p>
               </div>
 
               <a
