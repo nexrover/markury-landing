@@ -13,6 +13,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://markury.app'),
   title: 'Markury | Screen Annotation Made Simple',
   description: 'Draw, highlight, and annotate directly on your screen. The modern desktop annotation tool for teachers, presenters, designers, and remote teams.',
   keywords: 'screen annotation, drawing tool, presentation software, screen marker, digital whiteboard, teaching tool, screen recording',
@@ -35,11 +36,20 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'Markury',
+    images: [
+      {
+        url: '/markury_og.png',
+        width: 1200,
+        height: 630,
+        alt: 'Markury - Screen Annotation Tool',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Markury | Screen Annotation Made Simple',
     description: 'Draw, highlight, and annotate directly on your screen. The modern desktop annotation tool for teachers, presenters, designers, and remote teams.',
+    images: ['/markury_og.png'],
   },
   robots: {
     index: true,
