@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -34,6 +35,7 @@ export default function UserGuidePage() {
                 <nav className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
                   <h2 className="font-semibold text-gray-900 mb-4">Table of Contents</h2>
                   <ul className="space-y-2 text-sm">
+                    <li><a href="#installation" className="text-gray-600 hover:text-gray-900 transition-colors">Installation</a></li>
                     <li><a href="#getting-started" className="text-gray-600 hover:text-gray-900 transition-colors">Getting Started</a></li>
                     <li><a href="#floating-toolbar" className="text-gray-600 hover:text-gray-900 transition-colors">The Floating Toolbar</a></li>
                     <li><a href="#drawing-tools" className="text-gray-600 hover:text-gray-900 transition-colors">Drawing Tools</a></li>
@@ -46,6 +48,7 @@ export default function UserGuidePage() {
                     <li><a href="#undo-redo" className="text-gray-600 hover:text-gray-900 transition-colors">Undo, Redo & Clear</a></li>
                     <li><a href="#keyboard-shortcuts" className="text-gray-600 hover:text-gray-900 transition-colors">Keyboard Shortcuts</a></li>
                     <li><a href="#settings" className="text-gray-600 hover:text-gray-900 transition-colors">Settings & Customization</a></li>
+                    <li><a href="#license" className="text-gray-600 hover:text-gray-900 transition-colors">License Activation</a></li>
                     <li><a href="#system-tray" className="text-gray-600 hover:text-gray-900 transition-colors">System Tray</a></li>
                     <li><a href="#use-cases" className="text-gray-600 hover:text-gray-900 transition-colors">Use Cases</a></li>
                     <li><a href="#tips" className="text-gray-600 hover:text-gray-900 transition-colors">Tips & Best Practices</a></li>
@@ -59,6 +62,75 @@ export default function UserGuidePage() {
             <div className="lg:col-span-3">
               <div className="prose prose-lg max-w-none">
                 
+                {/* Installation */}
+                <section id="installation" className="mb-16 scroll-mt-24">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">Installation</h2>
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    Getting Markury up and running on your device is quick and easy.
+                  </p>
+
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* macOS Installation */}
+                    <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm p-2">
+                          <Image 
+                            src="/apple.svg" 
+                            alt="macOS" 
+                            width={24} 
+                            height={24} 
+                            className="w-6 h-6"
+                          />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900">macOS</h3>
+                      </div>
+                      <ol className="list-decimal list-inside space-y-3 text-gray-700 mb-6">
+                        <li>Download the <strong>Markury.dmg</strong> file from your dashboard.</li>
+                        <li>Double-click the downloaded file to open it.</li>
+                        <li>Drag the <strong>Markury</strong> app icon into the <strong>Applications</strong> folder.</li>
+                        <li>Launch Markury from your Applications folder.</li>
+                      </ol>
+                      
+                      <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+                        <p className="font-semibold text-yellow-800 mb-2">"App can't be opened" Warning?</p>
+                        <p className="text-sm text-yellow-800 mb-2">
+                          If you see a warning that Apple cannot check the app for malicious software:
+                        </p>
+                        <ol className="list-decimal list-inside text-sm text-yellow-800 space-y-1">
+                          <li><strong>Right-click</strong> (or Control-click) the Markury app in Finder.</li>
+                          <li>Select <strong>Open</strong> from the menu.</li>
+                          <li>Click <strong>Open</strong> in the dialog box that appears.</li>
+                        </ol>
+                        <p className="text-xs text-yellow-700 mt-2">
+                          You only need to do this once.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Windows Installation */}
+                    <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm p-2">
+                          <Image 
+                            src="/windows.svg" 
+                            alt="Windows" 
+                            width={24} 
+                            height={24} 
+                            className="w-6 h-6"
+                          />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900">Windows</h3>
+                      </div>
+                      <ol className="list-decimal list-inside space-y-3 text-gray-700">
+                        <li>Download the <strong>Markury.exe</strong> installer from your dashboard.</li>
+                        <li>Double-click the installer file to run it.</li>
+                        <li>Follow the on-screen prompts to complete installation.</li>
+                        <li>Markury will launch automatically when finished.</li>
+                      </ol>
+                    </div>
+                  </div>
+                </section>
+
                 {/* Getting Started */}
                 <section id="getting-started" className="mb-16 scroll-mt-24">
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">Getting Started</h2>
@@ -547,6 +619,41 @@ export default function UserGuidePage() {
                     <li>Click any shortcut to record a new key combination</li>
                     <li>Clear shortcuts you don&apos;t want</li>
                   </ul>
+                </section>
+
+                {/* License Activation */}
+                <section id="license" className="mb-16 scroll-mt-24">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">License Activation</h2>
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    Unlock the full power of Markury by activating your license key.
+                  </p>
+
+                  <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 mb-8">
+                    <h3 className="text-xl font-bold text-blue-900 mb-4">How to Activate</h3>
+                    <ol className="list-decimal list-inside space-y-3 text-blue-800">
+                      <li>Open Markury and click the <strong>Settings</strong> (gear) icon in the toolbar.</li>
+                      <li>Go to the <strong>License</strong> tab.</li>
+                      <li>Paste your license key into the input field.</li>
+                      <li>Click <strong>Activate</strong> to unlock Pro features instantly.</li>
+                    </ol>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Managing Activations</h3>
+                      <p className="text-gray-700 leading-relaxed mb-4">
+                        If you need to move your license to a new computer or see the "Activation limit reached" message:
+                      </p>
+                      <ul className="list-disc list-inside space-y-2 text-gray-700">
+                        <li>
+                          <strong>Deactivate existing device:</strong> Go to Settings &rarr; License and click <strong>Deactivate</strong> on your old computer.
+                        </li>
+                        <li>
+                          <strong>Manage online:</strong> If you don't have access to the old computer, use the <strong>Account</strong> link in the License tab (or visit the Lemon Squeezy dashboard) to manage your active devices remotely.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </section>
 
                 {/* System Tray */}
