@@ -625,7 +625,7 @@ export default function UserGuidePage() {
                 <section id="license" className="mb-16 scroll-mt-24">
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">License Activation</h2>
                   <p className="text-gray-700 mb-6 leading-relaxed">
-                    Unlock the full power of Markury by activating your license key.
+                    Unlock the full power of Markury by activating your license key. Each license is valid for use on up to <strong>2 devices</strong> (e.g., your laptop and desktop).
                   </p>
 
                   <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 mb-8">
