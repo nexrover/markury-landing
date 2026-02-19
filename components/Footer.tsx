@@ -10,7 +10,7 @@ export default function Footer() {
     ],
     support: [
       { label: 'User Guide', href: '/user-guide' },
-      { label: 'Contact Us', href: '/contact-support' },
+      { label: 'Contact Support', href: '/contact-support' },
       { label: 'FAQ', href: '#faq' },
     ],
     legal: [
