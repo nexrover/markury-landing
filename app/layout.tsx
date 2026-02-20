@@ -31,6 +31,7 @@ export const metadata: Metadata = {
   },
   manifest: '/favicon/site.webmanifest',
   openGraph: {
+    url: 'https://markury.app',
     title: 'Markury | Screen Annotation Made Simple',
     description: 'Draw, highlight, and annotate directly on your screen. The modern desktop annotation tool for teachers, presenters, designers, and remote teams.',
     type: 'website',

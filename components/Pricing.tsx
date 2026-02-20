@@ -53,7 +53,7 @@ export default function Pricing() {
 
             <div className="p-8 sm:p-10 flex-1 flex flex-col">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Markury Pro</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Pro Yearly</h3>
                 <p className="text-highlight text-highlight--soft inline-block font-medium">7 days free trial</p>
               </div>
 
@@ -72,7 +72,7 @@ export default function Pricing() {
               </div>
 
               <a
-                href="https://nexrover.lemonsqueezy.com/buy/081ee812-4d2c-4740-9111-ce03f0b26aa9"
+                href={process.env.NEXT_PUBLIC_YEARLY_PRICE_LINK || "https://nexrover.lemonsqueezy.com/buy/081ee812-4d2c-4740-9111-ce03f0b26aa9"}
                 style={{ backgroundColor: 'var(--markury-orange)' }}
                 className="btn-primary block w-full text-center mb-4"
               >
@@ -106,7 +106,7 @@ export default function Pricing() {
 
             <div className="p-8 sm:p-10 flex-1 flex flex-col">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Lifetime</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Pro Lifetime</h3>
                 <p className="text-gray-600 font-medium">Pay once, own it forever</p>
               </div>
 
@@ -125,7 +125,7 @@ export default function Pricing() {
               </div>
 
               <a
-                href="https://nexrover.lemonsqueezy.com/checkout/buy/f8632404-ee60-4d46-8782-c64e310bb943"
+                href={process.env.NEXT_PUBLIC_LIFETIME_PRICE_LINK || "https://nexrover.lemonsqueezy.com/checkout/buy/f8632404-ee60-4d46-8782-c64e310bb943"}
                 className="inline-flex items-center justify-center w-full px-8 py-4 text-lg font-semibold text-white bg-gray-900 rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5 hover:bg-gray-800 mb-4"
               >
                 Get Lifetime Access
