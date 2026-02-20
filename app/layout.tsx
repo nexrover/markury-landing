@@ -83,48 +83,56 @@ export default function RootLayout({
         </Script>
         <Script id="item-json-ld" type="application/ld+json">
           {`
-            {
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              "name": "Markury",
-              "operatingSystem": "Windows 10, Windows 11, macOS 12+",
-              "applicationCategory": "ProductivityApplication",
-              "offers": {
-                "@type": "AggregateOffer",
-                "offerCount": "2",
-                "lowPrice": "19.00",
-                "highPrice": "39.00", 
-                "priceCurrency": "USD",
-                "offers": [
-                  {
-                    "@type": "Offer",
-                    "name": "Yearly Subscription",
-                    "price": "19.00",
-                    "priceCurrency": "USD",
-                    "priceSpecification": {
-                      "@type": "UnitPriceSpecification",
-                      "referenceQuantity": {
-                        "@type": "QuantitativeValue",
-                        "value": "1",
-                        "unitCode": "ANN"
-                      }
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "name": "Lifetime Access",
-                    "price": "39.00", 
-                    "priceCurrency": "USD"
-                  }
-                ]
+            [
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Markury",
+                "url": "https://markury.app/"
               },
-              "description": "The modern, lightweight screen annotation tool. Draw, highlight, and present over any app.",
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "ratingCount": "120"
+              {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Markury",
+                "operatingSystem": "Windows 10, Windows 11, macOS 12+",
+                "applicationCategory": "ProductivityApplication",
+                "description": "The modern, lightweight screen annotation tool. Draw, highlight, and present over any app.",
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.8",
+                  "ratingCount": "120"
+                },
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "offerCount": "2",
+                  "lowPrice": "19.00",
+                  "highPrice": "39.00",
+                  "priceCurrency": "USD",
+                  "offers": [
+                    {
+                      "@type": "Offer",
+                      "name": "Markury Pro — Yearly",
+                      "price": "19.00",
+                      "priceCurrency": "USD",
+                      "priceSpecification": {
+                        "@type": "UnitPriceSpecification",
+                        "referenceQuantity": {
+                          "@type": "QuantitativeValue",
+                          "value": "1",
+                          "unitCode": "ANN"
+                        }
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "name": "Markury Pro — Lifetime Access",
+                      "price": "39.00",
+                      "priceCurrency": "USD"
+                    }
+                  ]
+                }
               }
-            }
+            ]
           `}
         </Script>
         <GoogleAnalytics />
