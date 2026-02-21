@@ -31,7 +31,7 @@ export default function FinalCTA() {
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-5 leading-tight">
-              Ready to communicate with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-markury-cyan">clarity?</span>
+              Ready to communicate <br />with clarity?
             </h2>
 
             {/* Subheadline */}
