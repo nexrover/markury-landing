@@ -123,7 +123,7 @@ export default async function PostPage({ params }: PostProps) {
       <main className="bg-white pt-32 md:pt-36 pb-24">
         <article>
           {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb" className="container-narrow flex items-center gap-2 text-sm mt-4 mb-6">
+          <nav aria-label="Breadcrumb" className="container-narrow flex items-center gap-2 text-sm mt-4 mb-8">
             <Link href="/blog" className="font-medium text-gray-900 hover:text-primary-600 transition-colors">
               Blog
             </Link>
@@ -135,8 +135,8 @@ export default async function PostPage({ params }: PostProps) {
             </span>
           </nav>
 
-          {/* Hero Cover Image — same width as header */}
-          <div className="container-narrow mb-12">
+          {/* Cover Image */}
+          <div className="container-narrow mb-10">
             <div className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-gradient-to-br from-primary-50 to-gray-100 shadow-lg">
               <Image
                 src={post.coverImage}
@@ -146,57 +146,67 @@ export default async function PostPage({ params }: PostProps) {
                 className="object-cover"
                 sizes="100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
           </div>
 
-          {/* Post Header */}
-          <header className="mb-12 text-center max-w-3xl mx-auto px-6 lg:px-8">
-
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-6 leading-tight">
-              {post.title}
-            </h1>
-
-            <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto leading-relaxed">
-              {post.description}
-            </p>
-
-            {/* Author + Meta row */}
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
-              <div className="flex items-center gap-2.5 bg-gray-50 rounded-full px-4 py-2 border border-gray-100">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-markury-cyan flex items-center justify-center text-white text-xs font-bold shrink-0">
-                  {post.author.charAt(0)}
-                </div>
-                <span className="font-semibold text-gray-900">{post.author}</span>
-              </div>
-
-              <span className="text-gray-300">·</span>
-
-              <time dateTime={post.date} className="text-gray-500 font-medium">
-                {format(parseISO(post.date), 'LLLL d, yyyy')}
-              </time>
-
-              <span className="text-gray-300">·</span>
-
-              <span className="text-gray-500 font-medium">
-                {readingTime} min read
-              </span>
-            </div>
-          </header>
-
-          {/* Divider */}
-          <div className="container-narrow mb-12">
-            <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-          </div>
-
-          {/* Two-column layout: TOC + Content */}
+          {/* Two-column layout: TOC on left, everything else on right */}
           <div className="container-narrow">
-            <div className="relative xl:grid xl:grid-cols-[220px_1fr] xl:gap-12">
+            <div className="relative xl:grid xl:grid-cols-[280px_1fr] xl:gap-20">
               {/* Table of Contents — sticky sidebar */}
               <TableOfContents />
 
-              {/* Article Content */}
-              <div className="max-w-3xl">
+              {/* Right column: Title + Meta + Content */}
+              <div className="max-w-[730px]">
+                {/* Post Header */}
+                <header className="mb-10 pt-4">
+                  <h1 
+                    className="text-4xl sm:text-5xl md:text-[52px] font-black text-[#111827] mb-5 font-sans"
+                    style={{ lineHeight: 1.05, letterSpacing: '-0.04em' }}
+                  >
+                    {post.title}
+                  </h1>
+
+                  <p className="text-lg text-gray-500 leading-relaxed mb-8">
+                    {post.description}
+                  </p>
+
+                  {/* Author + Meta row */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-gray-200">
+                    <div className="flex items-center gap-3">
+                      {post.author && (
+                        <>
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-400 to-markury-cyan flex items-center justify-center text-white text-sm font-bold shadow-sm shrink-0">
+                            {post.author.charAt(0)}
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900 text-[15px] leading-tight">
+                              {post.author}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              Author
+                            </p>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                    
+                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center gap-1.5">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{readingTime} min read</span>
+                      </div>
+                      <span className="text-gray-300 hidden sm:block">•</span>
+                      <time dateTime={post.date} className="font-medium">
+                        {format(parseISO(post.date), 'MMM d, yyyy')}
+                      </time>
+                    </div>
+                  </div>
+                </header>
+
+                {/* Article Content */}
                 <Mdx code={post.body.code} />
               </div>
             </div>
@@ -207,3 +217,4 @@ export default async function PostPage({ params }: PostProps) {
     </>
   )
 }
+

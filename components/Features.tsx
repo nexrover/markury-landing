@@ -59,7 +59,7 @@ export default function Features() {
         },
         {
           name: "Whiteboard Mode",
-          description: "Transform your screen into a clean canvas with 16 background colors for focused explanations.",
+          description: "Transform your screen into a clean canvas with 4 background colors for focused explanations.",
           media: "https://ftp.markury.app/features/whiteboard",
           icon: <DashboardSquare01Icon className="w-8 h-8" />,
         },

@@ -18,7 +18,7 @@ export default function TableOfContents() {
     const article = document.querySelector('article')
     if (!article) return
 
-    const elements = article.querySelectorAll('h2, h3')
+    const elements = article.querySelectorAll('h2')
     const items: TocItem[] = Array.from(elements).map((el) => {
       // Ensure each heading has an id
       if (!el.id) {
@@ -63,10 +63,10 @@ export default function TableOfContents() {
   return (
     <nav className="hidden xl:block">
       <div className="sticky top-36">
-        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-          On this page
+        <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-5">
+          Contents
         </p>
-        <ul className="space-y-1 border-l-2 border-gray-100">
+        <ul className="space-y-1.5 border-l-2 border-gray-100">
           {headings.map((heading) => (
             <li key={heading.id}>
               <a
@@ -75,7 +75,7 @@ export default function TableOfContents() {
                   e.preventDefault()
                   document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className={`block text-[13px] leading-snug transition-all duration-200 py-1.5 border-l-2 -ml-[2px] ${
+                className={`block text-[15px] leading-snug transition-all duration-200 py-2 border-l-2 -ml-[2px] ${
                   heading.level === 3 ? 'pl-6' : 'pl-4'
                 } ${
                   activeId === heading.id
@@ -89,17 +89,19 @@ export default function TableOfContents() {
           ))}
         </ul>
 
-        {/* Mini CTA */}
-        <div className="mt-8 p-4 rounded-xl bg-gradient-to-br from-primary-50 to-markury-yellow/10 border border-primary-100">
-          <p className="text-xs font-bold text-gray-900 mb-1.5">Try Markury Free</p>
-          <p className="text-[11px] text-gray-500 leading-relaxed mb-3">
-            Draw &amp; annotate on your screen instantly.
+        {/* Promotional CTA */}
+        <div className="mt-14 p-8 rounded-xl bg-gray-50 border border-gray-100 flex flex-col items-start gap-4">
+          <h3 className="text-[26px] font-bold text-gray-900 leading-[1.15] tracking-tight">
+            Get Started with Markury
+          </h3>
+          <p className="text-[15px] text-gray-600 leading-relaxed max-w-[90%]">
+            Draw and annotate on your screen instantly. Perfect for presentations!
           </p>
           <Link
             href="/#pricing"
-            className="block text-center text-xs font-semibold text-gray-900 bg-markury-yellow px-3 py-2 rounded-lg hover:opacity-90 transition-opacity shadow-sm"
+            className="mt-2 inline-flex items-center justify-center text-[15px] font-semibold text-gray-900 bg-markury-yellow px-5 py-2.5 rounded hover:opacity-90 transition-opacity"
           >
-            Get Started
+            Start Free Trial
           </Link>
         </div>
       </div>
