@@ -157,11 +157,11 @@ export default function UseCases() {
       <div className="container-narrow relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 px-4">
-          <h2 className="section-heading mb-6 text-4xl tracking-tight text-gray-900">
+        <div className="text-center max-w-4xl mx-auto mb-16 px-4">
+          <h2 className="section-heading mb-4">
             Built for people who <span className="text-highlight text-highlight--cyan text-highlight--soft">explain things</span>
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="section-subheading max-w-2xl mx-auto">
             Whether you're teaching a classroom, leading a meeting, or recording a tutorial, Markury helps you communicate with clarity.
           </p>
         </div>
