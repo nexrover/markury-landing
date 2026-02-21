@@ -8,10 +8,10 @@ export default function BlogCTA() {
         Try Markury, the modern onscreen drawing tool built for real-time presentations, remote collaboration, and seamless recording.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Link href="/" className="btn-primary inline-flex justify-center items-center">
+        <Link href="/" className="btn-primary inline-flex justify-center items-center !no-underline hover:!no-underline">
           Get Started
         </Link>
-        <Link href="/user-guide" className="btn-secondary inline-flex justify-center items-center">
+        <Link href="/user-guide" className="btn-secondary inline-flex justify-center items-center !no-underline hover:!no-underline">
           Read Guide
         </Link>
       </div>

@@ -69,9 +69,19 @@ function CustomTr(props: React.HTMLAttributes<HTMLTableRowElement>) {
   return <tr className="even:bg-gray-50/50 transition-colors hover:bg-primary-50/30" {...props} />
 }
 
+function CustomH2(props: React.HTMLAttributes<HTMLHeadingElement>) {
+  return <h2 style={{ scrollMarginTop: '160px' }} {...props} />
+}
+
+function CustomH3(props: React.HTMLAttributes<HTMLHeadingElement>) {
+  return <h3 style={{ scrollMarginTop: '160px' }} {...props} />
+}
+
 const components = {
   Image: RoundedImage,
   a: CustomLink,
+  h2: CustomH2,
+  h3: CustomH3,
   Callout,
   BlogCTA,
   table: CustomTable,
