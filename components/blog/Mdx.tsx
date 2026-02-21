@@ -89,12 +89,15 @@ export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code)
 
   return (
-    <article className="prose prose-slate max-w-none 
-      prose-headings:text-gray-900 prose-headings:font-bold 
-      prose-p:text-gray-700 prose-p:leading-relaxed 
+    <article className="prose prose-lg prose-slate max-w-[730px]
+      prose-p:text-[18px] prose-p:leading-[1.6] prose-p:text-gray-700
+      prose-headings:text-gray-900 prose-headings:tracking-tight
+      prose-h2:text-[40px] prose-h2:leading-[1.1] prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-6
+      prose-h3:text-[28px] prose-h3:leading-[1.4] prose-h3:font-semibold prose-h3:mt-10 prose-h3:mb-4
       prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline
       prose-strong:text-gray-900
-      prose-li:text-gray-700
+      prose-li:text-[18px] prose-li:leading-[1.6] prose-li:text-gray-700
+      prose-ol:text-[18px] prose-ul:text-[18px]
     ">
       <Component components={{ ...components }} />
     </article>
