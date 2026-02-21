@@ -83,7 +83,7 @@ export default function Header() {
             <div className="hidden md:flex items-center gap-4">
               <Link
                 href="http://app.lemonsqueezy.com/my-orders/login"
-                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+                className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:text-gray-900 transition-colors"
               >
                 Sign in
               </Link>
@@ -126,7 +126,7 @@ export default function Header() {
                 ))}
                   <Link
                     href="http://app.lemonsqueezy.com/my-orders/login"
-                    className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                    className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors mt-2"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Sign in
