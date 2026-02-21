@@ -267,7 +267,7 @@ export default function UserGuidePage() {
                   <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">Choosing Colors</h3>
                   <div className="space-y-4 mb-6">
                     <p className="text-gray-700 leading-relaxed">
-                      <strong>Color Palette</strong> — Click the color dots in the toolbar to open the color picker. Choose from 30+ colors organized in an easy-to-use grid.
+                      <strong>Color Palette</strong> — Click the color dots in the toolbar to open the color picker. Choose from a 32-color palette or use the dynamic color picker for perfect contrast.
                     </p>
                     <p className="text-gray-700 leading-relaxed">
                       <strong>Quick Colors</strong> — Four customizable color slots for your most-used colors. Access them instantly from the toolbar or with keyboard shortcuts (⌘1, ⌘2, ⌘3, ⌘4).
@@ -424,12 +424,13 @@ export default function UserGuidePage() {
 
                   <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">Whiteboard Colors</h3>
                   <p className="text-gray-700 mb-4 leading-relaxed">
-                    Choose from 16 background colors:
+                    Choose from 4 carefully selected background colors:
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-                    <li><strong>Light backgrounds</strong> — White, cream, light gray (great for general use)</li>
-                    <li><strong>Colored backgrounds</strong> — Soft blue, green, pink, yellow (for variety)</li>
-                    <li><strong>Dark backgrounds</strong> — Charcoal, dark blue, black (for light-colored drawings)</li>
+                    <li><strong>White</strong> — Classic, bright canvas</li>
+                    <li><strong>Black</strong> — High contrast for vibrant colors</li>
+                    <li><strong>Grid (Light)</strong> — Perfect for structured drawing and math</li>
+                    <li><strong>Grid (Dark)</strong> — Structured drawing with a sleek dark theme</li>
                   </ul>
 
                   <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">When to Use Whiteboard Mode</h3>
