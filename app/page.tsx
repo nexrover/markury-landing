@@ -10,6 +10,12 @@ import FinalCTA from '@/components/FinalCTA'
 import Footer from '@/components/Footer'
 import FAQ from '@/components/FAQ'
 
+export const metadata = {
+  alternates: {
+    canonical: '/',
+  },
+}
+
 export default function Home() {
   return (
     <>

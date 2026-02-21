@@ -1,6 +1,14 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
+export const metadata = {
+  title: 'Terms of Service - Markury',
+  description: 'Terms of Service for Markury screen annotation software.',
+  alternates: {
+    canonical: '/terms-of-service',
+  },
+}
+
 export default function TermsOfServicePage() {
   return (
     <>

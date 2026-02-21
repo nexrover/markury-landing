@@ -1,6 +1,14 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
+export const metadata = {
+  title: 'Privacy Policy - Markury',
+  description: 'Privacy Policy for Markury screen annotation software.',
+  alternates: {
+    canonical: '/privacy-policy',
+  },
+}
+
 export default function PrivacyPolicyPage() {
   return (
     <>

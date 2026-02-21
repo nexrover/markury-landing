@@ -3,6 +3,14 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
+export const metadata = {
+  title: 'User Guide - Markury',
+  description: 'Complete documentation and user guide for getting the most out of Markury.',
+  alternates: {
+    canonical: '/user-guide',
+  },
+}
+
 export default function UserGuidePage() {
   return (
     <>

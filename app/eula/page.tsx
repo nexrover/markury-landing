@@ -4,6 +4,9 @@ import Footer from '@/components/Footer'
 export const metadata = {
   title: 'End User License Agreement (EULA) - Markury',
   description: 'End User License Agreement for Markury screen annotation software.',
+  alternates: {
+    canonical: '/eula',
+  },
 }
 
 export default function EULA() {

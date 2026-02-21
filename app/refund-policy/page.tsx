@@ -1,6 +1,14 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
+export const metadata = {
+  title: 'Refund Policy - Markury',
+  description: 'Refund Policy for Markury screen annotation software.',
+  alternates: {
+    canonical: '/refund-policy',
+  },
+}
+
 export default function RefundPolicyPage() {
   return (
     <>

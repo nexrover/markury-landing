@@ -6,6 +6,9 @@ import OpenChatButton from '@/components/OpenChatButton'
 export const metadata = {
   title: 'Contact Support - Markury',
   description: 'Need help with Markury? Contact our support team.',
+  alternates: {
+    canonical: '/contact-support',
+  },
 }
 
 export default function ContactSupport() {
