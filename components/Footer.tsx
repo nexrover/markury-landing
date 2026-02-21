@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { NewTwitterIcon, GithubIcon } from 'hugeicons-react'
+import { Facebook02Icon, YoutubeIcon } from 'hugeicons-react'
 
 export default function Footer() {
   const links = {
@@ -117,14 +117,17 @@ export default function Footer() {
             </p>
             
             {/* Social links */}
-            {/* <div className="flex items-center gap-4">
-              <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="Twitter">
+            <div className="flex items-center gap-4">
+              {/* <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="Twitter">
                 <NewTwitterIcon className="w-5 h-5" />
+              </a> */}
+              <a href="https://www.facebook.com/markuryofficial" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="Facebook">
+                <Facebook02Icon className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="GitHub">
-                <GithubIcon className="w-5 h-5" />
+              <a href="https://www.youtube.com/@markuryofficial" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="Youtube">
+                <YoutubeIcon className="w-5 h-5" />
               </a>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
