@@ -35,11 +35,50 @@ function Callout(props: { emoji: string; children: React.ReactNode }) {
   )
 }
 
+function CustomTable(props: React.HTMLAttributes<HTMLTableElement>) {
+  return (
+    <div className="my-8 overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+      <table className="w-full text-sm border-collapse" {...props} />
+    </div>
+  )
+}
+
+function CustomThead(props: React.HTMLAttributes<HTMLTableSectionElement>) {
+  return <thead className="bg-gray-50 border-b border-gray-200" {...props} />
+}
+
+function CustomTh(props: React.ThHTMLAttributes<HTMLTableCellElement>) {
+  return (
+    <th
+      className="px-5 py-3.5 text-left text-xs font-bold text-gray-500 uppercase tracking-wider first:rounded-tl-xl last:rounded-tr-xl"
+      {...props}
+    />
+  )
+}
+
+function CustomTd(props: React.TdHTMLAttributes<HTMLTableCellElement>) {
+  return (
+    <td
+      className="px-5 py-3.5 text-sm text-gray-700 border-t border-gray-100 whitespace-nowrap"
+      {...props}
+    />
+  )
+}
+
+function CustomTr(props: React.HTMLAttributes<HTMLTableRowElement>) {
+  return <tr className="even:bg-gray-50/50 transition-colors hover:bg-primary-50/30" {...props} />
+}
+
 const components = {
   Image: RoundedImage,
   a: CustomLink,
   Callout,
   BlogCTA,
+  table: CustomTable,
+  thead: CustomThead,
+  th: CustomTh,
+  td: CustomTd,
+  tr: CustomTr,
 }
 
 interface MdxProps {
@@ -56,9 +95,9 @@ export function Mdx({ code }: MdxProps) {
       prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline
       prose-strong:text-gray-900
       prose-li:text-gray-700
-      prose-table:border prose-table:border-gray-200 prose-th:bg-gray-50 prose-th:text-gray-900 prose-th:p-3 prose-td:p-3 prose-td:border-t prose-td:border-gray-200
     ">
       <Component components={{ ...components }} />
     </article>
   )
 }
+

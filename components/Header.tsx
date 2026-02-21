@@ -35,10 +35,11 @@ export default function Header() {
   }
 
   const navLinks = [
-    { href: '/#how-it-works', label: 'How It Works' },
+    // { href: '/#how-it-works', label: 'How It Works' },
     { href: '/#features', label: 'Features' },
     { href: '/#use-cases', label: 'Use Cases' },
     { href: '/#pricing', label: 'Pricing' },
+    { href: '/blog', label: 'Blog' },
   ]
 
   return (

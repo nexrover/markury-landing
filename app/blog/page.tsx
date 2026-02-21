@@ -19,7 +19,7 @@ export default function BlogListingPage() {
   return (
     <>
       <Header />
-      <main className="bg-white text-gray-900 min-h-screen pt-32 pb-24">
+      <main className="bg-white text-gray-900 min-h-screen pt-40 md:pt-48 pb-24">
         <div className="container-narrow">
           <div className="mb-16">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">

@@ -10,6 +10,7 @@ export default function Footer() {
     ],
     support: [
       { label: 'User Guide', href: '/user-guide' },
+      { label: 'Blog', href: '/blog' },
       { label: 'Contact Support', href: '/contact-support' },
       { label: 'FAQ', href: '#faq' },
     ],
@@ -77,7 +78,7 @@ export default function Footer() {
 
           {/* Support links */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-4">Support</h4>
+            <h4 className="font-semibold text-gray-900 mb-4">Resources</h4>
             <ul className="space-y-3">
               {links.support.map((link) => (
                 <li key={link.label}>
