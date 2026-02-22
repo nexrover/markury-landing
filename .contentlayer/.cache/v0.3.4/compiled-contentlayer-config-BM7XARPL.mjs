@@ -11,7 +11,9 @@ var Post = defineDocumentType(() => ({
     date: { type: "date", required: true },
     slug: { type: "string", required: true },
     author: { type: "string", required: true },
-    coverImage: { type: "string", required: true }
+    coverImage: { type: "string", required: true },
+    ogImage: { type: "string", required: false },
+    cardImage: { type: "string", required: false }
   },
   computedFields: {
     url: { type: "string", resolve: (post) => `/blog/${post.slug}` }
@@ -28,4 +30,4 @@ export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-VUNUSXRI.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-BM7XARPL.mjs.map

@@ -15,7 +15,7 @@ export default function BlogCard({ post }: BlogCardProps) {
       {/* Cover image with gradient overlay */}
       <div className="w-full relative aspect-[16/9] bg-gradient-to-br from-primary-50 to-gray-100 overflow-hidden">
         <Image
-          src={post.coverImage}
+          src={post.cardImage || post.coverImage}
           alt={post.title}
           fill
           className="object-cover"

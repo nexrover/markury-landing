@@ -19,6 +19,8 @@ export type Post = {
   slug: string
   author: string
   coverImage: string
+  ogImage?: string | undefined
+  cardImage?: string | undefined
   /** MDX file body */
   body: MDX
   url: string

@@ -12,6 +12,8 @@ export const Post = defineDocumentType(() => ({
     slug: { type: 'string', required: true },
     author: { type: 'string', required: true },
     coverImage: { type: 'string', required: true },
+    ogImage: { type: 'string', required: false },
+    cardImage: { type: 'string', required: false },
   },
   computedFields: {
     url: { type: 'string', resolve: (post) => `/blog/${post.slug}` },

@@ -56,7 +56,7 @@ export async function generateMetadata({
       url: `https://markury.app/blog/${post.slug}`,
       images: [
         {
-          url: post.coverImage,
+          url: post.ogImage || post.coverImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -67,7 +67,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      images: [post.coverImage],
+      images: [post.ogImage || post.coverImage],
     },
   }
 }
@@ -92,7 +92,7 @@ export default async function PostPage({ params }: PostProps) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
-    image: `https://markury.app${post.coverImage}`,
+    image: `https://markury.app${post.ogImage || post.coverImage}`,
     datePublished: post.date,
     dateModified: post.date,
     author: {
