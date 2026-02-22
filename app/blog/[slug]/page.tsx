@@ -92,7 +92,7 @@ export default async function PostPage({ params }: PostProps) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
-    image: `https://markury.app${post.ogImage || post.coverImage}`,
+    image: (post.ogImage || post.coverImage).startsWith('http') ? (post.ogImage || post.coverImage) : `https://markury.app${post.ogImage || post.coverImage}`,
     datePublished: post.date,
     dateModified: post.date,
     author: {
@@ -137,12 +137,13 @@ export default async function PostPage({ params }: PostProps) {
 
           {/* Cover Image */}
           <div className="container-narrow mb-10">
-            <div className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-gradient-to-br from-primary-50 to-gray-100 shadow-lg">
+            <div className="relative aspect-[2/1] rounded-2xl overflow-hidden bg-gradient-to-br from-primary-50 to-gray-100 shadow-lg">
               <Image
                 src={post.coverImage}
                 alt={post.title}
                 fill
                 priority
+                quality={90}
                 className="object-cover"
                 sizes="100vw"
               />
