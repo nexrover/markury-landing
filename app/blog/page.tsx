@@ -11,6 +11,26 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/blog',
   },
+  openGraph: {
+    title: 'Blog - Markury',
+    description: 'Tips, guides, and tutorials on screen annotation, remote collaboration, and presentations with Markury.',
+    url: 'https://markury.app/blog',
+    type: 'website',
+    images: [
+      {
+        url: '/markury_og.png',
+        width: 1200,
+        height: 630,
+        alt: 'Markury Blog',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog - Markury',
+    description: 'Tips, guides, and tutorials on screen annotation, remote collaboration, and presentations with Markury.',
+    images: ['/markury_og.png'],
+  },
 }
 
 export default function BlogListingPage() {

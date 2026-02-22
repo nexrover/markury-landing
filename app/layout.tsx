@@ -64,6 +64,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    types: {
+      'application/rss+xml': 'https://markury.app/feed.xml',
+    },
+  },
 };
 
 export default function RootLayout({

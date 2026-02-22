@@ -45,6 +45,7 @@ export async function generateMetadata({
     title: post.title,
     description: post.description,
     authors: [{ name: post.author }],
+    ...(post.keywords && { keywords: post.keywords }),
     alternates: {
       canonical: `/blog/${post.slug}`,
     },
@@ -53,6 +54,7 @@ export async function generateMetadata({
       description: post.description,
       type: 'article',
       publishedTime: post.date,
+      ...(post.updatedDate && { modifiedTime: post.updatedDate }),
       url: `https://markury.app/blog/${post.slug}`,
       images: [
         {
@@ -87,31 +89,59 @@ export default async function PostPage({ params }: PostProps) {
 
   const readingTime = estimateReadingTime(post.body.raw)
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.description,
-    image: (post.ogImage || post.coverImage).startsWith('http') ? (post.ogImage || post.coverImage) : `https://markury.app${post.ogImage || post.coverImage}`,
-    datePublished: post.date,
-    dateModified: post.date,
-    author: {
-      '@type': 'Organization',
-      name: post.author,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Markury',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://markury.app/favicon/favicon-96x96.png',
+  const postImage = (post.ogImage || post.coverImage).startsWith('http') ? (post.ogImage || post.coverImage) : `https://markury.app${post.ogImage || post.coverImage}`
+
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.description,
+      image: postImage,
+      datePublished: post.date,
+      dateModified: post.updatedDate || post.date,
+      author: {
+        '@type': 'Organization',
+        name: post.author,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Markury',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://markury.app/favicon/favicon-96x96.png',
+        },
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `https://markury.app/blog/${post.slug}`,
       },
     },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://markury.app/blog/${post.slug}`,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://markury.app',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: 'https://markury.app/blog',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: post.title,
+          item: `https://markury.app/blog/${post.slug}`,
+        },
+      ],
     },
-  }
+  ]
 
   return (
     <>
@@ -140,7 +170,7 @@ export default async function PostPage({ params }: PostProps) {
             <div className="relative aspect-[2/1] rounded-2xl overflow-hidden bg-gradient-to-br from-primary-50 to-gray-100 shadow-lg">
               <Image
                 src={post.coverImage}
-                alt={post.title}
+                alt={`Cover image for ${post.title}`}
                 fill
                 priority
                 quality={90}

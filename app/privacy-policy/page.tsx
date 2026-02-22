@@ -7,6 +7,17 @@ export const metadata = {
   alternates: {
     canonical: '/privacy-policy',
   },
+  openGraph: {
+    title: 'Privacy Policy - Markury',
+    description: 'Privacy Policy for Markury screen annotation software.',
+    url: 'https://markury.app/privacy-policy',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Privacy Policy - Markury',
+    description: 'Privacy Policy for Markury screen annotation software.',
+  },
 }
 
 export default function PrivacyPolicyPage() {

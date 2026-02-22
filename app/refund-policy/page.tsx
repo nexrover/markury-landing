@@ -7,6 +7,17 @@ export const metadata = {
   alternates: {
     canonical: '/refund-policy',
   },
+  openGraph: {
+    title: 'Refund Policy - Markury',
+    description: 'Refund Policy for Markury screen annotation software.',
+    url: 'https://markury.app/refund-policy',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Refund Policy - Markury',
+    description: 'Refund Policy for Markury screen annotation software.',
+  },
 }
 
 export default function RefundPolicyPage() {

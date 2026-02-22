@@ -9,6 +9,17 @@ export const metadata = {
   alternates: {
     canonical: '/contact-support',
   },
+  openGraph: {
+    title: 'Contact Support - Markury',
+    description: 'Need help with Markury? Contact our support team.',
+    url: 'https://markury.app/contact-support',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Contact Support - Markury',
+    description: 'Need help with Markury? Contact our support team.',
+  },
 }
 
 export default function ContactSupport() {

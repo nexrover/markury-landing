@@ -7,6 +7,17 @@ export const metadata = {
   alternates: {
     canonical: '/terms-of-service',
   },
+  openGraph: {
+    title: 'Terms of Service - Markury',
+    description: 'Terms of Service for Markury screen annotation software.',
+    url: 'https://markury.app/terms-of-service',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Terms of Service - Markury',
+    description: 'Terms of Service for Markury screen annotation software.',
+  },
 }
 
 export default function TermsOfServicePage() {
