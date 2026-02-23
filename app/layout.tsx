@@ -136,6 +136,25 @@ export default function RootLayout({
                     }
                   ]
                 }
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "VideoObject",
+                "name": "Markury Demo — Screen Annotation Tool",
+                "description": "See Markury in action. Draw, highlight, and annotate directly on your screen with the modern, lightweight annotation tool for Mac and Windows.",
+                "thumbnailUrl": "https://markury.app/markury_og.png",
+                "contentUrl": "https://ftp.markury.app/demo-final.webm",
+                "uploadDate": "2026-02-14",
+                "duration": "PT1M30S",
+                "embedUrl": "https://markury.app/",
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "Markury",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://markury.app/favicon/favicon-96x96.png"
+                  }
+                }
               }
             ]
           `}
