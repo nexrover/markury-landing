@@ -103,25 +103,45 @@ export default function UserGuidePage() {
                         </div>
                         <h3 className="text-xl font-bold text-gray-900">macOS</h3>
                       </div>
+                      <a
+                        href="https://ftp.markury.app/installers/Markury%20v1.0.dmg"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 mb-5 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors shadow-sm"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        </svg>
+                        Download .dmg
+                      </a>
                       <ol className="list-decimal list-inside space-y-3 text-gray-700 mb-6">
-                        <li>Download the <strong>Markury.dmg</strong> file from your dashboard.</li>
+                        <li>Download the <strong>Markury.dmg</strong> file using the button above.</li>
                         <li>Double-click the downloaded file to open it.</li>
                         <li>Drag the <strong>Markury</strong> app icon into the <strong>Applications</strong> folder.</li>
                         <li>Launch Markury from your Applications folder.</li>
                       </ol>
                       
                       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                        <p className="font-semibold text-yellow-800 mb-2">"App can't be opened" Warning?</p>
+                        <p className="font-semibold text-yellow-800 mb-2">&quot;App can&apos;t be opened&quot; Warning?</p>
+                        <div className="my-3 rounded-lg overflow-hidden inline-block border border-yellow-200">
+                          <Image
+                            src="https://ftp.markury.app/images/markury-gatekeeper-warning.webp"
+                            alt="macOS Gatekeeper warning - Markury Not Opened"
+                            width={280}
+                            height={300}
+                            className="rounded-lg"
+                          />
+                        </div>
                         <p className="text-sm text-yellow-800 mb-2">
-                          If you see a warning that Apple cannot check the app for malicious software:
+                          If macOS blocks Markury from opening, follow these steps:
                         </p>
-                        <ol className="list-decimal list-inside text-sm text-yellow-800 space-y-1">
-                          <li><strong>Right-click</strong> (or Control-click) the Markury app in Finder.</li>
-                          <li>Select <strong>Open</strong> from the menu.</li>
-                          <li>Click <strong>Open</strong> in the dialog box that appears.</li>
+                        <ol className="list-decimal list-inside text-sm text-yellow-800 space-y-1.5">
+                          <li>Open <strong>System Settings</strong> from the Apple menu ().</li>
+                          <li>Go to <strong>Privacy &amp; Security</strong> in the sidebar.</li>
+                          <li>Scroll down to the <strong>Security</strong> section.</li>
+                          <li>Click <strong>Open Anyway</strong> next to the message about Markury being blocked.</li>
+                          <li>Enter your Mac login password if prompted, then click <strong>Open</strong> to confirm.</li>
                         </ol>
                         <p className="text-xs text-yellow-700 mt-2">
-                          You only need to do this once.
+                          Note: The &quot;Open Anyway&quot; button is only available for about an hour after you first try to open the app. You only need to do this once.
                         </p>
                       </div>
                     </div>
@@ -140,8 +160,17 @@ export default function UserGuidePage() {
                         </div>
                         <h3 className="text-xl font-bold text-gray-900">Windows</h3>
                       </div>
+                      <a
+                        href="https://ftp.markury.app/installers/Markury%20v1.0.exe"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 mb-5 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors shadow-sm"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        </svg>
+                        Download .exe
+                      </a>
                       <ol className="list-decimal list-inside space-y-3 text-gray-700">
-                        <li>Download the <strong>Markury.exe</strong> installer from your dashboard.</li>
+                        <li>Download the <strong>Markury.exe</strong> installer using the button above.</li>
                         <li>Double-click the installer file to run it.</li>
                         <li>Follow the on-screen prompts to complete installation.</li>
                         <li>Markury will launch automatically when finished.</li>

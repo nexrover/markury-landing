@@ -39,6 +39,7 @@ export default function Header() {
     { href: '/#features', label: 'Features' },
     { href: '/#use-cases', label: 'Use Cases' },
     { href: '/#pricing', label: 'Pricing' },
+    { href: '/download', label: 'Download' },
     { href: '/blog', label: 'Blog' },
   ]
 
