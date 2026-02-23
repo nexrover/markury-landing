@@ -50,7 +50,7 @@ export default function Footer() {
             
             <div className="flex items-center gap-2">
               <span className="text-xs text-gray-500 font-medium">A product by</span>
-              <a href="https://www.nexrover.com" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity">
+              <a href="https://www.nexrover.com" target="_blank" rel="noopener noreferrer" className="transition-opacity">
                 <Image 
                   src="/nexrover.svg" 
                   alt="Nexrover" 
