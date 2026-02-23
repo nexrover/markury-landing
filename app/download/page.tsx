@@ -56,8 +56,37 @@ export default function DownloadPage() {
     },
   ]
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Markury',
+    description: 'Screen annotation tool for Mac and Windows. Draw, highlight, and present directly on your screen.',
+    applicationCategory: 'DesignApplication',
+    operatingSystem: 'macOS, Windows',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      description: 'Free trial available',
+    },
+    downloadUrl: [
+      'https://ftp.markury.app/installers/Markury%20v1.0.dmg',
+      'https://ftp.markury.app/installers/Markury%20v1.0.exe',
+    ],
+    softwareVersion: '1.0',
+    author: {
+      '@type': 'Organization',
+      name: 'Nexrover',
+      url: 'https://www.nexrover.com',
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main className="bg-white text-gray-900 pt-32 sm:pt-36">
         <div className="container-narrow py-12 md:py-16">

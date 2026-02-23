@@ -88,7 +88,19 @@ export default function UserGuidePage() {
                     Getting Markury up and running on your device is quick and easy.
                   </p>
 
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="mb-8">
+                    <Link
+                      href="/download"
+                      className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors shadow-sm"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                      </svg>
+                      Go to Downloads
+                    </Link>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-8 not-prose">
                     {/* macOS Installation */}
                     <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
                       <div className="flex items-center gap-3 mb-4">
@@ -103,17 +115,8 @@ export default function UserGuidePage() {
                         </div>
                         <h3 className="text-xl font-bold text-gray-900">macOS</h3>
                       </div>
-                      <a
-                        href="https://ftp.markury.app/installers/Markury%20v1.0.dmg"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 mb-5 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors shadow-sm"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                        </svg>
-                        Download .dmg
-                      </a>
                       <ol className="list-decimal list-inside space-y-3 text-gray-700 mb-6">
-                        <li>Download the <strong>Markury.dmg</strong> file using the button above.</li>
+                        <li>Download the <strong>Markury.dmg</strong> file from the <Link href="/download" className="text-primary-600 hover:underline">downloads page</Link>.</li>
                         <li>Double-click the downloaded file to open it.</li>
                         <li>Drag the <strong>Markury</strong> app icon into the <strong>Applications</strong> folder.</li>
                         <li>Launch Markury from your Applications folder.</li>
@@ -160,17 +163,8 @@ export default function UserGuidePage() {
                         </div>
                         <h3 className="text-xl font-bold text-gray-900">Windows</h3>
                       </div>
-                      <a
-                        href="https://ftp.markury.app/installers/Markury%20v1.0.exe"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 mb-5 text-sm font-semibold text-gray-900 bg-markury-yellow rounded-lg hover:opacity-95 transition-colors shadow-sm"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                        </svg>
-                        Download .exe
-                      </a>
                       <ol className="list-decimal list-inside space-y-3 text-gray-700">
-                        <li>Download the <strong>Markury.exe</strong> installer using the button above.</li>
+                        <li>Download the <strong>Markury.exe</strong> installer from the <Link href="/download" className="text-primary-600 hover:underline">downloads page</Link>.</li>
                         <li>Double-click the installer file to run it.</li>
                         <li>Follow the on-screen prompts to complete installation.</li>
                         <li>Markury will launch automatically when finished.</li>
