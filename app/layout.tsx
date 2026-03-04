@@ -13,13 +13,30 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://markury.app"),
-  title: "Markury | Screen Annotation Made Simple",
+  metadataBase: new URL("https://www.markury.app"),
+  title: {
+    default: "Markury | Screen Annotation Made Simple",
+    template: "%s | Markury",
+  },
   description:
     "Draw, highlight, and annotate directly on your screen. The modern desktop annotation tool for teachers, presenters, designers, and remote teams.",
-  keywords:
-    "screen annotation, drawing tool, presentation software, screen marker, digital whiteboard, teaching tool, screen recording",
-  authors: [{ name: "Markury" }],
+  keywords: [
+    "screen annotation",
+    "drawing tool",
+    "presentation software",
+    "screen marker",
+    "digital whiteboard",
+    "teaching tool",
+    "screen recording",
+    "pdf annotation",
+    "pdf highlighter",
+    "slide annotation",
+    "slide highlighter",
+    "presentation tool",
+  ],
+  authors: [{ name: "NexRover Team", url: "https://www.nexrover.com" }],
+  creator: "NexRover",
+  publisher: "NexRover",
   icons: {
     icon: [
       { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
@@ -37,7 +54,7 @@ export const metadata: Metadata = {
   },
   manifest: "/favicon/site.webmanifest",
   openGraph: {
-    url: "https://markury.app",
+    url: "https://www.markury.app",
     title: "Markury | Screen Annotation Made Simple",
     description:
       "Draw, highlight, and annotate directly on your screen. The modern desktop annotation tool for teachers, presenters, designers, and remote teams.",
@@ -63,10 +80,18 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   alternates: {
     types: {
-      'application/rss+xml': 'https://markury.app/feed.xml',
+      "application/rss+xml": "https://www.markury.app/feed.xml",
     },
   },
 };
@@ -93,7 +118,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "WebSite",
                 "name": "Markury",
-                "url": "https://markury.app/"
+                "url": "https://www.markury.app/"
               },
               {
                 "@context": "https://schema.org",
@@ -142,17 +167,17 @@ export default function RootLayout({
                 "@type": "VideoObject",
                 "name": "Markury Demo — Screen Annotation Tool",
                 "description": "See Markury in action. Draw, highlight, and annotate directly on your screen with the modern, lightweight annotation tool for Mac and Windows.",
-                "thumbnailUrl": "https://markury.app/markury_og.png",
+                "thumbnailUrl": "https://www.markury.app/markury_og.png",
                 "contentUrl": "https://ftp.markury.app/demo-final.webm",
                 "uploadDate": "2026-02-14",
                 "duration": "PT1M30S",
-                "embedUrl": "https://markury.app/",
+                "embedUrl": "https://www.markury.app/",
                 "publisher": {
                   "@type": "Organization",
                   "name": "Markury",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://markury.app/favicon/favicon-96x96.png"
+                    "url": "https://www.markury.app/favicon/favicon-96x96.png"
                   }
                 }
               }

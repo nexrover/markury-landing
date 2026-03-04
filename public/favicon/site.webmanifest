@@ -1,6 +1,7 @@
 {
-  "name": "markury.app",
+  "name": "Markury",
   "short_name": "Markury",
+  "description": "Screen annotation tool for Mac and Windows. Draw, highlight, and present directly on your screen.",
   "icons": [
     {
       "src": "/favicon/web-app-manifest-192x192.png",

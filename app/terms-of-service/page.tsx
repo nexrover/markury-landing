@@ -10,7 +10,7 @@ export const metadata = {
   openGraph: {
     title: 'Terms of Service - Markury',
     description: 'Terms of Service for Markury screen annotation software.',
-    url: 'https://markury.app/terms-of-service',
+    url: 'https://www.markury.app/terms-of-service',
     type: 'website',
   },
   twitter: {

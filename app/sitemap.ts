@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { allPosts } from 'contentlayer/generated'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://markury.app'
+  const baseUrl = 'https://www.markury.app'
   
   return [
     {

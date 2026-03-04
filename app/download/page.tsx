@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: 'Download Markury - Screen Annotation Tool for Mac & Windows',
     description: 'Download Markury for macOS or Windows. Start annotating your screen in seconds.',
-    url: 'https://markury.app/download',
+    url: 'https://www.markury.app/download',
     type: 'website',
   },
   twitter: {
@@ -137,7 +137,7 @@ export default function DownloadPage() {
                 <div className="bg-gray-50 rounded-xl p-4 mb-6 border border-gray-100">
                   <div className="flex items-center justify-between text-sm">
                     <span className="font-medium text-gray-700">{item.fileName}</span>
-                    <span className="text-gray-500">{item.fileSize}</span>
+                    {/* <span className="text-gray-500">{item.fileSize}</span> */}
                   </div>
                   <p className="text-xs text-gray-500 mt-1">Requires: {item.requirements}</p>
                 </div>

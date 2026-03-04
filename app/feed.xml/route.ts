@@ -2,7 +2,7 @@ import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 
 export async function GET() {
-  const baseUrl = 'https://markury.app'
+  const baseUrl = 'https://www.markury.app'
   const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
 
   const feedXml = `<?xml version="1.0" encoding="utf-8"?>

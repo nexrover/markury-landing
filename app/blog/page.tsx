@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Blog - Markury',
     description: 'Tips, guides, and tutorials on screen annotation, remote collaboration, and presentations with Markury.',
-    url: 'https://markury.app/blog',
+    url: 'https://www.markury.app/blog',
     type: 'website',
     images: [
       {

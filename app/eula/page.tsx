@@ -10,7 +10,7 @@ export const metadata = {
   openGraph: {
     title: 'End User License Agreement (EULA) - Markury',
     description: 'End User License Agreement for Markury screen annotation software.',
-    url: 'https://markury.app/eula',
+    url: 'https://www.markury.app/eula',
     type: 'website',
   },
   twitter: {

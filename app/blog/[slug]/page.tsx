@@ -55,7 +55,7 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: post.date,
       ...(post.updatedDate && { modifiedTime: post.updatedDate }),
-      url: `https://markury.app/blog/${post.slug}`,
+      url: `https://www.markury.app/blog/${post.slug}`,
       images: [
         {
           url: post.ogImage || post.coverImage,
@@ -89,7 +89,7 @@ export default async function PostPage({ params }: PostProps) {
 
   const readingTime = estimateReadingTime(post.body.raw)
 
-  const postImage = (post.ogImage || post.coverImage).startsWith('http') ? (post.ogImage || post.coverImage) : `https://markury.app${post.ogImage || post.coverImage}`
+  const postImage = (post.ogImage || post.coverImage).startsWith('http') ? (post.ogImage || post.coverImage) : `https://www.markury.app${post.ogImage || post.coverImage}`
 
   const jsonLd = [
     {
@@ -109,12 +109,12 @@ export default async function PostPage({ params }: PostProps) {
         name: 'Markury',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://markury.app/favicon/favicon-96x96.png',
+          url: 'https://www.markury.app/favicon/favicon-96x96.png',
         },
       },
       mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': `https://markury.app/blog/${post.slug}`,
+        '@id': `https://www.markury.app/blog/${post.slug}`,
       },
     },
     {
@@ -125,19 +125,19 @@ export default async function PostPage({ params }: PostProps) {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://markury.app',
+          item: 'https://www.markury.app',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Blog',
-          item: 'https://markury.app/blog',
+          item: 'https://www.markury.app/blog',
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: post.title,
-          item: `https://markury.app/blog/${post.slug}`,
+          item: `https://www.markury.app/blog/${post.slug}`,
         },
       ],
     },

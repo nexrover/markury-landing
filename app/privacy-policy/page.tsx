@@ -10,7 +10,7 @@ export const metadata = {
   openGraph: {
     title: 'Privacy Policy - Markury',
     description: 'Privacy Policy for Markury screen annotation software.',
-    url: 'https://markury.app/privacy-policy',
+    url: 'https://www.markury.app/privacy-policy',
     type: 'website',
   },
   twitter: {

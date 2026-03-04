@@ -10,7 +10,7 @@ export const metadata = {
   openGraph: {
     title: 'Refund Policy - Markury',
     description: 'Refund Policy for Markury screen annotation software.',
-    url: 'https://markury.app/refund-policy',
+    url: 'https://www.markury.app/refund-policy',
     type: 'website',
   },
   twitter: {

@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: 'Contact Support - Markury',
     description: 'Need help with Markury? Contact our support team.',
-    url: 'https://markury.app/contact-support',
+    url: 'https://www.markury.app/contact-support',
     type: 'website',
   },
   twitter: {
