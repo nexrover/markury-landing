@@ -4,21 +4,21 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Download Markury - Screen Annotation Tool for Mac & Windows',
-  description: 'Download Markury for macOS or Windows. Start annotating your screen in seconds with the modern, lightweight screen drawing tool.',
+  title: 'Try Markury Free - Screen Annotation Tool for Mac & Windows',
+  description: 'Try Markury Free for macOS or Windows. Start annotating your screen in seconds with the modern, lightweight screen drawing tool.',
   alternates: {
     canonical: '/download',
   },
   openGraph: {
-    title: 'Download Markury - Screen Annotation Tool for Mac & Windows',
-    description: 'Download Markury for macOS or Windows. Start annotating your screen in seconds.',
+    title: 'Try Markury Free - Screen Annotation Tool for Mac & Windows',
+    description: 'Try Markury Free for macOS or Windows. Start annotating your screen in seconds.',
     url: 'https://www.markury.app/download',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Download Markury',
-    description: 'Download Markury for macOS or Windows. Start annotating your screen in seconds.',
+    title: 'Try Markury Free',
+    description: 'Try Markury Free for macOS or Windows. Start annotating your screen in seconds.',
   },
 }
 
