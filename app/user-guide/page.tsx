@@ -146,6 +146,18 @@ export default function UserGuidePage() {
                         <p className="text-xs text-yellow-700 mt-2">
                           Note: The &quot;Open Anyway&quot; button is only available for about an hour after you first try to open the app. You only need to do this once.
                         </p>
+                        <p className="text-sm text-yellow-800 mt-3">
+                          📺 Need a visual walkthrough? Watch our{' '}
+                          <a
+                            href="https://youtu.be/B6VFXYPkVIk"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-semibold underline hover:text-yellow-900 transition-colors"
+                          >
+                            video guide
+                          </a>{' '}
+                          for step-by-step instructions.
+                        </p>
                       </div>
                     </div>
 
