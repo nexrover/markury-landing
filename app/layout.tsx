@@ -169,7 +169,7 @@ export default function RootLayout({
                 "description": "See Markury in action. Draw, highlight, and annotate directly on your screen with the modern, lightweight annotation tool for Mac and Windows.",
                 "thumbnailUrl": "https://www.markury.app/markury_og.png",
                 "contentUrl": "https://ftp.markury.app/demo-final.webm",
-                "uploadDate": "2026-02-14",
+                "uploadDate": "2026-02-14T00:00:00+00:00",
                 "duration": "PT1M30S",
                 "embedUrl": "https://www.markury.app/",
                 "publisher": {
