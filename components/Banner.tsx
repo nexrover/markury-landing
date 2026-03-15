@@ -19,7 +19,7 @@ export default function Banner() {
 
           <Link 
             href="/#pricing" 
-            className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-1.5 sm:px-5 sm:py-2 bg-markury-yellow hover:bg-yellow-300 text-gray-900 font-bold text-xs sm:text-sm rounded-lg transition-all duration-200 shadow-[0_0_14px_rgba(250,204,21,0.35)] hover:shadow-[0_0_22px_rgba(250,204,21,0.55)] hover:-translate-y-px"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-1.5 sm:px-5 sm:py-2 bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm rounded-lg border border-white/10 transition-all duration-200"
           >
             Get Markury Now
           </Link>
