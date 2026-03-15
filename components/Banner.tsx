@@ -19,10 +19,18 @@ export default function Banner() {
 
           <Link 
             href="/#pricing" 
+            className="group relative inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-full transition-all duration-300 backdrop-blur-sm hover:shadow-[0_0_15px_-3px_rgba(255,255,255,0.1)]"
+          >
+            <span className="font-semibold text-white group-hover:text-markury-yellow transition-colors">Get Markury Now</span>
+          </Link>
+
+          {/* <Link 
+            href="/#pricing" 
             className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-1.5 sm:px-5 sm:py-2 bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm rounded-lg border border-white/10 transition-all duration-200"
           >
             Get Markury Now
-          </Link>
+          </Link> */}
+          
         </div>
         
         <button 
