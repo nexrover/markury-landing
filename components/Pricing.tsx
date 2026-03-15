@@ -1,5 +1,8 @@
+'use client'
+
 import { ScribbleStroke } from '@/components/AnnotationAccents'
 import {  CheckmarkCircle02Icon, AiSecurity01Icon } from 'hugeicons-react'
+import CountdownTimer from '@/components/CountdownTimer'
 
 export default function Pricing() {
   const features = [
@@ -39,6 +42,9 @@ export default function Pricing() {
             Choose the plan that suits you best.
           </p>
         </div>
+
+        {/* Countdown Timer */}
+        <CountdownTimer variant="pricing" />
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto px-4">

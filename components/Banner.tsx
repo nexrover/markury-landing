@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Cancel01Icon } from 'hugeicons-react'
 import Link from 'next/link'
+import CountdownTimer from '@/components/CountdownTimer'
 
 export default function Banner() {
   const [isVisible, setIsVisible] = useState(true)
@@ -10,24 +11,17 @@ export default function Banner() {
   if (!isVisible) return null
 
   return (
-    <div className="relative bg-gradient-to-r from-gray-900 via-slate-900 to-gray-900 text-white px-4 py-2.5 sm:px-6 z-50 border-b border-white/10">
-      <div className="container-narrow flex items-center justify-between gap-4">
-        <div className="flex-1 flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6 text-xs sm:text-sm md:text-base text-center mx-auto">
+    <div className="relative bg-gradient-to-r from-gray-900 via-slate-900 to-gray-900 text-white px-4 py-3 sm:px-6 sm:py-3.5 z-50 border-b border-white/10">
+      <div className="container-narrow flex items-center justify-between gap-3 sm:gap-4">
+        <div className="flex-1 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-x-8 text-center mx-auto">
           
-          <div className="flex items-center gap-2.5">
-            <span className="text-lg leading-none animate-wiggle inline-block origin-bottom">🎉</span>
-            <p className="font-medium whitespace-nowrap">
-              <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-markury-yellow to-markury-orange">We’re Live!</span>
-              <span className="text-gray-200 ml-1.5">Unlock Lifetime Access at 50% Off</span>
-            </p>
-          </div>
+          <CountdownTimer variant="banner" onExpired={() => setIsVisible(false)} />
 
           <Link 
             href="/#pricing" 
-            className="group relative inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-full transition-all duration-300 backdrop-blur-sm hover:shadow-[0_0_15px_-3px_rgba(255,255,255,0.1)]"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-1.5 sm:px-5 sm:py-2 bg-markury-yellow hover:bg-yellow-300 text-gray-900 font-bold text-xs sm:text-sm rounded-lg transition-all duration-200 shadow-[0_0_14px_rgba(250,204,21,0.35)] hover:shadow-[0_0_22px_rgba(250,204,21,0.55)] hover:-translate-y-px"
           >
-            <span className="font-semibold text-white group-hover:text-markury-yellow transition-colors">Grab Offer</span>
-            <span className="block transition-transform group-hover:translate-x-0.5">&rarr;</span>
+            Get Markury Now
           </Link>
         </div>
         
