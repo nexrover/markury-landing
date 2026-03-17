@@ -697,14 +697,14 @@ export default function UserGuidePage() {
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-2">Managing Activations</h3>
                       <p className="text-gray-700 leading-relaxed mb-4">
-                        If you need to move your license to a new computer or see the "Activation limit reached" message:
+                        If you need to move your license to a new computer or see the &quot;Activation limit reached&quot; message:
                       </p>
                       <ul className="list-disc list-inside space-y-2 text-gray-700">
                         <li>
                           <strong>Deactivate existing device:</strong> Go to Settings &rarr; License and click <strong>Deactivate</strong> on your old computer.
                         </li>
                         <li>
-                          <strong>Manage online:</strong> If you don't have access to the old computer, use the <strong>Account</strong> link in the License tab (or visit the Lemon Squeezy dashboard) to manage your active devices remotely.
+                          <strong>Manage online:</strong> If you don&apos;t have access to the old computer, use the <strong>Account</strong> link in the License tab (or visit the Lemon Squeezy dashboard) to manage your active devices remotely.
                         </li>
                       </ul>
                     </div>

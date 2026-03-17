@@ -31,7 +31,7 @@ export default function ContactSupport() {
           <div className="max-w-2xl mx-auto text-center">
             <h1 className="text-4xl font-bold text-gray-900 mb-6">Contact Support</h1>
             <p className="text-xl text-gray-600 mb-12">
-              Have a question or run into an issue? We're here to help.
+              Have a question or run into an issue? We&apos;re here to help.
             </p>
 
             <div className="bg-gray-50 rounded-3xl p-8 sm:p-12 border border-gray-100">
@@ -41,7 +41,7 @@ export default function ContactSupport() {
               
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Email Us</h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Send us an email and we'll get back to you as soon as possible. Whether it's a bug report, feature request, or just a question about your license.
+                Send us an email and we&apos;ll get back to you as soon as possible. Whether it&apos;s a bug report, feature request, or just a question about your license.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

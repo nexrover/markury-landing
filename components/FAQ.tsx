@@ -19,7 +19,7 @@ export default function FAQ() {
     },
     {
       question: "Do I need an internet connection?",
-      answer: <>You only need an internet connection once to activate your license key. After that, Markury works 100% offline. We respect your privacy and don't send any data to the cloud.</>
+      answer: <>You only need an internet connection once to activate your license key. After that, Markury works 100% offline. We respect your privacy and don&apos;t send any data to the cloud.</>
     },
     {
       question: "Can I install it on multiple computers?",
@@ -27,7 +27,7 @@ export default function FAQ() {
     },
     {
       question: "What is your refund policy?",
-      answer: <>We offer a no-questions-asked 30-day money-back guarantee. If Markury doesn't improve your workflow, simply email us at <a href="mailto:support@markury.app" className="font-medium text-gray-900 underline hover:text-markury-cyan transition-colors">support@markury.app</a> for a full refund.</>
+      answer: <>We offer a no-questions-asked 30-day money-back guarantee. If Markury doesn&apos;t improve your workflow, simply email us at <a href="mailto:support@markury.app" className="font-medium text-gray-900 underline hover:text-markury-cyan transition-colors">support@markury.app</a> for a full refund.</>
     }
   ]
 

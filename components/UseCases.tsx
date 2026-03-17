@@ -162,7 +162,7 @@ export default function UseCases() {
             Built for people who <span className="text-highlight text-highlight--cyan text-highlight--soft">explain things</span>
           </h2>
           <p className="section-subheading max-w-2xl mx-auto">
-            Whether you're teaching a classroom, leading a meeting, or recording a tutorial, Markury helps you communicate with clarity.
+            Whether you&apos;re teaching a classroom, leading a meeting, or recording a tutorial, Markury helps you communicate with clarity.
           </p>
         </div>
 

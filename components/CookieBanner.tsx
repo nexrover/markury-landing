@@ -43,7 +43,7 @@ export default function CookieBanner() {
         <div className="text-sm text-gray-600 text-center sm:text-left">
           <p>
             We use cookies to improve your experience and analyze our traffic. 
-            By clicking "Accept", you consent to our use of cookies.
+            By clicking &quot;Accept&quot;, you consent to our use of cookies.
           </p>
         </div>
         <div className="flex items-center gap-3 shrink-0">

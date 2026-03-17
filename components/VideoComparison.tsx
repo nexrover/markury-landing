@@ -201,7 +201,7 @@ export default function VideoComparison({
     
     const interval = setInterval(syncPlay, 1000)
     return () => clearInterval(interval)
-  }, []) // Empty dependency array to run once on mount
+  }, [isPlaying])
 
   return (
     <div 
