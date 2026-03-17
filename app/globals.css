@@ -164,6 +164,13 @@
   50% { opacity: 1; }
 }
 
+@keyframes markury-shimmer {
+  0% { transform: translateX(-140%) skewX(-20deg); opacity: 0; }
+  15% { opacity: 1; }
+  50% { transform: translateX(380%) skewX(-20deg); opacity: 0; }
+  100% { transform: translateX(380%) skewX(-20deg); opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .float-slow,
   .float-slower {
