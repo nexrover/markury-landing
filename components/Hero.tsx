@@ -1,8 +1,23 @@
+'use client'
+
+import { useRef } from 'react'
 import { ScribbleArrow, ScribbleCircle } from '@/components/AnnotationAccents'
 // import VideoComparison from '@/components/VideoComparison'
-import VideoShowcase from '@/components/VideoShowcase'
+import VideoShowcase, { type VideoShowcaseHandle } from '@/components/VideoShowcase'
 
 export default function Hero() {
+  const videoRef = useRef<VideoShowcaseHandle>(null)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
+
+  const handleSeeDemo = () => {
+    videoContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
+    setTimeout(() => {
+      videoRef.current?.playAndUnmute()
+      videoRef.current?.highlightControls()
+    }, 500)
+  }
+
   return (
     <section className="relative pt-40 pb-20 sm:pt-48 sm:pb-32 overflow-hidden">
       {/* Background gradient */}
@@ -34,14 +49,14 @@ export default function Hero() {
             <a href="#pricing" className="btn-primary w-full sm:w-auto">
               Get Markury Pro
             </a>
-            <a href="#how-it-works" className="btn-secondary w-full sm:w-auto">
+            <button onClick={handleSeeDemo} className="btn-secondary w-full sm:w-auto">
               See how it works
-            </a>
+            </button>
           </div>
         </div>
 
           {/* Hero Visual - Video Showcase */}
-          <div className="relative mx-auto w-full max-w-[90rem]">
+          <div ref={videoContainerRef} className="relative mx-auto w-full max-w-[90rem]">
             {/* Main container with shadow/border */}
             <div className="relative bg-white rounded-xl shadow-2xl border border-gray-200 p-1">
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden relative isolate">
@@ -53,6 +68,7 @@ export default function Hero() {
                   className="w-full h-full"
                 /> */}
                 <VideoShowcase
+                  ref={videoRef}
                   videoSrc="https://ftp.markury.app/demo-final.webm"
                   poster="https://ftp.markury.app/demo-final-poster.webp"
                   className="w-full h-full"

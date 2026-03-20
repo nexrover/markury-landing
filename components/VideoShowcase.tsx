@@ -28,11 +28,16 @@ function formatTime(seconds: number): string {
   return `${mins}:${secs.toString().padStart(2, '0')}`
 }
 
-export default function VideoShowcase({
+export interface VideoShowcaseHandle {
+  playAndUnmute: () => void
+  highlightControls: () => void
+}
+
+const VideoShowcase = React.forwardRef<VideoShowcaseHandle, VideoShowcaseProps>(function VideoShowcase({
   videoSrc,
   poster,
   className,
-}: VideoShowcaseProps) {
+}, ref) {
   // Debug videoSrc
   // console.log('VideoShowcase videoSrc:', videoSrc, 'IsArray:', Array.isArray(videoSrc), 'Type:', typeof videoSrc)
 
@@ -50,12 +55,32 @@ export default function VideoShowcase({
   const [volume, setVolume] = useState(1)
   const [showVolumeSlider, setShowVolumeSlider] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [controlsHighlight, setControlsHighlight] = useState(false)
 
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
   const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const volumeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  React.useImperativeHandle(ref, () => ({
+    playAndUnmute() {
+      const video = videoRef.current
+      if (!video) return
+      video.muted = false
+      video.volume = volume
+      setIsMuted(false)
+      if (!isPlaying) {
+        video.play().catch(() => {})
+        setIsPlaying(true)
+      }
+    },
+    highlightControls() {
+      setShowControls(true)
+      setControlsHighlight(true)
+      setTimeout(() => setControlsHighlight(false), 2200)
+    },
+  }))
 
   // ... rest of the component implementation ...
   // Skipping unchanged parts for replace_file_content match
@@ -383,9 +408,9 @@ export default function VideoShowcase({
 
       {/* Controls Pill (Floating Bottom Center) */}
       <div
-        className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-2xl transition-all duration-300 ${
+        className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border shadow-2xl transition-all duration-300 ${
           showControls ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
+        } ${controlsHighlight ? 'border-blue-400 ring-2 ring-blue-400/60 animate-pulse' : 'border-white/10'}`}
       >
             {/* Play/Pause */}
             <button
@@ -472,4 +497,6 @@ export default function VideoShowcase({
       </div>
     </div>
   )
-}
+})
+
+export default VideoShowcase
