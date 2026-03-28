@@ -9,6 +9,7 @@ import {
   VideoReplayIcon, 
   SourceCodeIcon,
   PlayIcon,
+  Analytics02Icon,
 } from 'hugeicons-react'
 
 /**
@@ -105,6 +106,17 @@ export default function UseCases() {
       bg: "bg-markury-purple",
       gradient: "from-markury-purple/20 to-indigo-500/20",
       media: "https://ftp.markury.app/use-cases/presenter",
+    },
+    {
+      title: "Traders & Analysts",
+      description: "Explain trading ideas clearly.",
+      detail: "Annotate charts, highlight key levels, and explain trade setups visually, perfect for sharing insights, training, or client reports.",
+      headline: "How to explain trading ideas clearly",
+      icon: <Analytics02Icon className="w-6 h-6" />,
+      color: "text-markury-orange",
+      bg: "bg-markury-orange",
+      gradient: "from-markury-orange/20 to-amber-500/20",
+      media: "https://ftp.markury.app/use-cases/trader",
     },
     {
       title: "Designers & Reviewers",
