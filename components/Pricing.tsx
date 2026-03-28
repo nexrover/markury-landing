@@ -163,7 +163,7 @@ export default function Pricing() {
                 <AiSecurity01Icon className="w-8 h-8 text-green-600" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-gray-900 mb-1">30-Day Money-Back Guarantee</h4>
+                <h4 className="text-lg font-bold text-gray-900 mb-1">7-Day Money-Back Guarantee</h4>
                 <p className="text-gray-600">Not satisfied? Get a full refund, no questions asked. We&apos;re confident you&apos;ll love Markury.</p>
               </div>
             </div>
