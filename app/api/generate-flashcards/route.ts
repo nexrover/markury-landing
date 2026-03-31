@@ -21,27 +21,30 @@ function keyOf(topic: string, difficulty: string, count: number, language: strin
 }
 
 function promptOf(topic: string, difficulty: string, count: number, language: string) {
+  const askCount = count + 2
   const langInstruction =
     language === 'Auto'
       ? 'Detect the most appropriate language from the topic and write in that language'
       : `Write all questions and answers in ${language}`
 
-  return `Create flashcards for studying.
+  return `Create exactly ${askCount} flashcards for studying.
 
 Topic: ${topic}
 Difficulty: ${difficulty}
-Count: ${count}
+Number of flashcards to generate: ${askCount}
 
-Output format STRICTLY:
+Output format STRICTLY (each flashcard is one Q line followed by one A line):
 
 Flashcards:
 
-Q: ...
-A: ...
-Q: ...
-A: ...
+Q: [question 1]
+A: [answer 1]
+Q: [question 2]
+A: [answer 2]
+... continue until you have exactly ${askCount} Q/A pairs ...
 
 Rules:
+- Generate EXACTLY ${askCount} Q/A pairs. Count them as you write: 1, 2, 3 ... ${askCount}. Do NOT stop early.
 - Difficulty "${difficulty}" means: ${difficulty === 'Easy' ? 'basic recall, simple definitions, beginner-friendly' : difficulty === 'Hard' ? 'advanced concepts, deeper analysis, challenging questions' : 'moderate complexity, clear but requires understanding'}
 - ${langInstruction}
 - Keep answers concise but accurate

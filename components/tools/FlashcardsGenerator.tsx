@@ -35,7 +35,7 @@ function parseFlashcards(text: string): Flashcard[] {
 export default function FlashcardsGenerator() {
   const [topic, setTopic] = useState('')
   const [difficulty, setDifficulty] = useState('Medium')
-  const [count, setCount] = useState(12)
+  const [countStr, setCountStr] = useState('12')
   const [language, setLanguage] = useState('Auto')
   const [isLoading, setIsLoading] = useState(false)
   const [topicError, setTopicError] = useState('')
@@ -53,6 +53,9 @@ export default function FlashcardsGenerator() {
       return
     }
 
+    const count = Math.max(4, Math.min(40, parseInt(countStr, 10) || 12))
+    setCountStr(String(count))
+
     setTopicError('')
     setError('')
     setShareUrl(null)
@@ -66,7 +69,8 @@ export default function FlashcardsGenerator() {
       const data = (await response.json()) as { text?: string; error?: string }
       if (!response.ok || !data.text) throw new Error(data.error || 'Failed to generate flashcards.')
 
-      setResult({ rawText: data.text, cards: parseFlashcards(data.text) })
+      const allCards = parseFlashcards(data.text)
+      setResult({ rawText: data.text, cards: allCards.slice(0, count) })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong.')
     } finally {
@@ -82,7 +86,7 @@ export default function FlashcardsGenerator() {
   const handleReset = () => {
     setTopic('')
     setDifficulty('Medium')
-    setCount(12)
+    setCountStr('12')
     setLanguage('Auto')
     setResult(null)
     setTopicError('')
@@ -172,8 +176,13 @@ export default function FlashcardsGenerator() {
                   type="number"
                   min={4}
                   max={40}
-                  value={count}
-                  onChange={(e) => setCount(Number(e.target.value) || 4)}
+                  value={countStr}
+                  onChange={(e) => setCountStr(e.target.value)}
+                  onBlur={() => {
+                    const n = parseInt(countStr, 10)
+                    if (!n || n < 4) setCountStr('4')
+                    else if (n > 40) setCountStr('40')
+                  }}
                   className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
                 />
               </div>
