@@ -42,9 +42,7 @@ export default function ToolsPage() {
                 Free tools for the <span className="text-highlight text-highlight--soft">community</span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Explore a growing library of free, classroom-ready tools built for teachers, tutors, and students.
-                Every Markury tool is designed to remove repetitive prep work, so you can focus on explaining concepts,
-                giving feedback, and teaching live on screen.
+              Discover a suite of free, classroom-ready tools for teachers, tutors, and students designed to streamline prep work and boost teaching productivity.
               </p>
             </div>
 
