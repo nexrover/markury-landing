@@ -92,10 +92,10 @@ export default function FlashcardDeck({ cards }: { cards: Flashcard[] }) {
   const [slideDir, setSlideDir] = useState<'left' | 'right' | null>(null)
 
   const total = cards.length
-  if (total === 0) return null
+  const safeIndex = total > 0 ? Math.min(currentIndex, total - 1) : 0
 
-  const theme = CARD_THEMES[currentIndex % CARD_THEMES.length]
-  const card = cards[currentIndex]
+  const theme = CARD_THEMES[safeIndex % CARD_THEMES.length]
+  const card = cards[safeIndex]
 
   const goTo = useCallback(
     (nextIndex: number, dir: 'left' | 'right') => {
@@ -110,14 +110,15 @@ export default function FlashcardDeck({ cards }: { cards: Flashcard[] }) {
   )
 
   const goPrev = () => {
-    if (currentIndex > 0) goTo(currentIndex - 1, 'right')
+    if (safeIndex > 0) goTo(safeIndex - 1, 'right')
   }
 
   const goNext = () => {
-    if (currentIndex < total - 1) goTo(currentIndex + 1, 'left')
+    if (safeIndex < total - 1) goTo(safeIndex + 1, 'left')
   }
 
   useEffect(() => {
+    if (total === 0) return
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') goPrev()
       else if (e.key === 'ArrowRight') goNext()
@@ -130,7 +131,15 @@ export default function FlashcardDeck({ cards }: { cards: Flashcard[] }) {
     return () => window.removeEventListener('keydown', handleKey)
   })
 
-  const progressPct = ((currentIndex + 1) / total) * 100
+  useEffect(() => {
+    if (total > 0 && currentIndex > total - 1) {
+      setCurrentIndex(total - 1)
+    }
+  }, [currentIndex, total])
+
+  if (total === 0) return null
+
+  const progressPct = ((safeIndex + 1) / total) * 100
 
   return (
     <div className="flex flex-col items-center gap-5">
