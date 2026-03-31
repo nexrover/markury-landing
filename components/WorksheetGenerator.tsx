@@ -1,0 +1,334 @@
+"use client"
+
+import Link from 'next/link'
+import { FormEvent, useMemo, useState } from 'react'
+import ToolResultActions from '@/components/tools/ToolResultActions'
+
+type McqItem = {
+  question: string
+  options: string[]
+  answer: string
+}
+
+type ShortQuestionItem = {
+  question: string
+  answer: string
+}
+
+type WorksheetData = {
+  mcqs: McqItem[]
+  shortQuestions: ShortQuestionItem[]
+  rawText: string
+}
+
+const GRADES = Array.from({ length: 8 }, (_, index) => `Class ${index + 5}`)
+
+function parseWorksheetText(input: string): WorksheetData {
+  const text = input.replace(/\r/g, '').trim()
+  const lines = text.split('\n').map((line) => line.trim()).filter(Boolean)
+
+  let mode: 'mcq' | 'short' | null = null
+  const mcqs: McqItem[] = []
+  const shortQuestions: ShortQuestionItem[] = []
+
+  let currentMcq: McqItem | null = null
+  let currentShort: ShortQuestionItem | null = null
+
+  for (const line of lines) {
+    const lowerLine = line.toLowerCase()
+
+    if (lowerLine.startsWith('mcqs')) {
+      mode = 'mcq'
+      continue
+    }
+
+    if (lowerLine.startsWith('short questions') || lowerLine.startsWith('short')) {
+      if (currentMcq) {
+        mcqs.push(currentMcq)
+        currentMcq = null
+      }
+      mode = 'short'
+      continue
+    }
+
+    if (mode === 'mcq') {
+      const optionMatch = line.match(/^[A-D][\.\)]\s*(.+)$/i)
+      const answerMatch = line.match(/^Answer:\s*(.+)$/i)
+
+      if (optionMatch) {
+        if (!currentMcq) {
+          currentMcq = { question: 'Question', options: [], answer: '' }
+        }
+        currentMcq.options.push(optionMatch[1].trim())
+        continue
+      }
+
+      if (answerMatch) {
+        if (!currentMcq) {
+          currentMcq = { question: 'Question', options: [], answer: '' }
+        }
+        currentMcq.answer = answerMatch[1].trim()
+        mcqs.push(currentMcq)
+        currentMcq = null
+        continue
+      }
+
+      if (currentMcq && (currentMcq.options.length > 0 || currentMcq.answer)) {
+        mcqs.push(currentMcq)
+      }
+      currentMcq = { question: line, options: [], answer: '' }
+      continue
+    }
+
+    if (mode === 'short') {
+      const answerMatch = line.match(/^Answer:\s*(.+)$/i)
+      if (answerMatch) {
+        if (!currentShort) {
+          currentShort = { question: 'Question', answer: '' }
+        }
+        currentShort.answer = answerMatch[1].trim()
+        shortQuestions.push(currentShort)
+        currentShort = null
+        continue
+      }
+
+      if (currentShort) {
+        shortQuestions.push(currentShort)
+      }
+      currentShort = { question: line, answer: '' }
+    }
+  }
+
+  if (currentMcq) {
+    mcqs.push(currentMcq)
+  }
+  if (currentShort) {
+    shortQuestions.push(currentShort)
+  }
+
+  return {
+    mcqs: mcqs.filter((item) => item.question),
+    shortQuestions: shortQuestions.filter((item) => item.question),
+    rawText: text,
+  }
+}
+
+export default function WorksheetGenerator() {
+  const [topic, setTopic] = useState('')
+  const [grade, setGrade] = useState('Class 5')
+  const [mcqCount, setMcqCount] = useState(5)
+  const [shortCount, setShortCount] = useState(3)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [worksheet, setWorksheet] = useState<WorksheetData | null>(null)
+
+  const canGenerate = useMemo(() => topic.trim().length > 2 && !isLoading, [topic, isLoading])
+
+  const callGenerator = async (forceRegenerate = false) => {
+    const trimmedTopic = topic.trim()
+    if (trimmedTopic.length < 3) {
+      setError('Please enter a topic with at least 3 characters.')
+      return
+    }
+
+    setError('')
+    setIsLoading(true)
+
+    try {
+      const response = await fetch('/api/generate-worksheet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          topic: trimmedTopic,
+          grade,
+          mcqCount,
+          shortCount,
+          forceRegenerate,
+        }),
+      })
+
+      const data = (await response.json()) as { text?: string; error?: string }
+      if (!response.ok || !data.text) {
+        throw new Error(data.error || 'Failed to generate worksheet.')
+      }
+
+      setWorksheet(parseWorksheetText(data.text))
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Something went wrong.'
+      setError(message)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    await callGenerator(false)
+  }
+
+  return (
+    <section className="py-20 sm:py-28 bg-white">
+      <div className="container-narrow">
+        <div className="text-center mb-10">
+          <h2 className="section-heading mb-4">Generate Worksheet in 5 Seconds</h2>
+          <p className="section-subheading">
+            Create grade-appropriate MCQs and short questions instantly.
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-5 sm:p-8">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label htmlFor="topic" className="block text-sm font-semibold text-gray-700 mb-2">
+                Topic
+              </label>
+              <input
+                id="topic"
+                type="text"
+                value={topic}
+                onChange={(event) => setTopic(event.target.value)}
+                placeholder="e.g. Photosynthesis"
+                className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                required
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label htmlFor="grade" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Grade
+                </label>
+                <select
+                  id="grade"
+                  value={grade}
+                  onChange={(event) => setGrade(event.target.value)}
+                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                >
+                  {GRADES.map((gradeValue) => (
+                    <option key={gradeValue} value={gradeValue}>
+                      {gradeValue}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="mcqCount" className="block text-sm font-semibold text-gray-700 mb-2">
+                  MCQ count
+                </label>
+                <input
+                  id="mcqCount"
+                  type="number"
+                  min={1}
+                  max={20}
+                  value={mcqCount}
+                  onChange={(event) => setMcqCount(Number(event.target.value) || 1)}
+                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="shortCount" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Short count
+                </label>
+                <input
+                  id="shortCount"
+                  type="number"
+                  min={1}
+                  max={20}
+                  value={shortCount}
+                  onChange={(event) => setShortCount(Number(event.target.value) || 1)}
+                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={!canGenerate}
+              className="btn-primary w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {isLoading ? 'Generating...' : 'Generate Worksheet'}
+            </button>
+          </form>
+
+          {error && <p className="mt-4 text-sm font-medium text-red-600">{error}</p>}
+
+          {worksheet && (
+            <div className="mt-8 bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 space-y-8">
+              <ToolResultActions
+                rawText={worksheet.rawText}
+                title="Generated Worksheet"
+                isLoading={isLoading}
+                onRegenerate={() => callGenerator(true)}
+                cta={
+                  <p className="text-sm sm:text-base text-gray-700">
+                    Want to explain this worksheet visually?{' '}
+                    <Link
+                      href="/download"
+                      className="font-semibold text-gray-900 underline underline-offset-4 hover:opacity-90"
+                    >
+                      → Use Markury
+                    </Link>
+                  </p>
+                }
+              />
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">MCQs</h3>
+                <div className="space-y-5">
+                  {worksheet.mcqs.length > 0 ? (
+                    worksheet.mcqs.map((item, index) => (
+                      <article key={`${item.question}-${index}`} className="border border-gray-100 rounded-xl p-4">
+                        <p className="font-medium text-gray-900 mb-3">
+                          {index + 1}. {item.question}
+                        </p>
+                        <ul className="space-y-1 text-gray-700">
+                          {item.options.map((option, optionIndex) => (
+                            <li key={`${option}-${optionIndex}`}>
+                              {String.fromCharCode(65 + optionIndex)}. {option}
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="mt-3 text-sm font-semibold text-green-700">
+                          Answer: {item.answer || 'Not specified'}
+                        </p>
+                      </article>
+                    ))
+                  ) : (
+                    <p className="text-gray-600">No MCQs found in generated content.</p>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Short Questions</h3>
+                <div className="space-y-5">
+                  {worksheet.shortQuestions.length > 0 ? (
+                    worksheet.shortQuestions.map((item, index) => (
+                      <article key={`${item.question}-${index}`} className="border border-gray-100 rounded-xl p-4">
+                        <p className="font-medium text-gray-900 mb-2">
+                          {index + 1}. {item.question}
+                        </p>
+                        <p className="text-gray-700">
+                          <span className="font-semibold text-gray-900">Answer:</span>{' '}
+                          {item.answer || 'Not specified'}
+                        </p>
+                      </article>
+                    ))
+                  ) : (
+                    <p className="text-gray-600">No short questions found in generated content.</p>
+                  )}
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500 pt-2 border-t border-gray-100">Generated with Markury</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
