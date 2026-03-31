@@ -48,13 +48,13 @@ export default function ToolResultActions({
           <style>
             body { font-family: Arial, sans-serif; padding: 32px; color: #111827; line-height: 1.55; }
             h1 { font-size: 20px; margin-bottom: 18px; }
-            .watermark { margin-top: 24px; font-size: 12px; color: #6B7280; }
+            .watermark { margin-top: 24px; font-size: 12px; color: #6B7280; text-align: right; }
           </style>
         </head>
         <body>
           <h1>${title}</h1>
           <div>${escapedText}</div>
-          <div class="watermark"><span>Generated with Markury</span><span><a href="https://www.markury.app" target="_blank" rel="noopener noreferrer">www.markury.app</a></span></div>
+          <div class="watermark"><span>Generated with Markury</span> | <span><a href="https://www.markury.app" target="_blank" rel="noopener noreferrer">www.markury.app</a></span></div>
         </body>
       </html>
     `)
