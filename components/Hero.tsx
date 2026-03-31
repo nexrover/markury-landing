@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { ScribbleArrow, ScribbleCircle } from '@/components/AnnotationAccents'
 // import VideoComparison from '@/components/VideoComparison'
 import VideoShowcase, { type VideoShowcaseHandle } from '@/components/VideoShowcase'
@@ -17,6 +17,12 @@ export default function Hero() {
       videoRef.current?.highlightControls()
     }, 500)
   }
+
+  useEffect(() => {
+    if (window.location.hash === '#demo') {
+      setTimeout(() => handleSeeDemo(), 600)
+    }
+  }, [])
 
   return (
     <section className="relative pt-40 pb-20 sm:pt-48 sm:pb-32 overflow-hidden">
@@ -56,7 +62,7 @@ export default function Hero() {
         </div>
 
           {/* Hero Visual - Video Showcase */}
-          <div ref={videoContainerRef} className="relative mx-auto w-full max-w-[90rem]">
+          <div ref={videoContainerRef} id="demo" className="relative mx-auto w-full max-w-[90rem]">
             {/* Main container with shadow/border */}
             <div className="relative bg-white rounded-xl shadow-2xl border border-gray-200 p-1">
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden relative isolate">

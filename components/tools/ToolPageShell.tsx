@@ -106,7 +106,7 @@ export default function ToolPageShell({
                   Try Markury
                 </Link>
                 <Link
-                  href="/#how-it-works"
+                  href="/#demo"
                   className="btn-secondary w-full sm:w-auto"
                 >
                   See how it works
