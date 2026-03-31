@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { FormEvent, useState } from 'react'
 import ToolResultActions from '@/components/tools/ToolResultActions'
+import FlashcardDeck from '@/components/tools/FlashcardDeck'
 import { GRADES } from '@/components/tools/constants'
 
 type Flashcard = { q: string; a: string }
@@ -40,6 +41,10 @@ export default function FlashcardsGenerator() {
   const [error, setError] = useState('')
   const [result, setResult] = useState<Result | null>(null)
 
+  const [isSharing, setIsSharing] = useState(false)
+  const [shareUrl, setShareUrl] = useState<string | null>(null)
+  const [shareCopied, setShareCopied] = useState(false)
+
   const generate = async (forceRegenerate = false) => {
     const trimmedTopic = topic.trim()
     if (trimmedTopic.length < 3) {
@@ -49,6 +54,7 @@ export default function FlashcardsGenerator() {
 
     setTopicError('')
     setError('')
+    setShareUrl(null)
     setIsLoading(true)
     try {
       const response = await fetch('/api/generate-flashcards', {
@@ -79,6 +85,39 @@ export default function FlashcardsGenerator() {
     setResult(null)
     setTopicError('')
     setError('')
+    setShareUrl(null)
+  }
+
+  const handleShare = async () => {
+    if (!result || result.cards.length === 0) return
+    setIsSharing(true)
+    try {
+      const response = await fetch('/api/share-flashcards', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic: topic.trim(), grade, cards: result.cards }),
+      })
+      const data = (await response.json()) as { id?: string; error?: string }
+      if (!response.ok || !data.id) throw new Error(data.error || 'Failed to share.')
+
+      const url = `${window.location.origin}/shared/flashcards/${data.id}`
+      setShareUrl(url)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to share flashcards.')
+    } finally {
+      setIsSharing(false)
+    }
+  }
+
+  const handleCopyShareLink = async () => {
+    if (!shareUrl) return
+    try {
+      await navigator.clipboard.writeText(shareUrl)
+      setShareCopied(true)
+      setTimeout(() => setShareCopied(false), 2000)
+    } catch {
+      /* noop */
+    }
   }
 
   return (
@@ -155,73 +194,103 @@ export default function FlashcardsGenerator() {
                 {isLoading ? 'Generating...' : 'Generate Flashcards'}
               </button>
             </div>
-
           </form>
 
           {error && <p className="mt-4 text-sm font-medium text-red-600">{error}</p>}
-          {result && (
-            <div className="rounded-2xl border border-markury-yellow/30 bg-gradient-to-r from-markury-yellow/20 via-markury-cyan/10 to-markury-purple/10 p-4 sm:p-5 shadow-sm mt-8">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <span className="flex-shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-markury-yellow/40 text-base">
-                    ✏️
-                  </span>
-                  <p className="text-sm text-gray-800">
-                    <span className="font-semibold text-gray-900">
-                      Want to teach these flashcards visually on screen?
-                    </span>{' '}
-                    Annotate, highlight, and explain with Markury.
-                  </p>
+
+          {result && result.cards.length > 0 && (
+            <>
+              {/* Action bar */}
+              <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
+                <ToolResultActions
+                  rawText={result.rawText}
+                  title="Flashcards"
+                  isLoading={isLoading}
+                  onRegenerate={() => generate(true)}
+                />
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleShare}
+                    disabled={isSharing}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 disabled:opacity-60 transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    {isSharing ? 'Sharing...' : 'Share'}
+                  </button>
                 </div>
-                <Link
-                  href="/download"
-                  className="flex-shrink-0 inline-flex items-center px-4 py-2 rounded-lg bg-gray-900 text-white text-xs sm:text-sm font-semibold hover:bg-gray-800 transition-colors"
-                >
-                  Try Markury
-                </Link>
               </div>
-            </div>
+
+              {/* Share link toast */}
+              {shareUrl && (
+                <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <svg className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                    <p className="text-sm text-emerald-800 truncate">{shareUrl}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleCopyShareLink}
+                    className="flex-shrink-0 inline-flex items-center px-3 py-1.5 rounded-lg border border-emerald-300 bg-white text-xs sm:text-sm font-medium text-emerald-700 hover:bg-emerald-100 transition-colors"
+                  >
+                    {shareCopied ? 'Copied!' : 'Copy link'}
+                  </button>
+                </div>
+              )}
+
+              {/* Flashcard deck */}
+              <div className="mt-6">
+                <FlashcardDeck cards={result.cards} />
+              </div>
+
+              {/* Markury CTA */}
+              <div className="mt-6 rounded-2xl border border-markury-yellow/30 bg-gradient-to-r from-markury-yellow/20 via-markury-cyan/10 to-markury-purple/10 p-4 sm:p-5 shadow-sm">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className="flex-shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-markury-yellow/40 text-base">
+                      ✏️
+                    </span>
+                    <p className="text-sm text-gray-800">
+                      <span className="font-semibold text-gray-900">
+                        Want to teach these flashcards visually on screen?
+                      </span>{' '}
+                      Annotate, highlight, and explain with Markury.
+                    </p>
+                  </div>
+                  <Link
+                    href="/download"
+                    className="flex-shrink-0 inline-flex items-center px-4 py-2 rounded-lg bg-gray-900 text-white text-xs sm:text-sm font-semibold hover:bg-gray-800 transition-colors"
+                  >
+                    Try Markury →
+                  </Link>
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500 pt-4 mt-4 border-t border-gray-100 flex items-center justify-between">
+                <span>Generated with Markury</span>
+                <Link href="https://www.markury.app" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700">
+                  www.markury.app
+                </Link>
+              </p>
+            </>
           )}
-          {result && (
-            <div className="mt-8 bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 space-y-6">
+
+          {result && result.cards.length === 0 && (
+            <div className="mt-8 bg-white rounded-2xl border border-gray-200 p-4 sm:p-6">
               <ToolResultActions
                 rawText={result.rawText}
                 title="Flashcards"
                 isLoading={isLoading}
                 onRegenerate={() => generate(true)}
               />
-
-              {result.cards.length > 0 ? (
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {result.cards.map((card, idx) => (
-                    <div key={`${card.q}-${idx}`} className="border border-gray-100 rounded-xl p-4">
-                      <p className="text-sm font-semibold text-gray-900">Q{idx + 1}. {card.q}</p>
-                      <p className="text-sm text-gray-700 mt-2">
-                        <span className="font-semibold text-gray-900">A:</span> {card.a}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="whitespace-pre-wrap text-sm sm:text-base text-gray-800 leading-relaxed">
-                  {result.rawText}
-                </div>
-              )}
-
-              <p className="text-xs text-gray-500 pt-2 border-t border-gray-100 flex items-center gap-2 justify-between">
-                <span>
-                  Generated with Markury
-                </span>
-                <span>
-                  <Link
-                    href="https://www.markury.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    www.markury.app
-                  </Link>
-                </span>
-              </p>
+              <div className="mt-4 whitespace-pre-wrap text-sm sm:text-base text-gray-800 leading-relaxed">
+                {result.rawText}
+              </div>
             </div>
           )}
         </div>
@@ -229,4 +298,3 @@ export default function FlashcardsGenerator() {
     </section>
   )
 }
-
