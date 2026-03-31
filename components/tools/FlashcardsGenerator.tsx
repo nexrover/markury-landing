@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { FormEvent, useState } from 'react'
 import ToolResultActions from '@/components/tools/ToolResultActions'
 import FlashcardDeck from '@/components/tools/FlashcardDeck'
-import { GRADES } from '@/components/tools/constants'
+import { LANGUAGES } from '@/components/tools/constants'
 
 type Flashcard = { q: string; a: string }
 type Result = { rawText: string; cards: Flashcard[] }
@@ -34,8 +34,9 @@ function parseFlashcards(text: string): Flashcard[] {
 
 export default function FlashcardsGenerator() {
   const [topic, setTopic] = useState('')
-  const [grade, setGrade] = useState('Class 5')
+  const [difficulty, setDifficulty] = useState('Medium')
   const [count, setCount] = useState(12)
+  const [language, setLanguage] = useState('Auto')
   const [isLoading, setIsLoading] = useState(false)
   const [topicError, setTopicError] = useState('')
   const [error, setError] = useState('')
@@ -60,7 +61,7 @@ export default function FlashcardsGenerator() {
       const response = await fetch('/api/generate-flashcards', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: trimmedTopic, grade, count, forceRegenerate }),
+        body: JSON.stringify({ topic: trimmedTopic, difficulty, count, language, forceRegenerate }),
       })
       const data = (await response.json()) as { text?: string; error?: string }
       if (!response.ok || !data.text) throw new Error(data.error || 'Failed to generate flashcards.')
@@ -80,8 +81,9 @@ export default function FlashcardsGenerator() {
 
   const handleReset = () => {
     setTopic('')
-    setGrade('Class 5')
+    setDifficulty('Medium')
     setCount(12)
+    setLanguage('Auto')
     setResult(null)
     setTopicError('')
     setError('')
@@ -95,7 +97,7 @@ export default function FlashcardsGenerator() {
       const response = await fetch('/api/share-flashcards', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: topic.trim(), grade, cards: result.cards }),
+        body: JSON.stringify({ topic: topic.trim(), grade: difficulty, cards: result.cards }),
       })
       const data = (await response.json()) as { id?: string; error?: string }
       if (!response.ok || !data.id) throw new Error(data.error || 'Failed to share.')
@@ -146,20 +148,18 @@ export default function FlashcardsGenerator() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label htmlFor="grade" className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  Grade
+                <label htmlFor="difficulty" className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  Difficulty
                 </label>
                 <select
-                  id="grade"
-                  value={grade}
-                  onChange={(e) => setGrade(e.target.value)}
+                  id="difficulty"
+                  value={difficulty}
+                  onChange={(e) => setDifficulty(e.target.value)}
                   className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
                 >
-                  {GRADES.map((g) => (
-                    <option key={g} value={g}>
-                      {g}
-                    </option>
-                  ))}
+                  <option value="Easy">Easy</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Hard">Hard</option>
                 </select>
               </div>
 
@@ -176,6 +176,24 @@ export default function FlashcardsGenerator() {
                   onChange={(e) => setCount(Number(e.target.value) || 4)}
                   className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
                 />
+              </div>
+
+              <div>
+                <label htmlFor="language" className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  Output Language
+                </label>
+                <select
+                  id="language"
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                >
+                  {LANGUAGES.map((lang) => (
+                    <option key={lang} value={lang}>
+                      {lang}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
