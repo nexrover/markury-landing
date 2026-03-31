@@ -11,12 +11,12 @@ export default function Footer() {
     ],
     tools: [
       { label: 'All Free Tools', href: '/tools' },
-      { label: 'Worksheet Generator', href: '/tools/worksheet' },
-      { label: 'Quiz Generator', href: '/tools/quiz' },
-      { label: 'Lesson Plan Generator', href: '/tools/lesson-plan' },
-      { label: 'Rubric Generator', href: '/tools/rubric' },
-      { label: 'Flashcards Generator', href: '/tools/flashcards' },
-      { label: 'Exam Paper Builder', href: '/tools/exam-paper' },
+      { label: 'Worksheet Generator', href: '/tools/worksheet-generator' },
+      { label: 'Quiz Generator', href: '/tools/quiz-generator' },
+      { label: 'Lesson Plan Generator', href: '/tools/lesson-plan-generator' },
+      { label: 'Rubric Generator', href: '/tools/rubric-generator' },
+      { label: 'Flashcards Generator', href: '/tools/flashcards-generator' },
+      { label: 'Exam Paper Builder', href: '/tools/exam-paper-builder' },
     ],
     support: [
       { label: 'User Guide', href: '/user-guide' },

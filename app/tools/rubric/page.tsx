@@ -1,35 +1,6 @@
-import ToolPageShell from '@/components/tools/ToolPageShell'
-import RubricGenerator from '@/components/tools/RubricGenerator'
+import { redirect } from 'next/navigation'
 
-export const metadata = {
-  title: 'Rubric Generator (Free) for Assignments and Projects - Markury Tools',
-  description:
-    'Create a clear, student-friendly grading rubric with criteria and performance levels for essays, projects, presentations, and more. This free rubric generator helps teachers communicate expectations for Classes 5–12.',
-  alternates: { canonical: '/tools/rubric' },
-  openGraph: {
-    title: 'Rubric Generator (Free) for Assignments and Projects - Markury Tools',
-    description:
-      'Build a grading rubric with multiple criteria and performance levels to assess essays, presentations, and projects in a transparent way for students and parents.',
-    url: 'https://www.markury.app/tools/rubric',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Free Rubric Generator for Classes 5–12',
-    description:
-      'Quickly generate a grading rubric with clear performance levels for school assignments using this free tool from Markury.',
-  },
-}
-
-export default function RubricToolPage() {
-  return (
-    <ToolPageShell
-      slug="rubric"
-      title="Rubric Generator"
-      description="Generate a detailed rubric with multiple criteria and performance levels so students know exactly what great work looks like before they start an assignment or project."
-    >
-      <RubricGenerator />
-    </ToolPageShell>
-  )
+export default function RubricToolRedirectPage() {
+  redirect('/tools/rubric-generator')
 }
 

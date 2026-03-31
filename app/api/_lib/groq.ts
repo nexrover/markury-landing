@@ -10,7 +10,7 @@ export async function groqGeneratePlainText(prompt: string): Promise<string> {
     throw new Error('GROQ_API_KEY is not configured.')
   }
 
-  const models = ['llama3-8b-8192', 'mixtral-8x7b-32768']
+  const models = ['llama-3.1-8b-instant', 'llama-3.3-70b-versatile']
   let lastError = 'Failed to generate text.'
 
   for (const model of models) {
