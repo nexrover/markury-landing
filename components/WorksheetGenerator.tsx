@@ -169,15 +169,8 @@ export default function WorksheetGenerator() {
   }
 
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-8 sm:py-10 bg-white">
       <div className="container-narrow">
-        <div className="text-center mb-10">
-          <h2 className="section-heading mb-4">Generate Worksheet in 5 Seconds</h2>
-          <p className="section-subheading">
-            Create grade-appropriate MCQs and short questions instantly.
-          </p>
-        </div>
-
         <div className="max-w-4xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-5 sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>

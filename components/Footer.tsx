@@ -9,6 +9,15 @@ export default function Footer() {
       { label: 'Use Cases', href: '#use-cases' },
       { label: 'Download', href: '/download' },
     ],
+    tools: [
+      { label: 'All Free Tools', href: '/tools' },
+      { label: 'Worksheet Generator', href: '/tools/worksheet' },
+      { label: 'Quiz Generator', href: '/tools/quiz' },
+      { label: 'Lesson Plan Generator', href: '/tools/lesson-plan' },
+      { label: 'Rubric Generator', href: '/tools/rubric' },
+      { label: 'Flashcards Generator', href: '/tools/flashcards' },
+      { label: 'Exam Paper Builder', href: '/tools/exam-paper' },
+    ],
     support: [
       { label: 'User Guide', href: '/user-guide' },
       { label: 'Blog', href: '/blog' },
@@ -103,6 +112,20 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
                   >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Free tools */}
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-4">Free tools</h4>
+            <ul className="space-y-3">
+              {links.tools.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-gray-600 hover:text-gray-900 text-sm transition-colors">
                     {link.label}
                   </a>
                 </li>

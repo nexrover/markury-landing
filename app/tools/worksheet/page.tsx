@@ -2,30 +2,31 @@ import ToolPageShell from '@/components/tools/ToolPageShell'
 import WorksheetGenerator from '@/components/WorksheetGenerator'
 
 export const metadata = {
-  title: 'Worksheet / Quiz Generator (Free) - Markury Tools',
+  title: 'Worksheet / Quiz Generator (Free) for Teachers - Markury Tools',
   description:
-    'Generate MCQs and short questions with answers for Class 5–12. Free worksheet generator by Markury.',
+    'Use this free worksheet and quiz generator by Markury to instantly create MCQs and short-answer questions with answers for Classes 5–12. Perfect for quick tests, homework, and in-class practice.',
   alternates: { canonical: '/tools/worksheet' },
   openGraph: {
-    title: 'Worksheet / Quiz Generator (Free) - Markury Tools',
+    title: 'Worksheet / Quiz Generator (Free) for Teachers - Markury Tools',
     description:
-      'Generate MCQs and short questions with answers for Class 5–12. Free worksheet generator by Markury.',
+      'Instantly generate printable worksheets with MCQs and short questions plus answer keys for Classes 5–12 using this free tool from Markury.',
     url: 'https://www.markury.app/tools/worksheet',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Worksheet / Quiz Generator (Free)',
+    title: 'Free Worksheet / Quiz Generator for Classes 5–12',
     description:
-      'Generate MCQs and short questions with answers for Class 5–12. Free worksheet generator by Markury.',
+      'Create classroom-ready worksheets and quizzes with MCQs and short-answer questions for Classes 5–12 in seconds.',
   },
 }
 
 export default function WorksheetToolPage() {
   return (
     <ToolPageShell
-      title="Worksheet / Quiz Generator"
-      description="Generate grade-appropriate MCQs and short questions with answers."
+      slug="worksheet"
+      title="Worksheet Generator"
+      description="Generate a complete worksheet with multiple-choice and short-answer questions, plus an answer key, so you can quickly test understanding or send home targeted practice without building everything from scratch."
     >
       <WorksheetGenerator />
     </ToolPageShell>
