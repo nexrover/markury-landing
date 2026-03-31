@@ -7,13 +7,11 @@ export default function ToolResultActions({
   title,
   onRegenerate,
   isLoading,
-  cta,
 }: {
   rawText: string
   title: string
   onRegenerate: () => void
   isLoading: boolean
-  cta?: React.ReactNode
 }) {
   const [isCopied, setIsCopied] = useState(false)
   const [error, setError] = useState('')
@@ -56,7 +54,7 @@ export default function ToolResultActions({
         <body>
           <h1>${title}</h1>
           <div>${escapedText}</div>
-          <div class="watermark">Generated with Markury</div>
+          <div class="watermark"><span>Generated with Markury</span><span><a href="https://www.markury.app" target="_blank" rel="noopener noreferrer">www.markury.app</a></span></div>
         </body>
       </html>
     `)
@@ -66,8 +64,9 @@ export default function ToolResultActions({
   }
 
   return (
+    
     <div className="space-y-4">
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-3 justify-end">
         <button
           type="button"
           onClick={handleCopy}
@@ -82,21 +81,17 @@ export default function ToolResultActions({
         >
           Download as PDF
         </button>
-        <button
+        {/* <button
           type="button"
           onClick={onRegenerate}
           disabled={isLoading}
           className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 disabled:opacity-60"
         >
           Regenerate
-        </button>
+        </button> */}
       </div>
 
-      {cta && (
-        <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5">
-          {cta}
-        </div>
-      )}
+      
 
       {error && <p className="text-sm font-medium text-red-600">{error}</p>}
     </div>

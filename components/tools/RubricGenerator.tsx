@@ -152,7 +152,29 @@ export default function RubricGenerator() {
           </form>
 
           {error && <p className="mt-4 text-sm font-medium text-red-600">{error}</p>}
-
+          {result && (
+            <div className="rounded-2xl border border-markury-yellow/30 bg-gradient-to-r from-markury-yellow/20 via-markury-cyan/10 to-markury-purple/10 p-4 sm:p-5 shadow-sm mt-8">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <span className="flex-shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-markury-yellow/40 text-base">
+                    ✏️
+                  </span>
+                  <p className="text-sm text-gray-800">
+                    <span className="font-semibold text-gray-900">
+                      Want to teach this rubric visually on screen?
+                    </span>{' '}
+                    Annotate, highlight, and explain with Markury.
+                  </p>
+                </div>
+                <Link
+                  href="/download"
+                  className="flex-shrink-0 inline-flex items-center px-4 py-2 rounded-lg bg-gray-900 text-white text-xs sm:text-sm font-semibold hover:bg-gray-800 transition-colors"
+                >
+                  Try Markury
+                </Link>
+              </div>
+            </div>
+          )}
           {result && (
             <div className="mt-8 bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 space-y-6">
               <ToolResultActions
@@ -160,24 +182,27 @@ export default function RubricGenerator() {
                 title="Rubric"
                 isLoading={isLoading}
                 onRegenerate={() => generate(true)}
-                cta={
-                  <p className="text-sm sm:text-base text-gray-700">
-                    Want to present and explain this rubric live?{' '}
-                    <Link
-                      href="/download"
-                      className="font-semibold text-gray-900 underline underline-offset-4 hover:opacity-90"
-                    >
-                      → Use Markury
-                    </Link>
-                  </p>
-                }
+                
               />
 
               <div className="whitespace-pre-wrap text-sm sm:text-base text-gray-800 leading-relaxed">
                 {result.rawText}
               </div>
 
-              <p className="text-xs text-gray-500 pt-2 border-t border-gray-100">Generated with Markury</p>
+              <p className="text-xs text-gray-500 pt-2 border-t border-gray-100 flex items-center gap-2 justify-between">
+                <span>
+                  Generated with Markury
+                </span>
+                <span>
+                  <Link
+                    href="https://www.markury.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    www.markury.app
+                  </Link>
+                </span>
+              </p>
             </div>
           )}
         </div>
