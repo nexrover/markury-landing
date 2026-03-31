@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { FormEvent, useMemo, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import ToolResultActions from '@/components/tools/ToolResultActions'
 
 type McqItem = {
@@ -119,18 +119,18 @@ export default function WorksheetGenerator() {
   const [mcqCount, setMcqCount] = useState(5)
   const [shortCount, setShortCount] = useState(3)
   const [isLoading, setIsLoading] = useState(false)
+  const [topicError, setTopicError] = useState('')
   const [error, setError] = useState('')
   const [worksheet, setWorksheet] = useState<WorksheetData | null>(null)
-
-  const canGenerate = useMemo(() => topic.trim().length > 2 && !isLoading, [topic, isLoading])
 
   const callGenerator = async (forceRegenerate = false) => {
     const trimmedTopic = topic.trim()
     if (trimmedTopic.length < 3) {
-      setError('Please enter a topic with at least 3 characters.')
+      setTopicError('Please enter a topic with at least 3 characters.')
       return
     }
 
+    setTopicError('')
     setError('')
     setIsLoading(true)
 
@@ -168,36 +168,52 @@ export default function WorksheetGenerator() {
     await callGenerator(false)
   }
 
+  const handleReset = () => {
+    setTopic('')
+    setGrade('Class 5')
+    setMcqCount(5)
+    setShortCount(3)
+    setWorksheet(null)
+    setTopicError('')
+    setError('')
+  }
+
   return (
     <section className="py-8 sm:py-10 bg-white">
       <div className="container-narrow">
         <div className="max-w-4xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-5 sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="topic" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="topic" className="block text-sm font-semibold text-gray-700 mb-1.5">
                 Topic
               </label>
               <input
                 id="topic"
                 type="text"
                 value={topic}
-                onChange={(event) => setTopic(event.target.value)}
+                onChange={(event) => {
+                  const nextTopic = event.target.value
+                  setTopic(nextTopic)
+                  if (nextTopic.trim().length >= 3) {
+                    setTopicError('')
+                  }
+                }}
                 placeholder="e.g. Photosynthesis"
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
-                required
+                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
               />
+              {topicError && <p className="mt-2 text-sm font-medium text-red-600">{topicError}</p>}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label htmlFor="grade" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="grade" className="block text-sm font-semibold text-gray-700 mb-1.5">
                   Grade
                 </label>
                 <select
                   id="grade"
                   value={grade}
                   onChange={(event) => setGrade(event.target.value)}
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
                 >
                   {GRADES.map((gradeValue) => (
                     <option key={gradeValue} value={gradeValue}>
@@ -208,7 +224,7 @@ export default function WorksheetGenerator() {
               </div>
 
               <div>
-                <label htmlFor="mcqCount" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="mcqCount" className="block text-sm font-semibold text-gray-700 mb-1.5">
                   MCQ count
                 </label>
                 <input
@@ -218,12 +234,12 @@ export default function WorksheetGenerator() {
                   max={20}
                   value={mcqCount}
                   onChange={(event) => setMcqCount(Number(event.target.value) || 1)}
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
                 />
               </div>
 
               <div>
-                <label htmlFor="shortCount" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="shortCount" className="block text-sm font-semibold text-gray-700 mb-1.5">
                   Short count
                 </label>
                 <input
@@ -233,18 +249,26 @@ export default function WorksheetGenerator() {
                   max={20}
                   value={shortCount}
                   onChange={(event) => setShortCount(Number(event.target.value) || 1)}
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
                 />
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={!canGenerate}
-              className="btn-primary w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {isLoading ? 'Generating...' : 'Generate Worksheet'}
-            </button>
+            <div className="flex justify-end gap-2 pt-1">
+              <button
+                type="button"
+                onClick={handleReset}
+                className="inline-flex items-center justify-center px-3 py-1.5 rounded-md border border-gray-300 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                Reset
+              </button>
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-md text-xs sm:text-sm font-semibold text-gray-900 bg-markury-yellow shadow-sm hover:opacity-95"
+              >
+                {isLoading ? 'Generating...' : 'Generate Worksheet'}
+              </button>
+            </div>
           </form>
 
           {error && <p className="mt-4 text-sm font-medium text-red-600">{error}</p>}

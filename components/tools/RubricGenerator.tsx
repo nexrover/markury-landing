@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { FormEvent, useMemo, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import ToolResultActions from '@/components/tools/ToolResultActions'
 import { GRADES } from '@/components/tools/constants'
 
@@ -13,18 +13,18 @@ export default function RubricGenerator() {
   const [criteriaCount, setCriteriaCount] = useState(4)
   const [levelsCount, setLevelsCount] = useState(4)
   const [isLoading, setIsLoading] = useState(false)
+  const [assignmentError, setAssignmentError] = useState('')
   const [error, setError] = useState('')
   const [result, setResult] = useState<Result | null>(null)
-
-  const canGenerate = useMemo(() => assignment.trim().length > 2 && !isLoading, [assignment, isLoading])
 
   const generate = async (forceRegenerate = false) => {
     const trimmedAssignment = assignment.trim()
     if (trimmedAssignment.length < 3) {
-      setError('Please enter an assignment with at least 3 characters.')
+      setAssignmentError('Please enter an assignment with at least 3 characters.')
       return
     }
 
+    setAssignmentError('')
     setError('')
     setIsLoading(true)
     try {
@@ -50,36 +50,50 @@ export default function RubricGenerator() {
     await generate(false)
   }
 
+  const handleReset = () => {
+    setAssignment('')
+    setGrade('Class 5')
+    setCriteriaCount(4)
+    setLevelsCount(4)
+    setResult(null)
+    setAssignmentError('')
+    setError('')
+  }
+
   return (
     <section className="py-8 sm:py-10 bg-white">
       <div className="container-narrow">
         <div className="max-w-4xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl p-5 sm:p-8">
           <form onSubmit={onSubmit} className="space-y-5">
             <div>
-              <label htmlFor="assignment" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="assignment" className="block text-sm font-semibold text-gray-700 mb-1.5">
                 Assignment
               </label>
               <input
                 id="assignment"
                 type="text"
                 value={assignment}
-                onChange={(e) => setAssignment(e.target.value)}
+                onChange={(e) => {
+                  const nextAssignment = e.target.value
+                  setAssignment(nextAssignment)
+                  if (nextAssignment.trim().length >= 3) setAssignmentError('')
+                }}
                 placeholder="e.g. Write an essay on climate change"
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
-                required
+                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
               />
+              {assignmentError && <p className="mt-2 text-sm font-medium text-red-600">{assignmentError}</p>}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label htmlFor="grade" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="grade" className="block text-sm font-semibold text-gray-700 mb-1.5">
                   Grade
                 </label>
                 <select
                   id="grade"
                   value={grade}
                   onChange={(e) => setGrade(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
                 >
                   {GRADES.map((g) => (
                     <option key={g} value={g}>
@@ -90,7 +104,7 @@ export default function RubricGenerator() {
               </div>
 
               <div>
-                <label htmlFor="criteriaCount" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="criteriaCount" className="block text-sm font-semibold text-gray-700 mb-1.5">
                   Criteria
                 </label>
                 <input
@@ -100,12 +114,12 @@ export default function RubricGenerator() {
                   max={10}
                   value={criteriaCount}
                   onChange={(e) => setCriteriaCount(Number(e.target.value) || 2)}
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
                 />
               </div>
 
               <div>
-                <label htmlFor="levelsCount" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="levelsCount" className="block text-sm font-semibold text-gray-700 mb-1.5">
                   Levels
                 </label>
                 <input
@@ -115,18 +129,26 @@ export default function RubricGenerator() {
                   max={5}
                   value={levelsCount}
                   onChange={(e) => setLevelsCount(Number(e.target.value) || 3)}
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-markury-cyan"
                 />
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={!canGenerate}
-              className="btn-primary w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {isLoading ? 'Generating...' : 'Generate Rubric'}
-            </button>
+            <div className="flex justify-end gap-2 pt-1">
+              <button
+                type="button"
+                onClick={handleReset}
+                className="inline-flex items-center justify-center px-3 py-1.5 rounded-md border border-gray-300 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                Reset
+              </button>
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-md text-xs sm:text-sm font-semibold text-gray-900 bg-markury-yellow shadow-sm hover:opacity-95"
+              >
+                {isLoading ? 'Generating...' : 'Generate Rubric'}
+              </button>
+            </div>
           </form>
 
           {error && <p className="mt-4 text-sm font-medium text-red-600">{error}</p>}

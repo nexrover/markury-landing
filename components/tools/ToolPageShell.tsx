@@ -47,7 +47,7 @@ export default function ToolPageShell({
         <div className="mt-6 sm:mt-8">{children}</div>
 
         {/* Other tools */}
-        <section className="py-16 sm:py-20 bg-[#F5F7FA]">
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-[#F0F4FF] via-[#FAF5FF] to-[#FFFBEB]">
           <div className="container-narrow">
             <div className="text-center mb-10">
               <p className="text-xs font-semibold tracking-[0.18em] text-markury-gray uppercase mb-2">
