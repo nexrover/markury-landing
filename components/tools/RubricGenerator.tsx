@@ -5,7 +5,99 @@ import { FormEvent, useState } from 'react'
 import ToolResultActions from '@/components/tools/ToolResultActions'
 import { GRADES } from '@/components/tools/constants'
 
-type Result = { rawText: string }
+type RubricRow = { criteria: string; levels: string[] }
+type Result = { rawText: string; rows: RubricRow[]; levelNames: string[] }
+
+function parseRubric(text: string, expectedLevels: number): { rows: RubricRow[]; levelNames: string[] } {
+  const lines = text.replace(/\r/g, '').split('\n').map((l) => l.trim()).filter(Boolean)
+  const rows: RubricRow[] = []
+  let current: RubricRow | null = null
+
+  const defaultNames = Array.from({ length: expectedLevels }, (_, i) => {
+    if (expectedLevels === 3) return ['Beginning', 'Developing', 'Proficient'][i]
+    if (expectedLevels === 5) return ['Beginning', 'Developing', 'Proficient', 'Advanced', 'Exemplary'][i]
+    return ['Beginning', 'Developing', 'Proficient', 'Advanced'][i]
+  })
+  const levelNames: string[] = [...defaultNames]
+
+  for (const line of lines) {
+    if (/^rubric:/i.test(line)) continue
+
+    const criteriaMatch = line.match(/^Criteria\s*\d*\s*:\s*(.+)$/i)
+    if (criteriaMatch) {
+      if (current && current.criteria) rows.push(current)
+      current = { criteria: criteriaMatch[1].trim(), levels: [] }
+      continue
+    }
+
+    const levelMatch = line.match(/^Level\s*(\d+)\s*(?:\(([^)]+)\))?\s*:\s*(.+)$/i)
+    if (levelMatch && current) {
+      const idx = parseInt(levelMatch[1], 10) - 1
+      if (levelMatch[2]) levelNames[idx] = levelMatch[2].trim()
+      current.levels.push(levelMatch[3].trim())
+      continue
+    }
+
+    if (current && !criteriaMatch) {
+      const simpleLevel = line.match(/^(Excellent|Proficient|Advanced|Good|Developing|Basic|Beginning|Needs Improvement|Exemplary|Satisfactory|Unsatisfactory|Poor|Fair|Outstanding)\s*:\s*(.+)$/i)
+      if (simpleLevel) {
+        const idx = current.levels.length
+        if (idx < expectedLevels) levelNames[idx] = simpleLevel[1].trim()
+        current.levels.push(simpleLevel[2].trim())
+      }
+    }
+  }
+
+  if (current && current.criteria) rows.push(current)
+  return { rows, levelNames: levelNames.slice(0, expectedLevels) }
+}
+
+const LEVEL_COLORS = [
+  { bg: 'bg-red-50', border: 'border-red-100', header: 'bg-red-100 text-red-800' },
+  { bg: 'bg-amber-50', border: 'border-amber-100', header: 'bg-amber-100 text-amber-800' },
+  { bg: 'bg-sky-50', border: 'border-sky-100', header: 'bg-sky-100 text-sky-800' },
+  { bg: 'bg-emerald-50', border: 'border-emerald-100', header: 'bg-emerald-100 text-emerald-800' },
+  { bg: 'bg-violet-50', border: 'border-violet-100', header: 'bg-violet-100 text-violet-800' },
+]
+
+const LEVEL_PDF_COLORS = [
+  { bg: '#fef2f2', header: '#fecaca', text: '#991b1b' },
+  { bg: '#fffbeb', header: '#fde68a', text: '#92400e' },
+  { bg: '#f0f9ff', header: '#bae6fd', text: '#075985' },
+  { bg: '#ecfdf5', header: '#a7f3d0', text: '#065f46' },
+  { bg: '#f5f3ff', header: '#ddd6fe', text: '#5b21b6' },
+]
+
+function buildRubricPdfHtml(rows: RubricRow[], levelNames: string[]): string {
+  if (rows.length === 0) return ''
+
+  const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+  const headerCells = levelNames
+    .map((name, i) => {
+      const c = LEVEL_PDF_COLORS[i % LEVEL_PDF_COLORS.length]
+      return `<th style="text-align:center;padding:8px 10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:${c.header};color:${c.text};border:1px solid #e5e7eb">${esc(name)}</th>`
+    })
+    .join('')
+
+  const bodyRows = rows
+    .map((row, ri) => {
+      const rowBg = ri % 2 === 0 ? '#ffffff' : '#f9fafb'
+      const cells = levelNames
+        .map((_, li) => {
+          const c = LEVEL_PDF_COLORS[li % LEVEL_PDF_COLORS.length]
+          return `<td style="padding:8px 10px;font-size:12px;color:#374151;line-height:1.5;border:1px solid #e5e7eb;background:${c.bg};vertical-align:top">${esc(row.levels[li] || '—')}</td>`
+        })
+        .join('')
+      return `<tr style="background:${rowBg}"><td style="padding:8px 10px;font-size:12px;font-weight:600;color:#111827;border:1px solid #e5e7eb;vertical-align:top">${esc(row.criteria)}</td>${cells}</tr>`
+    })
+    .join('')
+
+  return `<table style="width:100%;border-collapse:collapse;margin-top:8px">
+<thead><tr><th style="text-align:left;padding:8px 10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:#f3f4f6;color:#111827;border:1px solid #e5e7eb;width:150px">Criteria</th>${headerCells}</tr></thead>
+<tbody>${bodyRows}</tbody>
+</table>`
+}
 
 export default function RubricGenerator() {
   const [assignment, setAssignment] = useState('')
@@ -37,7 +129,8 @@ export default function RubricGenerator() {
       const data = (await response.json()) as { text?: string; error?: string }
       if (!response.ok || !data.text) throw new Error(data.error || 'Failed to generate rubric.')
 
-      setResult({ rawText: data.text })
+      const { rows, levelNames } = parseRubric(data.text, levelsCount)
+      setResult({ rawText: data.text, rows, levelNames })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong.')
     } finally {
@@ -152,6 +245,7 @@ export default function RubricGenerator() {
           </form>
 
           {error && <p className="mt-4 text-sm font-medium text-red-600">{error}</p>}
+
           {result && (
             <div className="rounded-2xl border border-markury-yellow/30 bg-gradient-to-r from-markury-yellow/20 via-markury-cyan/10 to-markury-purple/10 p-4 sm:p-5 shadow-sm mt-8">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -161,7 +255,7 @@ export default function RubricGenerator() {
                   </span>
                   <p className="text-sm text-gray-800">
                     <span className="font-semibold text-gray-900">
-                      Want to teach this rubric visually on screen?
+                      Want to present this rubric visually on screen?
                     </span>{' '}
                     Annotate, highlight, and explain with Markury.
                   </p>
@@ -170,11 +264,12 @@ export default function RubricGenerator() {
                   href="/download"
                   className="flex-shrink-0 inline-flex items-center px-4 py-2 rounded-lg bg-gray-900 text-white text-xs sm:text-sm font-semibold hover:bg-gray-800 transition-colors"
                 >
-                  Try Markury
+                  Try Markury →
                 </Link>
               </div>
             </div>
           )}
+
           {result && (
             <div className="mt-8 bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 space-y-6">
               <ToolResultActions
@@ -182,26 +277,57 @@ export default function RubricGenerator() {
                 title="Rubric"
                 isLoading={isLoading}
                 onRegenerate={() => generate(true)}
-                
+                pdfHtml={buildRubricPdfHtml(result.rows, result.levelNames)}
               />
 
-              <div className="whitespace-pre-wrap text-sm sm:text-base text-gray-800 leading-relaxed">
-                {result.rawText}
-              </div>
+              {result.rows.length > 0 ? (
+                <div className="overflow-x-auto -mx-2">
+                  <table className="w-full border-collapse text-sm min-w-[600px]">
+                    <thead>
+                      <tr>
+                        <th className="text-left px-3 py-2.5 bg-gray-100 text-gray-900 font-bold text-xs uppercase tracking-wider border border-gray-200 rounded-tl-lg w-[160px]">
+                          Criteria
+                        </th>
+                        {result.levelNames.map((name, i) => (
+                          <th
+                            key={i}
+                            className={`text-center px-3 py-2.5 font-bold text-xs uppercase tracking-wider border border-gray-200 ${LEVEL_COLORS[i % LEVEL_COLORS.length].header}`}
+                          >
+                            {name}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {result.rows.map((row, ri) => (
+                        <tr key={ri} className={ri % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
+                          <td className="px-3 py-3 border border-gray-200 font-semibold text-gray-900 align-top">
+                            {row.criteria}
+                          </td>
+                          {result.levelNames.map((_, li) => (
+                            <td
+                              key={li}
+                              className={`px-3 py-3 border border-gray-200 text-gray-700 align-top text-[13px] leading-relaxed ${LEVEL_COLORS[li % LEVEL_COLORS.length].bg}`}
+                            >
+                              {row.levels[li] || '—'}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="whitespace-pre-wrap text-sm sm:text-base text-gray-800 leading-relaxed">
+                  {result.rawText}
+                </div>
+              )}
 
-              <p className="text-xs text-gray-500 pt-2 border-t border-gray-100 flex items-center gap-2 justify-between">
-                <span>
-                  Generated with Markury
-                </span>
-                <span>
-                  <Link
-                    href="https://www.markury.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    www.markury.app
-                  </Link>
-                </span>
+              <p className="text-xs text-gray-500 pt-2 border-t border-gray-100 flex items-center justify-between">
+                <span>Generated with Markury</span>
+                <Link href="https://www.markury.app" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700">
+                  www.markury.app
+                </Link>
               </p>
             </div>
           )}
@@ -210,4 +336,3 @@ export default function RubricGenerator() {
     </section>
   )
 }
-

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { FormEvent, useState } from 'react'
 import ToolResultActions from '@/components/tools/ToolResultActions'
+import FormattedTextOutput from '@/components/tools/FormattedTextOutput'
 import { GRADES } from '@/components/tools/constants'
 
 type Result = { rawText: string }
@@ -185,23 +186,13 @@ export default function ExamPaperGenerator() {
                 
               />
 
-              <div className="whitespace-pre-wrap text-sm sm:text-base text-gray-800 leading-relaxed">
-                {result.rawText}
-              </div>
+              <FormattedTextOutput text={result.rawText} />
 
-              <p className="text-xs text-gray-500 pt-2 border-t border-gray-100 flex items-center gap-2 justify-between">
-                <span>
-                  Generated with Markury
-                </span>
-                <span>
-                  <Link
-                    href="https://www.markury.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    www.markury.app
-                  </Link>
-                </span>
+              <p className="text-xs text-gray-500 pt-2 border-t border-gray-100 flex items-center justify-between">
+                <span>Generated with Markury</span>
+                <Link href="https://www.markury.app" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700">
+                  www.markury.app
+                </Link>
               </p>
             </div>
           )}

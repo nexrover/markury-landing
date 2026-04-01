@@ -19,32 +19,33 @@ function keyOf(assignment: string, grade: string, criteriaCount: number, levelsC
 }
 
 function promptOf(assignment: string, grade: string, criteriaCount: number, levelsCount: number) {
+  const levelLabels = Array.from({ length: levelsCount }, (_, i) => `Level ${i + 1}: <one sentence description>`)
+
   return `Create a grading rubric for students.
 
 Assignment: ${assignment}
 Grade: ${grade}
 
-Create exactly ${criteriaCount} criteria and exactly ${levelsCount} performance levels.
+Create EXACTLY ${criteriaCount} criteria and EXACTLY ${levelsCount} performance levels per criteria.
 
-Output format STRICTLY:
+Output format STRICTLY (follow this EXACTLY, one line per level):
 
 Rubric:
 
-Criteria 1: <name>
-Level 1: <description>
-Level 2: <description>
-Level 3: <description>
-Level 4: <description>
+Criteria 1: <criteria name>
+${levelLabels.join('\n')}
 
-Criteria 2: <name>
-Level 1: <description>
-...
+Criteria 2: <criteria name>
+${levelLabels.join('\n')}
+
+... continue for all ${criteriaCount} criteria ...
 
 Rules:
-Keep language simple and clear
-Make it appropriate for the grade level
-Avoid long explanations
-Return plain text only. No markdown.`
+- Level 1 = weakest performance, Level ${levelsCount} = strongest performance
+- Each level description must be ONE concise sentence
+- Keep language simple and appropriate for ${grade}
+- Return plain text only. No markdown, no extra formatting
+- Do NOT add any text before "Rubric:" or after the last level`
 }
 
 export async function POST(request: NextRequest) {
