@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { FormEvent, useState } from 'react'
 import ToolResultActions from '@/components/tools/ToolResultActions'
+import QuizDeck from '@/components/tools/QuizDeck'
 import { GRADES } from '@/components/tools/constants'
 
 type McqItem = {
@@ -54,8 +55,6 @@ function parseQuizText(input: string): McqItem[] {
       continue
     }
 
-    // Treat as question line.
-    // If we already have a question and some options, start fresh.
     if (current.question && current.options.length > 0) {
       if (current.answer) pushCurrent()
       else current = { question: line, options: [], answer: '' }
@@ -64,7 +63,6 @@ function parseQuizText(input: string): McqItem[] {
     }
   }
 
-  // Handle case where the final MCQ doesn't end with an Answer line (rare but possible).
   if (current.question && current.options.length > 0 && current.answer) {
     mcqs.push(current)
   }
@@ -81,6 +79,10 @@ export default function QuizGenerator() {
   const [error, setError] = useState('')
   const [result, setResult] = useState<Result | null>(null)
 
+  const [isSharing, setIsSharing] = useState(false)
+  const [shareUrl, setShareUrl] = useState('')
+  const [shareCopied, setShareCopied] = useState(false)
+
   const generate = async (forceRegenerate = false) => {
     const trimmedTopic = topic.trim()
     if (trimmedTopic.length < 3) {
@@ -91,6 +93,8 @@ export default function QuizGenerator() {
     setTopicError('')
     setError('')
     setIsLoading(true)
+    setShareUrl('')
+    setShareCopied(false)
     try {
       const response = await fetch('/api/generate-quiz', {
         method: 'POST',
@@ -121,6 +125,34 @@ export default function QuizGenerator() {
     setResult(null)
     setTopicError('')
     setError('')
+    setShareUrl('')
+    setShareCopied(false)
+  }
+
+  const handleShare = async () => {
+    if (!result || result.mcqs.length === 0) return
+    setIsSharing(true)
+    try {
+      const res = await fetch('/api/share-quiz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic: topic.trim(), grade, mcqs: result.mcqs }),
+      })
+      const data = (await res.json()) as { id?: string; error?: string }
+      if (!res.ok || !data.id) throw new Error(data.error || 'Failed to share quiz.')
+      setShareUrl(`${window.location.origin}/shared/quiz/${data.id}`)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not share quiz.')
+    } finally {
+      setIsSharing(false)
+    }
+  }
+
+  const handleCopyShareLink = async () => {
+    if (!shareUrl) return
+    await navigator.clipboard.writeText(shareUrl)
+    setShareCopied(true)
+    setTimeout(() => setShareCopied(false), 2000)
   }
 
   return (
@@ -202,6 +234,7 @@ export default function QuizGenerator() {
           </form>
 
           {error && <p className="mt-4 text-sm font-medium text-red-600">{error}</p>}
+
           {result && (
             <div className="rounded-2xl border border-markury-yellow/30 bg-gradient-to-r from-markury-yellow/20 via-markury-cyan/10 to-markury-purple/10 p-4 sm:p-5 shadow-sm mt-8">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -225,39 +258,57 @@ export default function QuizGenerator() {
               </div>
             </div>
           )}
+
           {result && (
             <div className="mt-8 bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 space-y-6">
-              <ToolResultActions
-                rawText={result.rawText}
-                title="Generated Quiz"
-                isLoading={isLoading}
-                onRegenerate={() => generate(true)}
-              />
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">MCQs</h3>
-                <div className="space-y-5">
-                  {result.mcqs.length > 0 ? (
-                    result.mcqs.map((item, index) => (
-                      <article key={`${item.question}-${index}`} className="border border-gray-100 rounded-xl p-4">
-                        <p className="font-medium text-gray-900 mb-3">
-                          {index + 1}. {item.question}
-                        </p>
-                        <ul className="space-y-1 text-gray-700">
-                          {item.options.map((option, optionIndex) => (
-                            <li key={`${option}-${optionIndex}`}>
-                              {String.fromCharCode(65 + optionIndex)}. {option}
-                            </li>
-                          ))}
-                        </ul>
-                        <p className="mt-3 text-sm font-semibold text-green-700">Answer: {item.answer}</p>
-                      </article>
-                    ))
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <ToolResultActions
+                  rawText={result.rawText}
+                  title="Generated Quiz"
+                  isLoading={isLoading}
+                  onRegenerate={() => generate(true)}
+                />
+                <div className="flex items-center gap-2">
+                  {shareUrl ? (
+                    <button
+                      type="button"
+                      onClick={handleCopyShareLink}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-300 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                      </svg>
+                      {shareCopied ? 'Copied!' : 'Copy Link'}
+                    </button>
                   ) : (
-                    <p className="text-gray-600">No MCQs found in generated content.</p>
+                    <button
+                      type="button"
+                      onClick={handleShare}
+                      disabled={isSharing}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-300 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                      </svg>
+                      {isSharing ? 'Sharing...' : 'Share Quiz'}
+                    </button>
                   )}
                 </div>
               </div>
+
+              {shareUrl && (
+                <div className="rounded-lg bg-green-50 border border-green-200 px-4 py-3 flex items-center gap-3">
+                  <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                  </svg>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-medium text-green-800 mb-0.5">Shareable link created!</p>
+                    <p className="text-xs text-green-700 truncate">{shareUrl}</p>
+                  </div>
+                </div>
+              )}
+
+              <QuizDeck mcqs={result.mcqs} />
 
               <p className="text-xs text-gray-500 pt-2 border-t border-gray-100 flex items-center gap-2 justify-between">
                 <span>
@@ -280,4 +331,3 @@ export default function QuizGenerator() {
     </section>
   )
 }
-

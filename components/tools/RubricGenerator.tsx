@@ -264,7 +264,7 @@ export default function RubricGenerator() {
                   href="/download"
                   className="flex-shrink-0 inline-flex items-center px-4 py-2 rounded-lg bg-gray-900 text-white text-xs sm:text-sm font-semibold hover:bg-gray-800 transition-colors"
                 >
-                  Try Markury →
+                  Try Markury
                 </Link>
               </div>
             </div>
