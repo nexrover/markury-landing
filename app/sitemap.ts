@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/tools/rubric-generator',
     '/tools/flashcards-generator',
     '/tools/exam-paper-builder',
+    '/tools/certificate-generator',
   ]
   
   return [

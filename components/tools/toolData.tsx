@@ -108,6 +108,23 @@ function ExamPaperIcon() {
   )
 }
 
+function CertificateIcon() {
+  return (
+    <svg viewBox="0 0 120 100" fill="none" className="w-full h-full">
+      <rect x="20" y="10" width="80" height="62" rx="6" fill="#34D399" fillOpacity="0.12" stroke="#34D399" strokeWidth="1.5" />
+      <rect x="36" y="22" width="48" height="3" rx="1.5" fill="#34D399" />
+      <rect x="40" y="30" width="40" height="2" rx="1" fill="#D1D5DB" />
+      <rect x="32" y="38" width="56" height="3" rx="1.5" fill="#6B7280" />
+      <rect x="40" y="46" width="40" height="2" rx="1" fill="#D1D5DB" />
+      <rect x="40" y="52" width="40" height="2" rx="1" fill="#D1D5DB" />
+      <line x1="34" y1="62" x2="54" y2="62" stroke="#34D399" strokeWidth="1" />
+      <line x1="66" y1="62" x2="86" y2="62" stroke="#34D399" strokeWidth="1" />
+      <circle cx="60" cy="84" r="12" fill="#34D399" fillOpacity="0.18" stroke="#34D399" strokeWidth="1.5" />
+      <text x="60" y="89" textAnchor="middle" fill="#34D399" fontSize="12" fontWeight="700">★</text>
+    </svg>
+  )
+}
+
 export const TOOLS: ToolItem[] = [
   {
     href: '/tools/worksheet-generator',
@@ -150,6 +167,13 @@ export const TOOLS: ToolItem[] = [
     description:
       'Generate a balanced exam paper with multiple sections, marks distribution, and an answer key. Save hours of formatting and focus on question quality.',
     icon: <ExamPaperIcon />,
+  },
+  {
+    href: '/tools/certificate-generator',
+    title: 'Certificate Generator',
+    description:
+      'Design professional certificates with drag-and-drop editing, pre-designed templates, custom text, colors, and backgrounds. Export as high-quality PDF or PNG.',
+    icon: <CertificateIcon />,
   },
 ]
 
