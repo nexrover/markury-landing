@@ -15,12 +15,14 @@ export const metadata = {
       'Generate a structured exam paper with clear sections, question marks, and an answer key so you can focus on choosing the right difficulty for your class.',
     url: 'https://www.markury.app/tools/exam-paper-builder',
     type: 'website',
+    images: [{ url: '/markury_og.png', width: 1200, height: 630, alt: 'Markury Exam Paper Builder' }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image' as const,
     title: 'Free Exam Paper Builder for Classes 5–12',
     description:
       'Quickly create an exam paper with sections, question marks, and an answer key using this free tool from Markury.',
+    images: ['/markury_og.png'],
   },
 }
 

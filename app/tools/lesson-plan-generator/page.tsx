@@ -15,12 +15,14 @@ export const metadata = {
       'Create a simple, structured lesson plan for Classes 5–12 that includes learning objectives, warm-up, main activities, assessment ideas, and optional homework in one click.',
     url: 'https://www.markury.app/tools/lesson-plan-generator',
     type: 'website',
+    images: [{ url: '/markury_og.png', width: 1200, height: 630, alt: 'Markury Lesson Plan Generator' }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image' as const,
     title: 'Free Lesson Plan Generator for Classes 5–12',
     description:
       'Quickly build a classroom-ready lesson plan with objectives, activities, and assessment ideas using this free tool from Markury.',
+    images: ['/markury_og.png'],
   },
 }
 

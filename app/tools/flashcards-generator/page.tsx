@@ -15,12 +15,14 @@ export const metadata = {
       'Generate Q&A-style flashcards for any school subject to help students revise key ideas in short study sessions.',
     url: 'https://www.markury.app/tools/flashcards-generator',
     type: 'website',
+    images: [{ url: '/markury_og.png', width: 1200, height: 630, alt: 'Markury Flashcards Generator' }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image' as const,
     title: 'Free Flashcards Generator for Classes 5–12',
     description:
       'Create a stack of revision flashcards with clear questions and answers in seconds using this free tool from Markury.',
+    images: ['/markury_og.png'],
   },
 }
 

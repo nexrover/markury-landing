@@ -15,12 +15,14 @@ export const metadata = {
       'Generate grade-appropriate MCQs with options A–D and an answer key in seconds. Free quiz generator for Classes 5–12 by Markury.',
     url: 'https://www.markury.app/tools/quiz-generator',
     type: 'website',
+    images: [{ url: '/markury_og.png', width: 1200, height: 630, alt: 'Markury Quiz Generator' }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image' as const,
     title: 'Free Quiz Generator for Classes 5–12',
     description:
       'Generate MCQs with answers in seconds using this free tool from Markury.',
+    images: ['/markury_og.png'],
   },
 }
 

@@ -3,6 +3,59 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TOOLS, titleToToolSlug } from '@/components/tools/toolData'
 
+const BASE_URL = 'https://www.markury.app'
+
+function buildJsonLd(title: string, description: string, slug: string) {
+  const url = `${BASE_URL}/tools/${slug}`
+
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: `${title} - Markury`,
+      url,
+      description,
+      applicationCategory: 'EducationalApplication',
+      operatingSystem: 'All',
+      isAccessibleForFree: true,
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      creator: {
+        '@type': 'Organization',
+        name: 'Markury',
+        url: BASE_URL,
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: BASE_URL,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Free Tools',
+          item: `${BASE_URL}/tools`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: title,
+          item: url,
+        },
+      ],
+    },
+  ]
+}
+
 export default function ToolPageShell({
   title,
   description,
@@ -14,11 +67,17 @@ export default function ToolPageShell({
 }) {
   const currentToolSlug = titleToToolSlug(title)
   const otherTools = TOOLS.filter((tool) => titleToToolSlug(tool.title) !== currentToolSlug)
+  const jsonLd = buildJsonLd(title, description, currentToolSlug)
 
   return (
     <>
       <Header />
       <main className="bg-white text-gray-900 pt-40 sm:pt-44">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         {/* Breadcrumb */}
         <div className="container-narrow pt-8 sm:pt-10">
           <nav className="flex items-center justify-center gap-1.5 text-sm text-gray-500">

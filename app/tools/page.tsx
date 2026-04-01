@@ -3,27 +3,67 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { TOOLS } from '@/components/tools/toolData'
 
+const BASE_URL = 'https://www.markury.app'
+
 export const metadata = {
-  title: 'Free Teaching Tools for the Community - Markury',
+  title: 'Free AI Teaching Tools for Teachers & Students - Markury',
   description:
-    'Discover free teaching tools from Markury, including a Worksheet Generator and a Quiz Generator, plus lesson plan templates, rubrics, flashcards, and exam paper builders designed to save teachers time and help students understand complex concepts more clearly.',
+    'Discover free AI-powered teaching tools from Markury — generate worksheets, quizzes, lesson plans, rubrics, flashcards, and exam papers for Classes 5–12 in seconds. Save hours of prep time.',
   alternates: {
     canonical: '/tools',
   },
   openGraph: {
-    title: 'Free Teaching Tools for the Community - Markury',
+    title: 'Free AI Teaching Tools for Teachers & Students - Markury',
     description:
       'Browse a growing collection of free AI-powered teaching tools from Markury to generate worksheets, quizzes, lesson plans, rubrics, flashcards, and exam papers for Classes 5–12.',
-    url: 'https://www.markury.app/tools',
+    url: `${BASE_URL}/tools`,
     type: 'website',
+    images: [
+      {
+        url: '/markury_og.png',
+        width: 1200,
+        height: 630,
+        alt: 'Markury Free Teaching Tools',
+      },
+    ],
   },
   twitter: {
-    card: 'summary',
-    title: 'Free Teaching Tools by Markury',
+    card: 'summary_large_image' as const,
+    title: 'Free AI Teaching Tools by Markury',
     description:
-      'Use free AI-powered tools from Markury to generate worksheets, quizzes, lesson plans, rubrics, flashcards, and exam papers in just a few seconds.',
+      'Generate worksheets, quizzes, lesson plans, rubrics, flashcards, and exam papers for Classes 5–12 in seconds — completely free.',
+    images: ['/markury_og.png'],
   },
 }
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Free AI Teaching Tools - Markury',
+    description: metadata.description,
+    url: `${BASE_URL}/tools`,
+    isPartOf: { '@type': 'WebSite', name: 'Markury', url: BASE_URL },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: TOOLS.length,
+      itemListElement: TOOLS.map((tool, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: tool.title,
+        url: `${BASE_URL}${tool.href}`,
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Free Tools', item: `${BASE_URL}/tools` },
+    ],
+  },
+]
 
 export default function ToolsPage() {
   const tools = TOOLS
@@ -32,6 +72,10 @@ export default function ToolsPage() {
     <>
       <Header />
       <main className="bg-white text-gray-900 pt-28 sm:pt-32">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <section className="py-12 sm:py-16 bg-white">
           <div className="container-narrow">
             <div className="text-center mb-14 pt-6 sm:pt-10">

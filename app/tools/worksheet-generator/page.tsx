@@ -15,12 +15,14 @@ export const metadata = {
       'Instantly generate printable worksheets with MCQs and short questions plus answer keys for Classes 5–12 using this free tool from Markury.',
     url: 'https://www.markury.app/tools/worksheet-generator',
     type: 'website',
+    images: [{ url: '/markury_og.png', width: 1200, height: 630, alt: 'Markury Worksheet Generator' }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image' as const,
     title: 'Free Worksheet Generator for Classes 5–12',
     description:
       'Create classroom-ready worksheets with MCQs and short-answer questions for Classes 5–12 in seconds.',
+    images: ['/markury_og.png'],
   },
 }
 

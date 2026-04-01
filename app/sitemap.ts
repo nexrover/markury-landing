@@ -3,6 +3,16 @@ import { allPosts } from 'contentlayer/generated'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.markury.app'
+
+  const toolPages = [
+    '/tools',
+    '/tools/worksheet-generator',
+    '/tools/quiz-generator',
+    '/tools/lesson-plan-generator',
+    '/tools/rubric-generator',
+    '/tools/flashcards-generator',
+    '/tools/exam-paper-builder',
+  ]
   
   return [
     {
@@ -59,6 +69,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    ...toolPages.map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: path === '/tools' ? 0.9 : 0.8,
+    })),
     ...allPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.date),

@@ -15,12 +15,14 @@ export const metadata = {
       'Build a grading rubric with multiple criteria and performance levels to assess essays, presentations, and projects in a transparent way for students and parents.',
     url: 'https://www.markury.app/tools/rubric-generator',
     type: 'website',
+    images: [{ url: '/markury_og.png', width: 1200, height: 630, alt: 'Markury Rubric Generator' }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image' as const,
     title: 'Free Rubric Generator for Classes 5–12',
     description:
       'Quickly generate a grading rubric with clear performance levels for school assignments using this free tool from Markury.',
+    images: ['/markury_og.png'],
   },
 }
 
