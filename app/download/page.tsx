@@ -28,9 +28,9 @@ export default function DownloadPage() {
       platform: 'macOS',
       subtitle: 'Apple Silicon & Intel',
       icon: '/apple.svg',
-      fileName: 'Markury v1.0.dmg',
+      fileName: 'Markury v1.0.1.dmg',
       fileSize: '~19 MB',
-      url: 'https://ftp.markury.app/installers/Markury%20v1.0.dmg',
+      url: 'https://ftp.markury.app/installers/Markury%20v1.0.1.dmg',
       requirements: 'macOS 12 Monterey or later',
       instructions: [
         'Download the .dmg file',
