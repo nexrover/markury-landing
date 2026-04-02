@@ -108,7 +108,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {children}
-        {process?.env?.NODE_ENV !== 'development' && (
+        {process.env.NODE_ENV === 'production' && (
           <Script id="crisp-chat" strategy="lazyOnload">
             {`window.$crisp=[];window.CRISP_WEBSITE_ID="c5564772-c0c5-464c-8f4d-d8cf3baad833";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}
           </Script>

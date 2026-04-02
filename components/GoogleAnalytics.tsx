@@ -3,7 +3,7 @@
 import Script from 'next/script'
 
 const GoogleAnalytics = () => {
-  if (process?.env?.NODE_ENV === 'development') return null
+  if (process.env.NODE_ENV !== 'production') return null
 
   return (
     <>
