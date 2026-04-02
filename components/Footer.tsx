@@ -21,6 +21,7 @@ export default function Footer() {
     support: [
       { label: 'User Guide', href: '/user-guide' },
       { label: 'Blog', href: '/blog' },
+      { label: 'Changelog', href: '/changelog' },
       { label: 'Contact Support', href: '/contact-support' },
       { label: 'FAQ', href: '#faq' },
     ],
