@@ -13,7 +13,7 @@ export default function CookieBanner() {
     } else {
       // If consent was previously granted, update GTM
       if (consent === 'granted') {
-        window.gtag('consent', 'update', {
+        window.gtag?.('consent', 'update', {
           'ad_storage': 'granted',
           'analytics_storage': 'granted'
         })
@@ -24,7 +24,7 @@ export default function CookieBanner() {
   const handleAccept = () => {
     localStorage.setItem('cookie_consent', 'granted')
     setShowBanner(false)
-    window.gtag('consent', 'update', {
+    window.gtag?.('consent', 'update', {
       'ad_storage': 'granted',
       'analytics_storage': 'granted'
     })
