@@ -30,7 +30,7 @@ export default function DownloadPage() {
       icon: '/apple.svg',
       fileName: 'Markury v1.0.1.dmg',
       fileSize: '~19 MB',
-      url: 'https://ftp.markury.app/installers/Markury%20v1.0.1.dmg',
+      url: 'https://ftp.markury.app/installers/Markury%20v1.0.1/Markury%20v1.0.1.dmg',
       requirements: 'macOS 12 Monterey or later',
       instructions: [
         'Download the .dmg file',
@@ -45,7 +45,7 @@ export default function DownloadPage() {
       icon: '/windows.svg',
       fileName: 'Markury v1.0.1.exe',
       fileSize: '~12 MB',
-      url: 'https://ftp.markury.app/installers/Markury%20v1.0.1.exe',
+      url: 'https://ftp.markury.app/installers/Markury%20v1.0.1/Markury%20v1.0.1.exe',
       requirements: 'Windows 10 (64-bit) or later',
       instructions: [
         'Download the .exe installer',
