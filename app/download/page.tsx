@@ -43,9 +43,9 @@ export default function DownloadPage() {
       platform: 'Windows',
       subtitle: 'Windows 10 & 11',
       icon: '/windows.svg',
-      fileName: 'Markury v1.0.exe',
-      fileSize: '~11 MB',
-      url: 'https://ftp.markury.app/installers/Markury%20v1.0.exe',
+      fileName: 'Markury v1.0.1.exe',
+      fileSize: '~12 MB',
+      url: 'https://ftp.markury.app/installers/Markury%20v1.0.1.exe',
       requirements: 'Windows 10 (64-bit) or later',
       instructions: [
         'Download the .exe installer',
