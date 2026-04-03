@@ -41,6 +41,7 @@ const changelog: ChangelogEntry[] = [
         type: 'fix',
         items: [
           'Fixed keyboard shortcuts for ellipse and laser tools.',
+          'Fixed issue where the settings window spanned across multiple screens due to incorrect centering.'
         ],
       },
     ],
