@@ -8,6 +8,9 @@ export async function POST(request: NextRequest) {
     const body: ValidateLicenseRequest = await request.json();
     const { license_key, instance_id } = body;
 
+    // log the request body
+    console.log('License verification request:', body);
+
     // Validate required fields
     if (!license_key) {
       return NextResponse.json(
