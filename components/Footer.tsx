@@ -4,33 +4,33 @@ import { Facebook02Icon, YoutubeIcon } from 'hugeicons-react'
 export default function Footer() {
   const links = {
     product: [
-      { label: 'Features', href: '#features' },
       { label: 'Pricing', href: '#pricing' },
-      { label: 'Use Cases', href: '#use-cases' },
+      { label: 'Features', href: '#features' },
       { label: 'Download', href: '/download' },
+      { label: 'Use Cases', href: '#use-cases' },
       { label: 'Affiliates', href: '/affiliates' },
     ],
     tools: [
       { label: 'All Free Tools', href: '/tools' },
-      { label: 'Worksheet Generator', href: '/tools/worksheet-generator' },
       { label: 'Quiz Generator', href: '/tools/quiz-generator' },
-      { label: 'Lesson Plan Generator', href: '/tools/lesson-plan-generator' },
       { label: 'Rubric Generator', href: '/tools/rubric-generator' },
-      { label: 'Flashcards Generator', href: '/tools/flashcards-generator' },
       { label: 'Exam Paper Builder', href: '/tools/exam-paper-builder' },
+      { label: 'Worksheet Generator', href: '/tools/worksheet-generator' },
+      { label: 'Flashcards Generator', href: '/tools/flashcards-generator' },
+      { label: 'Lesson Plan Generator', href: '/tools/lesson-plan-generator' },
     ],
     support: [
-      { label: 'User Guide', href: '/user-guide' },
+      { label: 'FAQ', href: '#faq' },
       { label: 'Blog', href: '/blog' },
       { label: 'Changelog', href: '/changelog' },
+      { label: 'User Guide', href: '/user-guide' },
       { label: 'Contact Support', href: '/contact-support' },
-      { label: 'FAQ', href: '#faq' },
     ],
     legal: [
+      { label: 'EULA', href: '/eula' },
+      { label: 'Refund Policy', href: '/refund-policy' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms of Service', href: '/terms-of-service' },
-      { label: 'Refund Policy', href: '/refund-policy' },
-      { label: 'EULA', href: '/eula' },
     ],
   }
 
