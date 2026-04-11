@@ -8,7 +8,7 @@ export default function Footer() {
       { label: 'Pricing', href: '#pricing' },
       { label: 'Use Cases', href: '#use-cases' },
       { label: 'Download', href: '/download' },
-      { label: 'Affiliates', href: 'https://nexrover.lemonsqueezy.com/affiliates' },
+      { label: 'Affiliates', href: '/affiliates' },
     ],
     tools: [
       { label: 'All Free Tools', href: '/tools' },
