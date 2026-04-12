@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import type { DeactivateLicenseRequest, DeactivateLicenseResponse } from '@/types/lemon-squeezy';
+import { notifyError } from '@/lib/bugsnag';
 
 const LEMON_SQUEEZY_LICENSE_API = 'https://api.lemonsqueezy.com/v1/licenses/deactivate';
 
@@ -36,10 +37,15 @@ export async function POST(request: NextRequest) {
     const data: DeactivateLicenseResponse = await response.json();
 
     if (!response.ok || !data.deactivated) {
+      const errorMessage = data?.error || (data as any)?.message || 'License deactivation failed';
+      notifyError(new Error(errorMessage), request, {
+        request_body: body,
+        lemon_squeezy: data
+      });
       return NextResponse.json(
         { 
           success: false, 
-          error: data.error || 'License deactivation failed',
+          error: errorMessage,
           license_key: data.license_key 
         },
         { status: response.status >= 400 ? response.status : 400 }
@@ -54,8 +60,9 @@ export async function POST(request: NextRequest) {
       meta: data.meta,
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('License deactivation error:', error);
+    notifyError(error, request);
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }

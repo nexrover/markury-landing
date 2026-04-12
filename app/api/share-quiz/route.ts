@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/app/api/_lib/supabase'
+import { notifyError } from '@/lib/bugsnag'
 
 type McqPayload = {
   question: string
@@ -29,11 +30,16 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error('Supabase insert error:', error)
+      notifyError(error, request, {
+        request_body: body,
+        supabase_error: error
+      })
       return NextResponse.json({ error: 'Failed to save quiz.' }, { status: 500 })
     }
 
     return NextResponse.json({ id: data.id })
-  } catch {
+  } catch (error: any) {
+    notifyError(error, request)
     return NextResponse.json({ error: 'Server error.' }, { status: 500 })
   }
 }

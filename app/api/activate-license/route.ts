@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import type { ActivateLicenseRequest, ActivateLicenseResponse } from '@/types/lemon-squeezy';
+import { notifyError } from '@/lib/bugsnag';
 
 const LEMON_SQUEEZY_LICENSE_API = 'https://api.lemonsqueezy.com/v1/licenses/activate';
 
@@ -36,10 +37,17 @@ export async function POST(request: NextRequest) {
     const data: ActivateLicenseResponse = await response.json();
 
     if (!response.ok || !data.activated) {
+      
+      const errorMessage = data?.error || (data as any)?.message || 'License activation failed';
+      
+      notifyError(new Error(errorMessage), request, {
+        request_body: body,
+        lemon_squeezy: data
+      });
       return NextResponse.json(
         { 
           success: false, 
-          error: data.error || 'License activation failed',
+          error: errorMessage,
           license_key: data.license_key 
         },
         { status: response.status >= 400 ? response.status : 400 }
@@ -55,8 +63,8 @@ export async function POST(request: NextRequest) {
       meta: data.meta,
     });
 
-  } catch (error) {
-    console.error('License activation error:', error);
+  } catch (error: any) {
+    notifyError(error, request);
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }

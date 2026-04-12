@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { groqGeneratePlainText } from '@/app/api/_lib/groq'
 import { createInMemoryTextCache } from '@/app/api/_lib/cache'
+import { notifyError } from '@/lib/bugsnag'
 
 type Body = {
   assignment?: string
@@ -89,8 +90,9 @@ export async function POST(request: NextRequest) {
     } finally {
       cache.clearInFlight(cacheKey)
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Generate rubric API error:', error)
+    notifyError(error, request)
     return NextResponse.json({ error: 'Unable to generate rubric right now. Please try again.' }, { status: 500 })
   }
 }
