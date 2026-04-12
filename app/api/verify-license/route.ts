@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       const errorMessage = data?.error || (data as any)?.message || 'License validation failed';
-      notifyError(new Error(errorMessage), request, {
+      await notifyError(new Error(errorMessage), request, {
         request_body: body,
         lemon_squeezy: data
       });
@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
 
   } catch (error: any) {
     console.error('License validation error:', error);
-    notifyError(error, request);
+    await notifyError(error, request);
     return NextResponse.json(
       { valid: false, error: 'Internal server error' },
       { status: 500 }

@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
     }
   } catch (error: any) {
     console.error('Generate exam paper API error:', error)
-    notifyError(error, request)
+    await notifyError(error, request)
     return NextResponse.json({ error: 'Unable to generate exam paper right now. Please try again.' }, { status: 500 })
   }
 }

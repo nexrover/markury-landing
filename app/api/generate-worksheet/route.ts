@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
     }
   } catch (error: any) {
     console.error('Generate worksheet API error:', error)
-    notifyError(error, request)
+    await notifyError(error, request)
     return NextResponse.json(
       { error: 'Unable to generate worksheet right now. Please try again.' },
       { status: 500 }

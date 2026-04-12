@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
     }
   } catch (error: any) {
     console.error('Generate quiz API error:', error)
-    notifyError(error, request)
+    await notifyError(error, request)
     return NextResponse.json({ error: 'Unable to generate quiz right now. Please try again.' }, { status: 500 })
   }
 }

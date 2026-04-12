@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
     }
   } catch (error: any) {
     console.error('Generate lesson plan API error:', error)
-    notifyError(error, request)
+    await notifyError(error, request)
     return NextResponse.json({ error: 'Unable to generate lesson plan right now. Please try again.' }, { status: 500 })
   }
 }

@@ -30,7 +30,7 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error('Supabase insert error:', error)
-      notifyError(error, request, {
+      await notifyError(error, request, {
         request_body: body,
         supabase_error: error
       })
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ id: data.id })
   } catch (error: any) {
-    notifyError(error, request)
+    await notifyError(error, request)
     return NextResponse.json({ error: 'Server error.' }, { status: 500 })
   }
 }

@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
       
       const errorMessage = data?.error || (data as any)?.message || 'License activation failed';
       
-      notifyError(new Error(errorMessage), request, {
+      await notifyError(new Error(errorMessage), request, {
         request_body: body,
         lemon_squeezy: data
       });
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error: any) {
-    notifyError(error, request);
+    await notifyError(error, request);
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }

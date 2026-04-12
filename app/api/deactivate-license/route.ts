@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok || !data.deactivated) {
       const errorMessage = data?.error || (data as any)?.message || 'License deactivation failed';
-      notifyError(new Error(errorMessage), request, {
+      await notifyError(new Error(errorMessage), request, {
         request_body: body,
         lemon_squeezy: data
       });
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
 
   } catch (error: any) {
     console.error('License deactivation error:', error);
-    notifyError(error, request);
+    await notifyError(error, request);
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }
