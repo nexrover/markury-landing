@@ -73,7 +73,7 @@ export default function Pricing() {
                 </div>
                 
                 <p className="text-gray-500 text-sm mt-3 font-medium">
-                  We’re Live! Grab <span className="text-markury-orange font-bold">34% Off</span> Before It’s Gone.
+                  Launch Offer Extended! Grab <span className="text-markury-orange font-bold">34% Off</span> Before It’s Gone.
                 </p>
               </div>
 
@@ -126,7 +126,7 @@ export default function Pricing() {
                 </div>
                 
                 <p className="text-gray-500 text-sm mt-3 font-medium">
-                  We’re Live! Grab <span className="text-green-600 font-bold">50% Off</span> Before It’s Gone.
+                  Launch Offer Extended! Grab <span className="text-green-600 font-bold">50% Off</span> Before It’s Gone.
                 </p>
               </div>
 

@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react'
 
-// Fixed launch promotion end date: April 14, 2026 00:00:00 UTC
-const PROMOTION_END_DATE = new Date('2026-04-12T00:00:00Z').getTime()
+// Fixed launch promotion end date: April 19, 2026 00:00:00 UTC
+const PROMOTION_END_DATE = new Date('2026-04-19T00:00:00Z').getTime()
 
 interface TimeLeft {
   days: number
@@ -127,7 +127,7 @@ export default function CountdownTimer({ variant, onExpired }: CountdownTimerPro
     return (
       <div className="flex items-center gap-3 sm:gap-5">
         <div className="hidden sm:block text-right whitespace-nowrap">
-          <p className="font-bold text-white text-sm sm:text-base leading-tight tracking-tight">🔥 Launch Offer</p>
+          <p className="font-bold text-white text-sm sm:text-base leading-tight tracking-tight">🔥 Launch Offer Extended</p>
           <p className="text-gray-400 text-xs sm:text-sm leading-tight">up to <span className="font-bold text-markury-yellow">50% off</span></p>
         </div>
         <div className="sm:hidden text-right whitespace-nowrap">
@@ -144,7 +144,7 @@ export default function CountdownTimer({ variant, onExpired }: CountdownTimerPro
       <div className="inline-flex flex-col items-center gap-2.5 sm:gap-3 bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200/60 rounded-2xl px-5 py-3.5 sm:px-8 sm:py-5 shadow-sm w-full sm:w-auto max-w-md sm:max-w-none mx-auto">
         <p className="text-xs sm:text-base font-semibold text-gray-700">
           <span className="mr-1">⏳</span>
-          Up to <span className="text-markury-orange font-bold">50% Off</span>, Limited Launch Offer Ends In
+          Up to <span className="text-markury-orange font-bold">50% Off</span>, Launch Offer Extended! Ends In
         </p>
         {blocks}
       </div>
