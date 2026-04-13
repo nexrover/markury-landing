@@ -5,10 +5,10 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
         disallow: ['/private/', '/api/'],
       },
     ],
     sitemap: 'https://www.markury.app/sitemap.xml',
+    host: 'www.markury.app',
   }
 }
