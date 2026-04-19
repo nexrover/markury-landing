@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col transition-all duration-300">
-      <Banner />
+      {/* <Banner /> */}
       <div className="w-full bg-white/80 backdrop-blur-lg border-b border-gray-100">
         <nav className="container-narrow">
           <div className="flex items-center justify-between h-16 sm:h-20">

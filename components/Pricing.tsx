@@ -2,7 +2,6 @@
 
 import { ScribbleStroke } from '@/components/AnnotationAccents'
 import {  CheckmarkCircle02Icon, AiSecurity01Icon } from 'hugeicons-react'
-import CountdownTimer from '@/components/CountdownTimer'
 
 export default function Pricing() {
   const features = [
@@ -43,8 +42,7 @@ export default function Pricing() {
           </p>
         </div>
 
-        {/* Countdown Timer */}
-        <CountdownTimer variant="pricing" />
+
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto px-4">
@@ -64,21 +62,14 @@ export default function Pricing() {
               </div>
 
               <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-3 mb-2">
-                  <span className="text-gray-400 line-through text-2xl decoration-2 decoration-gray-900/50">$29/year</span>
-                </div>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-gray-900 tracking-tight">$19</span>
+                  <span className="text-5xl font-bold text-gray-900 tracking-tight">$29</span>
                   <span className="text-gray-600 font-medium">/year</span>
                 </div>
-                
-                <p className="text-gray-500 text-sm mt-3 font-medium">
-                  Launch Offer Extended! Grab <span className="text-markury-orange font-bold">34% Off</span> Before It’s Gone.
-                </p>
               </div>
 
               <a
-                href={process.env.NEXT_PUBLIC_YEARLY_PRICE_LINK || "https://nexrover.lemonsqueezy.com/buy/081ee812-4d2c-4740-9111-ce03f0b26aa9"}
+                href="https://nexrover.lemonsqueezy.com/checkout/buy/089cb402-7c2f-4752-8b80-fb8929b4fb18"
                 style={{ backgroundColor: 'var(--markury-orange)' }}
                 className="btn-primary block w-full text-center mb-4"
               >
@@ -104,11 +95,6 @@ export default function Pricing() {
 
           {/* Lifetime Plan */}
           <div className="relative bg-gray-50 rounded-3xl shadow-lg border border-gray-200 overflow-hidden flex flex-col">
-             <div className="absolute top-0 right-0">
-              <div className="bg-gray-900 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wide">
-                Founders Offer
-              </div>
-            </div>
 
             <div className="p-8 sm:p-10 flex-1 flex flex-col">
               <div className="text-center mb-6">
@@ -117,21 +103,14 @@ export default function Pricing() {
               </div>
 
               <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-3 mb-2">
-                  <span className="text-gray-400 line-through text-2xl decoration-2 decoration-gray-900/50">$79</span>
-                </div>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-gray-900 tracking-tight">$39</span>
+                  <span className="text-5xl font-bold text-gray-900 tracking-tight">$79</span>
                   <span className="text-gray-600 font-medium">one-time</span>
                 </div>
-                
-                <p className="text-gray-500 text-sm mt-3 font-medium">
-                  Launch Offer Extended! Grab <span className="text-green-600 font-bold">50% Off</span> Before It’s Gone.
-                </p>
               </div>
 
               <a
-                href={process.env.NEXT_PUBLIC_LIFETIME_PRICE_LINK || "https://nexrover.lemonsqueezy.com/checkout/buy/f8632404-ee60-4d46-8782-c64e310bb943"}
+                href="https://nexrover.lemonsqueezy.com/checkout/buy/88f60998-3fd2-47b0-be0e-87d1713c5110"
                 className="inline-flex items-center justify-center w-full px-8 py-4 text-lg font-semibold text-white bg-gray-900 rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5 hover:bg-gray-800 mb-4"
               >
                 Get Lifetime Access
