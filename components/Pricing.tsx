@@ -1,7 +1,8 @@
 'use client'
 
 import { ScribbleStroke } from '@/components/AnnotationAccents'
-import {  CheckmarkCircle02Icon, AiSecurity01Icon, Cancel01Icon } from 'hugeicons-react'
+import {  CheckmarkCircle02Icon, AiSecurity01Icon, Cancel01Icon, GiftIcon } from 'hugeicons-react'
+import Link from 'next/link'
 
 export default function Pricing() {
   const freeFeatures = [
@@ -50,7 +51,7 @@ export default function Pricing() {
 
       <div className="container mx-auto relative">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-14">
           <h2 className="section-heading mb-4">
             Simple pricing,{' '}
             <span className="marker-underline marker-underline--orange">
@@ -62,7 +63,35 @@ export default function Pricing() {
           </p>
         </div>
 
-
+        {/* Share & Save Promo */}
+        <div className="max-w-4xl mx-auto mb-16 px-4">
+          <div className="bg-gradient-to-r from-orange-50 via-yellow-50 to-orange-50 rounded-3xl p-6 sm:p-8 border border-orange-200/60 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
+            <div className="absolute -right-12 -top-12 w-48 h-48 bg-markury-orange opacity-10 rounded-full blur-3xl pointer-events-none group-hover:opacity-20 transition-opacity duration-500" />
+            <div className="absolute -left-12 -bottom-12 w-48 h-48 bg-markury-yellow opacity-10 rounded-full blur-3xl pointer-events-none group-hover:opacity-20 transition-opacity duration-500" />
+            
+            <div className="flex items-center gap-5 sm:gap-6 z-10 relative text-center md:text-left flex-col md:flex-row w-full md:w-auto">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-2xl flex items-center justify-center shadow-md flex-shrink-0 border border-orange-100">
+                <GiftIcon className="w-8 h-8 sm:w-10 sm:h-10 text-markury-orange animate-wiggle" />
+              </div>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1.5">
+                  Get <span className="text-markury-orange">10% Off</span> Your Purchase
+                </h3>
+                <p className="text-gray-600 text-sm sm:text-base max-w-md">
+                  Share Markury with your friends on social media and unlock an exclusive discount code instantly.
+                </p>
+              </div>
+            </div>
+            
+            <Link 
+              href="/share" 
+              className="btn-primary whitespace-nowrap z-10 shrink-0 w-full md:w-auto text-sm sm:text-base px-6 py-3.5 sm:px-8 sm:py-4 border border-orange-400 relative overflow-hidden before:pointer-events-none before:absolute before:inset-y-0 before:-left-1/3 before:w-1/3 before:skew-x-[-20deg] before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent motion-safe:before:animate-[markury-shimmer_2.6s_ease-in-out_infinite] motion-reduce:before:hidden hover:shadow-[0_0_20px_-3px_rgba(251,146,60,0.5)] motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0"
+              style={{ backgroundColor: 'var(--markury-orange)', color: 'white' }}
+            >
+              Share & Save 10%
+            </Link>
+          </div>
+        </div>
 
         {/* Pricing Cards */}
         <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
