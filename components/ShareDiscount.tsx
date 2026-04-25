@@ -351,7 +351,7 @@ export default function ShareDiscount() {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all hover:-translate-y-0.5 shadow-lg">
                 {codeCopied ? <><Tick01Icon className="w-5 h-5 text-markury-lime" /> Copied!</> : <><Copy01Icon className="w-5 h-5" /> Copy Code</>}
               </button>
-              <Link href="/#pricing?discount=SHARE10" 
+              <Link href="/?discount=SHARE10#pricing" 
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 text-gray-900 rounded-xl font-semibold hover:opacity-90 transition-all hover:-translate-y-0.5 shadow-lg shadow-orange-200"
                 style={{ backgroundColor: 'var(--markury-orange)' }}>
                 Go to Checkout <ArrowRight01Icon className="w-5 h-5" />
