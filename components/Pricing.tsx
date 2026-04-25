@@ -4,6 +4,13 @@ import { ScribbleStroke } from '@/components/AnnotationAccents'
 import {  CheckmarkCircle02Icon, AiSecurity01Icon } from 'hugeicons-react'
 
 export default function Pricing() {
+  const freeFeatures = [
+    "Markury freehand tool",
+    "Eraser tool",
+    "Cursor tool",
+    "Collapse tool",
+  ]
+
   const features = [
     "All drawing tools (freehand, highlighter, eraser)",
     "Shape tools (line, rectangle, circle, ellipse, arrow)",
@@ -45,10 +52,48 @@ export default function Pricing() {
 
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto px-4">
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
           
+          {/* Free Plan */}
+          <div className="relative bg-white rounded-3xl border border-gray-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
+            <div className="p-8 sm:p-10 flex-1 flex flex-col">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Free</h3>
+                <p className="text-gray-500 font-medium">Basic tools, forever</p>
+              </div>
+
+              <div className="text-center mb-8">
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-5xl font-bold text-gray-900 tracking-tight">$0</span>
+                </div>
+              </div>
+
+              <a
+                href="/download"
+                className="btn-secondary block w-full text-center mb-4"
+              >
+                Download Free
+              </a>
+              <p className="text-gray-500 text-xs text-center mb-8">
+                No credit card required.
+              </p>
+
+              <div className="space-y-4">
+                <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">What&apos;s included:</p>
+                <ul className="space-y-3">
+                  {freeFeatures.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckmarkCircle02Icon className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
           {/* Markury Pro Plan */}
-          <div className="relative bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden flex flex-col">
+          <div className="relative bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden flex flex-col transform lg:-translate-y-4">
             <div className="absolute top-0 right-0">
               <div className="bg-markury-orange text-gray-900 text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wide">
                 Most Popular
@@ -61,7 +106,7 @@ export default function Pricing() {
                 <p className="text-highlight text-highlight--soft inline-block font-medium">7 days free trial</p>
               </div>
 
-              <div className="text-center mb-8">
+              <div className="text-center mb-8 lg:mb-12">
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-5xl font-bold text-gray-900 tracking-tight">$29</span>
                   <span className="text-gray-600 font-medium">/year</span>
@@ -76,7 +121,7 @@ export default function Pricing() {
                 Start Free Trial
               </a>
               <p className="text-gray-500 text-xs text-center mb-8">
-                Locked in price. No price increase for existing users.
+                Locked-in price for existing users.
               </p>
 
               <div className="space-y-4">
@@ -120,7 +165,7 @@ export default function Pricing() {
               </p>
 
                <div className="space-y-4">
-                <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">All features included:</p>
+                <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">What's included:</p>
                 <ul className="space-y-3">
                   {features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
