@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Copy01Icon, CheckmarkCircle02Icon, Upload04Icon, Link01Icon, Tick01Icon, ArrowRight01Icon, SparklesIcon, Share08Icon } from 'hugeicons-react'
+import Link from 'next/link'
 
 const SHARE_TEXT = "I just discovered Markury, a beautiful screen annotation tool for teachers, presenters & designers. Draw, highlight & annotate directly on your screen! Check it out 👉 https://www.markury.app"
 const SHARE_URL = "https://www.markury.app"
@@ -345,11 +346,16 @@ export default function ShareDiscount() {
               </div>
             </div>
 
-            <div className="mb-8">
+            <div className="mb-8 flex flex-col sm:flex-row justify-center gap-3">
               <button onClick={copyCode}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all hover:-translate-y-0.5 shadow-lg">
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all hover:-translate-y-0.5 shadow-lg">
                 {codeCopied ? <><Tick01Icon className="w-5 h-5 text-markury-lime" /> Copied!</> : <><Copy01Icon className="w-5 h-5" /> Copy Code</>}
               </button>
+              <Link href="/#pricing?discount=SHARE10" 
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-gray-900 rounded-xl font-semibold hover:opacity-90 transition-all hover:-translate-y-0.5 shadow-lg shadow-orange-200"
+                style={{ backgroundColor: 'var(--markury-orange)' }}>
+                Go to Checkout <ArrowRight01Icon className="w-5 h-5" />
+              </Link>
             </div>
 
             <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100 text-left">

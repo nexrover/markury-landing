@@ -3,8 +3,26 @@
 import { ScribbleStroke } from '@/components/AnnotationAccents'
 import {  CheckmarkCircle02Icon, AiSecurity01Icon, Cancel01Icon, GiftIcon } from 'hugeicons-react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
-export default function Pricing() {
+function PricingContent() {
+  const searchParams = useSearchParams()
+  const discountCode = searchParams.get('discount')
+  
+  const isDiscounted = discountCode === 'SHARE10'
+  
+  const proYearlyBasePrice = 29
+  const proYearlyPrice = isDiscounted ? 26 : proYearlyBasePrice
+  const proYearlyLink = isDiscounted 
+    ? "https://nexrover.lemonsqueezy.com/checkout/buy/089cb402-7c2f-4752-8b80-fb8929b4fb18?checkout[discount_code]=SHARE10" 
+    : "https://nexrover.lemonsqueezy.com/checkout/buy/089cb402-7c2f-4752-8b80-fb8929b4fb18"
+    
+  const proLifetimeBasePrice = 79
+  const proLifetimePrice = isDiscounted ? 71 : proLifetimeBasePrice
+  const proLifetimeLink = isDiscounted
+    ? "https://nexrover.lemonsqueezy.com/checkout/buy/88f60998-3fd2-47b0-be0e-87d1713c5110?checkout[discount_code]=SHARE10"
+    : "https://nexrover.lemonsqueezy.com/checkout/buy/88f60998-3fd2-47b0-be0e-87d1713c5110"
   const freeFeatures = [
     "Freehand tool",
     "Eraser tool",
@@ -156,13 +174,14 @@ export default function Pricing() {
 
               <div className="text-center mb-8 lg:mb-12">
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-gray-900 tracking-tight">$29</span>
+                  {isDiscounted && <span className="text-2xl text-gray-400 line-through mr-2">${proYearlyBasePrice}</span>}
+                  <span className="text-5xl font-bold text-gray-900 tracking-tight">${proYearlyPrice}</span>
                   <span className="text-gray-600 font-medium">/year</span>
                 </div>
               </div>
 
               <a
-                href="https://nexrover.lemonsqueezy.com/checkout/buy/089cb402-7c2f-4752-8b80-fb8929b4fb18"
+                href={proYearlyLink}
                 style={{ backgroundColor: 'var(--markury-orange)' }}
                 className="btn-primary block w-full text-center mb-4"
               >
@@ -197,13 +216,14 @@ export default function Pricing() {
 
               <div className="text-center mb-8">
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-gray-900 tracking-tight">$79</span>
+                  {isDiscounted && <span className="text-2xl text-gray-400 line-through mr-2">${proLifetimeBasePrice}</span>}
+                  <span className="text-5xl font-bold text-gray-900 tracking-tight">${proLifetimePrice}</span>
                   <span className="text-gray-600 font-medium">one-time</span>
                 </div>
               </div>
 
               <a
-                href="https://nexrover.lemonsqueezy.com/checkout/buy/88f60998-3fd2-47b0-be0e-87d1713c5110"
+                href={proLifetimeLink}
                 className="inline-flex items-center justify-center w-full px-8 py-4 text-lg font-semibold text-white bg-gray-900 rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5 hover:bg-gray-800 mb-4"
               >
                 Get Lifetime Access
@@ -246,8 +266,22 @@ export default function Pricing() {
           <p className="text-gray-500 text-sm">
             Secure payment via Stripe • Instant download after purchase • macOS 12.0+ & Windows 10+
           </p>
-        </div>
+      </div>
       </div>
     </section>
+  )
+}
+
+export default function Pricing() {
+  return (
+    <Suspense fallback={
+      <section className="relative overflow-hidden py-20 sm:py-32 min-h-screen">
+        <div className="container mx-auto relative flex justify-center items-center h-full">
+          <div className="w-12 h-12 border-4 border-markury-orange/30 border-t-markury-orange rounded-full animate-spin"></div>
+        </div>
+      </section>
+    }>
+      <PricingContent />
+    </Suspense>
   )
 }
