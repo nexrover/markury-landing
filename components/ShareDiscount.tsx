@@ -190,7 +190,7 @@ export default function ShareDiscount() {
       {/* Steps indicator */}
       <div className="flex items-center justify-center gap-2 sm:gap-3 mb-12 sm:mb-16 max-w-lg mx-auto px-4">
         {[1, 2, 3].map(s => (
-          <div key={s} className="flex items-center gap-2 sm:gap-3 flex-1">
+          <div key={s} className={`flex items-center gap-2 sm:gap-3 ${s < 3 ? 'flex-1' : ''}`}>
             <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 flex-shrink-0 ${
               step >= s ? 'bg-markury-orange text-gray-900 shadow-lg shadow-orange-200' : 'bg-gray-100 text-gray-400'
             }`}>
