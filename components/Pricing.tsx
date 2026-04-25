@@ -213,7 +213,7 @@ export default function Pricing() {
               </p>
 
                <div className="space-y-4">
-                <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">What's included:</p>
+                <p className="text-sm font-semibold text-gray-900 uppercase tracking-wider">What&apos;s included:</p>
                 <ul className="space-y-3">
                   {features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import DownloadButton from '@/components/DownloadButton'
 
 export const metadata = {
   title: 'Try Markury Free - Screen Annotation Tool for Mac & Windows',
@@ -143,15 +144,12 @@ export default function DownloadPage() {
                 </div>
 
                 {/* Download button */}
-                <a
-                  href={item.url}
-                  className="flex items-center justify-center gap-3 w-full px-6 py-3.5 text-base font-semibold text-gray-900 bg-markury-yellow rounded-xl hover:opacity-95 transition-all shadow-md hover:shadow-lg"
-                >
+                <DownloadButton platform={item.platform} url={item.url}>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                   </svg>
                   Download for {item.platform}
-                </a>
+                </DownloadButton>
 
                 {/* Quick install steps */}
                 <div className="mt-6 pt-6 border-t border-gray-100">
