@@ -1,14 +1,27 @@
 'use client'
 
 import { ScribbleStroke } from '@/components/AnnotationAccents'
-import {  CheckmarkCircle02Icon, AiSecurity01Icon } from 'hugeicons-react'
+import {  CheckmarkCircle02Icon, AiSecurity01Icon, Cancel01Icon } from 'hugeicons-react'
 
 export default function Pricing() {
   const freeFeatures = [
-    "Markury freehand tool",
+    "Freehand tool",
     "Eraser tool",
-    "Cursor tool",
-    "Collapse tool",
+  ]
+
+  const freeExcludedFeatures = [
+    "Highlighters & Shape tools",
+    "Text annotations",
+    "Laser pointer for presentations",
+    "Whiteboard mode with 4 colors",
+    "Full screen & region screenshots",
+    "4 customizable quick colors",
+    "Fully customizable keyboard shortcuts",
+    "Flexible toolbar (vertical/horizontal)",
+    "Unlimited undo & redo",
+    "Dark & light themes with 7 accent colors",
+    "1 license covers 2 devices",
+    "All future updates included",
   ]
 
   const features = [
@@ -85,6 +98,12 @@ export default function Pricing() {
                     <li key={index} className="flex items-start gap-3">
                       <CheckmarkCircle02Icon className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-600 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                  {freeExcludedFeatures.map((feature, index) => (
+                    <li key={`ex-${index}`} className="flex items-start gap-3 opacity-60">
+                      <Cancel01Icon className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-500 text-sm line-through">{feature}</span>
                     </li>
                   ))}
                 </ul>
