@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import { ScribbleArrow, ScribbleCircle } from '@/components/AnnotationAccents'
 // import VideoComparison from '@/components/VideoComparison'
 import VideoShowcase, { type VideoShowcaseHandle } from '@/components/VideoShowcase'
+import DownloadCountBadge from '@/components/DownloadCountBadge'
 
 export default function Hero() {
   const videoRef = useRef<VideoShowcaseHandle>(null)
@@ -36,8 +37,6 @@ export default function Hero() {
 
       <div className="container-narrow">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Badge */}
-
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-6">
             Screen annotation{' '}
@@ -49,6 +48,9 @@ export default function Hero() {
             Draw, highlight, and present directly on your screen. 
             
           </p>
+
+          {/* Badge */}
+          <DownloadCountBadge className="mb-8 mx-auto" />
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">

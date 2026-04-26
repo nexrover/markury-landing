@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import DownloadButton from '@/components/DownloadButton'
+import DownloadCountBadge from '@/components/DownloadCountBadge'
 
 export const metadata = {
   title: 'Try Markury Free - Screen Annotation Tool for Mac & Windows',
@@ -102,6 +103,11 @@ export default function DownloadPage() {
               </svg>
               Back to Home
             </Link>
+            
+            <div className="flex justify-center mb-6">
+              <DownloadCountBadge variant="orange" />
+            </div>
+
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               Download <span className="text-highlight text-highlight--soft">Mark</span>ury
             </h1>

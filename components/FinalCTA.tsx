@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { ScribbleArrow } from '@/components/AnnotationAccents'
+import DownloadCountBadge from '@/components/DownloadCountBadge'
 
 export default function FinalCTA() {
   return (
@@ -35,9 +36,13 @@ export default function FinalCTA() {
             </h2>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-500 mb-8 max-w-2xl mx-auto leading-relaxed">
               Join thousands of teachers, presenters, and creators who trust Markury to help them explain, highlight, and annotate with ease.
             </p>
+
+            <div className="flex justify-center mb-8">
+              <DownloadCountBadge />
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
