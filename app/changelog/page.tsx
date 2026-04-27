@@ -33,9 +33,36 @@ interface ChangelogEntry {
 
 const changelog: ChangelogEntry[] = [
   {
+    version: '1.1.0',
+    date: 'April 24, 2026',
+    tag: 'latest',
+    sections: [
+      {
+        type: 'feature',
+        items: [
+          'Enjoy greater precision with drawing tools that now support individual stroke width settings.',
+          'Keep your workspace clean with a new option to automatically clear annotations when minimizing (Settings panel).',
+          'Take control of your UI with a toggle for screenshot snackbar visibility (Settings panel).',
+          'Get quick visual feedback with a new thumbnail preview at the bottom-right corner (Settings panel).',
+          'Experience a more natural workflow with stylus backside support for instant erasing.',
+          "Easily know when you're in control with a subtle accent-colored border indicating toolbar focus.",
+        ],
+      },
+      {
+        type: 'fix',
+        items: [
+          'Improved hotkey experience—shortcuts now work only when they should, avoiding conflicts during typing or minimize mode. Default shortcuts: `Ctrl + Z` (undo) and `Ctrl + Shift + Z` (redo).',
+          'Smoother navigation with fixes to trackpad scrolling.',
+          'Prevented multiple instances from running simultaneously.',
+          'Enhanced pen input detection for a more reliable drawing experience.',
+          'Fixed an issue where small strokes (such as decimal points or full stops) were not rendering correctly.',
+        ],
+      },
+    ],
+  },
+  {
     version: '1.0.1',
     date: 'April 2, 2026',
-    tag: 'latest',
     sections: [
       {
         type: 'fix',

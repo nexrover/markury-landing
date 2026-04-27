@@ -30,9 +30,9 @@ export default function DownloadPage() {
       platform: 'macOS',
       subtitle: 'Apple Silicon & Intel',
       icon: '/apple.svg',
-      fileName: 'Markury v1.0.1.dmg',
-      fileSize: '~19 MB',
-      url: 'https://ftp.markury.app/installers/Markury%20v1.0.1/Markury%20v1.0.1.dmg',
+      fileName: 'Markury v1.1.0.dmg',
+      fileSize: '~20 MB',
+      url: 'https://ftp.markury.app/installers/Markury%20v1.1.0/Markury%20v1.1.0.dmg',
       requirements: 'macOS 12 Monterey or later',
       instructions: [
         'Download the .dmg file',
@@ -43,12 +43,12 @@ export default function DownloadPage() {
     },
     {
       platform: 'Windows',
-      subtitle: 'Windows 10 & 11',
+      subtitle: 'Windows 7, 8, 10, 11',
       icon: '/windows.svg',
-      fileName: 'Markury v1.0.1.exe',
+      fileName: 'Markury v1.1.0.exe',
       fileSize: '~12 MB',
-      url: 'https://ftp.markury.app/installers/Markury%20v1.0.1/Markury%20v1.0.1.exe',
-      requirements: 'Windows 10 (64-bit) or later',
+      url: 'https://ftp.markury.app/installers/Markury%20v1.1.0/Markury%20v1.1.0.exe',
+      requirements: 'Windows 7, 8, 10 & 11 (64-bit)',
       instructions: [
         'Download the .exe installer',
         'Double-click to run the installer',
@@ -72,10 +72,10 @@ export default function DownloadPage() {
       description: 'Free trial available',
     },
     downloadUrl: [
-      'https://ftp.markury.app/installers/Markury%20v1.0.dmg',
-      'https://ftp.markury.app/installers/Markury%20v1.0.exe',
+      'https://ftp.markury.app/installers/Markury%20v1.1.0/Markury%20v1.1.0.dmg',
+      'https://ftp.markury.app/installers/Markury%20v1.1.0/Markury%20v1.1.0.exe',
     ],
-    softwareVersion: '1.0',
+    softwareVersion: '1.1.0',
     author: {
       '@type': 'Organization',
       name: 'Nexrover',
