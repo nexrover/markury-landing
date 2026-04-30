@@ -95,7 +95,7 @@ function PricingContent() {
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto px-4">
           
           {/* Markury Pro Plan */}
-          <div className="relative bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden flex flex-col transform lg:-translate-y-4">
+          <div className="relative bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden flex flex-col">
             <div className="absolute top-0 right-0">
               <div className="bg-markury-orange text-gray-900 text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wide">
                 Most Popular
@@ -108,7 +108,7 @@ function PricingContent() {
                 <p className="text-highlight text-highlight--soft inline-block font-medium">7 days free trial</p>
               </div>
 
-              <div className="text-center mb-8 lg:mb-12">
+              <div className="text-center mb-8">
                 <div className="flex items-baseline justify-center gap-1">
                   {isDiscounted && <span className="text-2xl text-gray-400 line-through mr-2">${proYearlyBasePrice}</span>}
                   <span className="text-5xl font-bold text-gray-900 tracking-tight">${proYearlyPrice}</span>
