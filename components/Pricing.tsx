@@ -21,8 +21,8 @@ function PricingContent() {
   const proLifetimeBasePrice = 79
   const proLifetimePrice = isDiscounted ? 71 : proLifetimeBasePrice
   const proLifetimeLink = isDiscounted
-    ? "https://nexrover.lemonsqueezy.com/checkout/buy/88f60998-3fd2-47b0-be0e-87d1713c5110?checkout[discount_code]=SHARE10"
-    : "https://nexrover.lemonsqueezy.com/checkout/buy/88f60998-3fd2-47b0-be0e-87d1713c5110"
+    ? "https://nexrover.lemonsqueezy.com/checkout/buy/59453884-0f32-43e5-91e6-ba8e0555453e?checkout[discount_code]=SHARE10"
+    : "https://nexrover.lemonsqueezy.com/checkout/buy/59453884-0f32-43e5-91e6-ba8e0555453e"
   const features = [
     "All drawing tools (freehand, highlighter, eraser)",
     "Shape tools (line, rectangle, circle, ellipse, arrow)",
