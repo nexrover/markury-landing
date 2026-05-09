@@ -845,29 +845,59 @@ export default function UserGuidePage() {
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">Troubleshooting</h2>
 
                   <div className="space-y-6">
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Toolbar Disappeared</h3>
+                    <div id="toolbar-disappeared" className="scroll-mt-24">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <a href="#toolbar-disappeared" className="no-underline">Toolbar Disappeared</a>
+                      </h3>
                       <p className="text-gray-700 leading-relaxed">Use the system tray menu → &quot;Find Toolbar&quot; to locate it with a visual pulse.</p>
                     </div>
 
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Can&apos;t Draw on Screen</h3>
+                    <div id="cant-draw" className="scroll-mt-24">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <a href="#cant-draw" className="no-underline">Can&apos;t Draw on Screen</a>
+                      </h3>
                       <p className="text-gray-700 leading-relaxed">Make sure you&apos;ve selected a drawing tool (not the cursor). Check that drawing mode is active (cyan border on toolbar).</p>
                     </div>
 
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Screenshots Not Working</h3>
+                    <div id="screenshots-not-working" className="scroll-mt-24">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <a href="#screenshots-not-working" className="no-underline">Screenshots Not Working</a>
+                      </h3>
                       <p className="text-gray-700 leading-relaxed">Markury needs Screen Recording permission. Go to System Preferences → Privacy & Security → Screen Recording and ensure Markury is enabled.</p>
                     </div>
 
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Shortcuts Not Working</h3>
+                    <div id="shortcuts-not-working" className="scroll-mt-24">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <a href="#shortcuts-not-working" className="no-underline">Shortcuts Not Working</a>
+                      </h3>
                       <p className="text-gray-700 leading-relaxed">Markury needs Accessibility permission for global shortcuts. Go to System Preferences → Privacy & Security → Accessibility and ensure Markury is enabled.</p>
                     </div>
 
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Drawings Not Visible</h3>
+                    <div id="drawings-not-visible" className="scroll-mt-24">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <a href="#drawings-not-visible" className="no-underline">Drawings Not Visible</a>
+                      </h3>
                       <p className="text-gray-700 leading-relaxed">Click the visibility toggle to ensure drawings are shown, not hidden.</p>
+                    </div>
+
+                    <div id="multi-monitor-issue" className="scroll-mt-24">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <a href="#multi-monitor-issue" className="no-underline">Multi-Monitor Issue on macOS</a>
+                      </h3>
+                      <h4 className="font-semibold text-gray-800 mt-3 mb-1">Why This Happens</h4>
+                      <p className="text-gray-700 leading-relaxed mb-3">
+                        macOS enables a setting called &quot;Displays have separate Spaces&quot; by default. This prevents a single app window from spanning across multiple monitors. Since Markury uses one transparent overlay window to allow seamless drawing across all displays, macOS clips the overlay to the primary monitor only. As a result, parts of the toolbar or drawing area may disappear when moving across screens.
+                      </p>
+                      <h4 className="font-semibold text-gray-800 mt-3 mb-1">Solution</h4>
+                      <ol className="list-decimal list-inside space-y-1 text-gray-700">
+                        <li>Open <strong>System Settings</strong> &rarr; <strong>Desktop &amp; Dock</strong></li>
+                        <li>Scroll to the <strong>Mission Control</strong> section</li>
+                        <li>Turn OFF <strong>&quot;Displays have separate Spaces&quot;</strong></li>
+                        <li>Log out and log back in (or restart your Mac)</li>
+                      </ol>
+                      <p className="text-gray-700 leading-relaxed mt-3">
+                        After restarting, Markury will work seamlessly across all connected displays.
+                      </p>
                     </div>
                   </div>
                 </section>
