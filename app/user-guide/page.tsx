@@ -54,7 +54,12 @@ export default function UserGuidePage() {
                 <nav className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
                   <h2 className="font-semibold text-gray-900 mb-4">Table of Contents</h2>
                   <ul className="space-y-2 text-sm">
-                    <li><a href="#installation" className="text-gray-600 hover:text-gray-900 transition-colors">Installation</a></li>
+                    <li>
+                      <a href="#installation" className="text-gray-600 hover:text-gray-900 transition-colors">Installation</a>
+                      <ul className="mt-1.5 ml-3 space-y-1.5 border-l border-gray-200 pl-3">
+                        <li><a href="#license" className="text-gray-600 hover:text-gray-900 transition-colors">License Activation</a></li>
+                      </ul>
+                    </li>
                     <li><a href="#getting-started" className="text-gray-600 hover:text-gray-900 transition-colors">Getting Started</a></li>
                     <li><a href="#floating-toolbar" className="text-gray-600 hover:text-gray-900 transition-colors">The Floating Toolbar</a></li>
                     <li><a href="#drawing-tools" className="text-gray-600 hover:text-gray-900 transition-colors">Drawing Tools</a></li>
@@ -67,7 +72,6 @@ export default function UserGuidePage() {
                     <li><a href="#undo-redo" className="text-gray-600 hover:text-gray-900 transition-colors">Undo, Redo & Clear</a></li>
                     <li><a href="#keyboard-shortcuts" className="text-gray-600 hover:text-gray-900 transition-colors">Keyboard Shortcuts</a></li>
                     <li><a href="#settings" className="text-gray-600 hover:text-gray-900 transition-colors">Settings & Customization</a></li>
-                    <li><a href="#license" className="text-gray-600 hover:text-gray-900 transition-colors">License Activation</a></li>
                     <li><a href="#system-tray" className="text-gray-600 hover:text-gray-900 transition-colors">System Tray</a></li>
                     <li><a href="#use-cases" className="text-gray-600 hover:text-gray-900 transition-colors">Use Cases</a></li>
                     <li><a href="#tips" className="text-gray-600 hover:text-gray-900 transition-colors">Tips & Best Practices</a></li>
@@ -181,6 +185,82 @@ export default function UserGuidePage() {
                         <li>Follow the on-screen prompts to complete installation.</li>
                         <li>Markury will launch automatically when finished.</li>
                       </ol>
+                    </div>
+                  </div>
+
+                  {/* License Activation (nested under Installation) */}
+                  <div id="license" className="scroll-mt-24 mt-16 pt-16 border-t border-gray-200">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-4">License Activation</h3>
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      Unlock the full power of Markury by activating your license key. Each license is valid for use on up to{' '}
+                      <strong>2 devices</strong> (e.g., your laptop and desktop).
+                    </p>
+
+                    <div className="mb-8 not-prose">
+                      <h4 className="text-xl font-semibold text-gray-900 mb-3">Where to find your license key</h4>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        Your license key is included in your <strong>order confirmation email</strong>. You can also find it in your account under the{' '}
+                        <strong>Order summary</strong> for your purchase, open the <strong>Licenses</strong> section on the order detail page to view or copy the key.
+                      </p>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        <a
+                          href="https://app.lemonsqueezy.com/my-orders"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold text-primary-700 underline underline-offset-2 decoration-2 decoration-primary-600 hover:text-primary-900 hover:decoration-primary-800 bg-amber-100 px-1.5 py-0.5 rounded transition-colors"
+                        >
+                          Sign in to your account (My Orders)
+                        </a>{' '}
+                        to access your orders and license keys anytime.
+                      </p>
+                      <figure className="my-6">
+                        <Image
+                          src="/order_summary_license_key.png"
+                          alt="Lemon Squeezy My Orders: order detail with the Licenses section and license key highlighted in the order summary"
+                          width={1200}
+                          height={675}
+                          className="rounded-lg border border-gray-200 w-full max-w-3xl h-auto shadow-sm"
+                        />
+                        <figcaption className="text-sm text-gray-500 mt-2">
+                          Order detail in My Orders — your key appears under <strong>Licenses</strong> in the order summary.
+                        </figcaption>
+                      </figure>
+                    </div>
+
+                    <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 mb-8">
+                      <h4 className="text-xl font-bold text-blue-900 mb-4">How to Activate</h4>
+                      <ol className="list-decimal list-inside space-y-3 text-blue-800">
+                        <li>Open Markury and click the <strong>Settings</strong> (gear) icon in the toolbar.</li>
+                        <li>Go to the <strong>License</strong> tab.</li>
+                        <li>Paste your license key into the input field.</li>
+                        <li>Click <strong>Activate</strong> to unlock Pro features instantly.</li>
+                      </ol>
+                    </div>
+
+                    <div className="space-y-6">
+                      <div>
+                        <h4 className="text-xl font-semibold text-gray-900 mb-2">Managing Activations</h4>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          If you need to move your license to a new computer or see the &quot;Activation limit reached&quot; message:
+                        </p>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          <li>
+                            <strong>Deactivate existing device:</strong> Go to Settings &rarr; License and click <strong>Deactivate</strong> on your old computer.
+                          </li>
+                          <li>
+                            <strong>Manage online:</strong> If you don&apos;t have access to the old computer, use the <strong>Account</strong> link in the License tab (or visit the{' '}
+                            <a
+                              href="https://app.lemonsqueezy.com/my-orders"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary-600 font-semibold hover:underline"
+                            >
+                              Lemon Squeezy dashboard
+                            </a>
+                            ) to manage your active devices remotely.
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </section>
@@ -674,41 +754,6 @@ export default function UserGuidePage() {
                     <li>Click any shortcut to record a new key combination</li>
                     <li>Clear shortcuts you don&apos;t want</li>
                   </ul>
-                </section>
-
-                {/* License Activation */}
-                <section id="license" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">License Activation</h2>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    Unlock the full power of Markury by activating your license key. Each license is valid for use on up to <strong>2 devices</strong> (e.g., your laptop and desktop).
-                  </p>
-
-                  <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 mb-8">
-                    <h3 className="text-xl font-bold text-blue-900 mb-4">How to Activate</h3>
-                    <ol className="list-decimal list-inside space-y-3 text-blue-800">
-                      <li>Open Markury and click the <strong>Settings</strong> (gear) icon in the toolbar.</li>
-                      <li>Go to the <strong>License</strong> tab.</li>
-                      <li>Paste your license key into the input field.</li>
-                      <li>Click <strong>Activate</strong> to unlock Pro features instantly.</li>
-                    </ol>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Managing Activations</h3>
-                      <p className="text-gray-700 leading-relaxed mb-4">
-                        If you need to move your license to a new computer or see the &quot;Activation limit reached&quot; message:
-                      </p>
-                      <ul className="list-disc list-inside space-y-2 text-gray-700">
-                        <li>
-                          <strong>Deactivate existing device:</strong> Go to Settings &rarr; License and click <strong>Deactivate</strong> on your old computer.
-                        </li>
-                        <li>
-                          <strong>Manage online:</strong> If you don&apos;t have access to the old computer, use the <strong>Account</strong> link in the License tab (or visit the Lemon Squeezy dashboard) to manage your active devices remotely.
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
                 </section>
 
                 {/* System Tray */}
