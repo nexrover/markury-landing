@@ -1,0 +1,25 @@
+# Spam backlinks
+domain:shortenurls.eu
+domain:fiverr-seo-for-small-businesses.site
+domain:dailymusings.top
+domain:buzzshrink.website
+domain:backlinks-checker.com
+domain:linkrankboost.shop
+domain:linkrankseo.shop
+domain:buyseobacklinks.shop
+domain:rankdepot.shop
+domain:rankchest.shop
+domain:linkcrate.shop
+domain:linkchest.shop
+domain:buybacklinks.agency
+domain:authoritybacklinks.shop
+domain:backlinkzeno.shop
+domain:rankgrowth.agency
+domain:rankbasket.shop
+domain:grow-your.site
+domain:seolinkpro.shop
+domain:linkory.shop
+domain:linkrankpro.shop
+domain:backlinkshop.shop
+domain:ranklinkx.shop
+domain:linkforgepro.shop
