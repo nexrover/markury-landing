@@ -5,6 +5,25 @@ import Footer from '@/components/Footer'
 import BlogCard from '@/components/blog/BlogCard'
 import { Metadata } from 'next'
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.markury.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.markury.app/blog"
+    }
+  ]
+}
+
 export const metadata: Metadata = {
   title: 'Blog - Markury',
   description: 'Tips, guides, and tutorials on screen annotation, remote collaboration, and presentations with Markury.',
@@ -38,6 +57,10 @@ export default function BlogListingPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Header />
       <main className="bg-white text-gray-900 min-h-screen pt-40 md:pt-48 pb-24">
         <div className="container-narrow">

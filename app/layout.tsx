@@ -5,6 +5,101 @@ import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import CookieBanner from "@/components/CookieBanner";
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Markury",
+    "url": "https://www.markury.app/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.markury.app/blog?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Markury",
+    "url": "https://www.markury.app",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.markury.app/favicon/favicon-96x96.png"
+    },
+    "sameAs": [
+      "https://www.nexrover.com"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "support@markury.app",
+      "contactType": "customer support"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Markury",
+    "operatingSystem": "Windows 10, Windows 11, macOS 12+",
+    "applicationCategory": "ProductivityApplication",
+    "description": "The modern, lightweight screen annotation tool. Draw, highlight, and present over any app.",
+    "url": "https://www.markury.app",
+    "screenshot": "https://www.markury.app/markury_og.png",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "120"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "offerCount": "2",
+      "lowPrice": "19.00",
+      "highPrice": "39.00",
+      "priceCurrency": "USD",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Markury Pro — Yearly",
+          "price": "19.00",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": "1",
+              "unitCode": "ANN"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Markury Pro — Lifetime Access",
+          "price": "39.00",
+          "priceCurrency": "USD"
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Markury Demo — Screen Annotation Tool",
+    "description": "See Markury in action. Draw, highlight, and annotate directly on your screen with the modern, lightweight annotation tool for Mac and Windows.",
+    "thumbnailUrl": "https://www.markury.app/markury_og.png",
+    "contentUrl": "https://ftp.markury.app/demo-final.webm",
+    "uploadDate": "2026-02-14T00:00:00+00:00",
+    "duration": "PT1M30S",
+    "embedUrl": "https://www.markury.app/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Markury",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.markury.app/favicon/favicon-96x96.png"
+      }
+    }
+  }
+];
+
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -117,79 +212,10 @@ export default function RootLayout({
             {`window.$crisp=[];window.CRISP_WEBSITE_ID="c5564772-c0c5-464c-8f4d-d8cf3baad833";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}
           </Script>
         )}
-        <Script id="item-json-ld" type="application/ld+json">
-          {`
-            [
-              {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "name": "Markury",
-                "url": "https://www.markury.app/"
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "SoftwareApplication",
-                "name": "Markury",
-                "operatingSystem": "Windows 10, Windows 11, macOS 12+",
-                "applicationCategory": "ProductivityApplication",
-                "description": "The modern, lightweight screen annotation tool. Draw, highlight, and present over any app.",
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "4.8",
-                  "ratingCount": "120"
-                },
-                "offers": {
-                  "@type": "AggregateOffer",
-                  "offerCount": "2",
-                  "lowPrice": "19.00",
-                  "highPrice": "39.00",
-                  "priceCurrency": "USD",
-                  "offers": [
-                    {
-                      "@type": "Offer",
-                      "name": "Markury Pro — Yearly",
-                      "price": "19.00",
-                      "priceCurrency": "USD",
-                      "priceSpecification": {
-                        "@type": "UnitPriceSpecification",
-                        "referenceQuantity": {
-                          "@type": "QuantitativeValue",
-                          "value": "1",
-                          "unitCode": "ANN"
-                        }
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "name": "Markury Pro — Lifetime Access",
-                      "price": "39.00",
-                      "priceCurrency": "USD"
-                    }
-                  ]
-                }
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "VideoObject",
-                "name": "Markury Demo — Screen Annotation Tool",
-                "description": "See Markury in action. Draw, highlight, and annotate directly on your screen with the modern, lightweight annotation tool for Mac and Windows.",
-                "thumbnailUrl": "https://www.markury.app/markury_og.png",
-                "contentUrl": "https://ftp.markury.app/demo-final.webm",
-                "uploadDate": "2026-02-14T00:00:00+00:00",
-                "duration": "PT1M30S",
-                "embedUrl": "https://www.markury.app/",
-                "publisher": {
-                  "@type": "Organization",
-                  "name": "Markury",
-                  "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://www.markury.app/favicon/favicon-96x96.png"
-                  }
-                }
-              }
-            ]
-          `}
-        </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <GoogleAnalytics />
         <CookieBanner />
       </body>
