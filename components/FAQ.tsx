@@ -26,6 +26,10 @@ export default function FAQ() {
       answer: <>Yes, 1 license covers 2 devices that you own (e.g., a desktop and a laptop).</>
     },
     {
+      question: "Does Markury work with a stylus or digital pen?",
+      answer: <>Yes! Markury works seamlessly with any stylus or digital pen — including Apple Pencil (via Sidecar), Microsoft Surface Pen, and Wacom tablets. Drawing feels natural and pressure-aware. The stylus backside is also supported for instant erasing, so you can flip your pen to erase just like on paper.</>
+    },
+    {
       question: "What is your refund policy?",
       answer: <>We offer a no-questions-asked 7-day money-back guarantee. If Markury doesn&apos;t improve your workflow, simply email us at <a href="mailto:support@markury.app" className="font-medium text-gray-900 underline hover:text-markury-cyan transition-colors">support@markury.app</a> for a full refund.</>
     }
