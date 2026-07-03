@@ -14,6 +14,10 @@ export default function FAQ() {
       answer: <>Yes! Markury is a native application optimized for both macOS (12.0+) and Windows (10+). It feels right at home on either operating system.</>
     },
     {
+      question: "Does Markury work with a stylus or digital pen?",
+      answer: <>Yes! Markury works seamlessly with any stylus or digital pen, including Apple Pencil (via Sidecar), Microsoft Surface Pen, and Wacom tablets.</>
+    },
+    {
       question: "Can I use Markury while screen recording or sharing?",
       answer: <>Absolutely. Markury draws directly on your screen overlay, so your annotations are visible to any screen recording tool (like OBS, Loom, QuickTime) and video conferencing apps (Zoom, Teams, Google Meet).</>
     },
@@ -24,10 +28,6 @@ export default function FAQ() {
     {
       question: "Can I install it on multiple computers?",
       answer: <>Yes, 1 license covers 2 devices that you own (e.g., a desktop and a laptop).</>
-    },
-    {
-      question: "Does Markury work with a stylus or digital pen?",
-      answer: <>Yes! Markury works seamlessly with any stylus or digital pen — including Apple Pencil (via Sidecar), Microsoft Surface Pen, and Wacom tablets. Drawing feels natural and pressure-aware. The stylus backside is also supported for instant erasing, so you can flip your pen to erase just like on paper.</>
     },
     {
       question: "What is your refund policy?",
