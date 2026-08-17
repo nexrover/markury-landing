@@ -12,8 +12,8 @@ const SOCIAL_PLATFORMS = [
   { name: 'Facebook', icon: 'f', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SHARE_URL)}&quote=${encodeURIComponent(SHARE_TEXT)}`, color: 'bg-[#1877F2]' },
   { name: 'LinkedIn', icon: 'in', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(SHARE_URL)}`, color: 'bg-[#0A66C2]' },
   { name: 'Reddit', icon: 'r', url: `https://reddit.com/submit?url=${encodeURIComponent(SHARE_URL)}&title=${encodeURIComponent('Markury — Screen Annotation Made Simple')}`, color: 'bg-[#FF4500]' },
-  { name: 'WhatsApp', icon: 'W', url: `https://wa.me/?text=${encodeURIComponent(SHARE_TEXT)}`, color: 'bg-[#25D366]' },
-  { name: 'Telegram', icon: 'T', url: `https://t.me/share/url?url=${encodeURIComponent(SHARE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`, color: 'bg-[#0088cc]' },
+  // { name: 'WhatsApp', icon: 'W', url: `https://wa.me/?text=${encodeURIComponent(SHARE_TEXT)}`, color: 'bg-[#25D366]' },
+  // { name: 'Telegram', icon: 'T', url: `https://t.me/share/url?url=${encodeURIComponent(SHARE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`, color: 'bg-[#0088cc]' },
 ]
 
 function ConfettiCanvas() {
