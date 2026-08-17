@@ -30,9 +30,9 @@ export default function DownloadPage() {
       platform: 'macOS',
       subtitle: 'Apple Silicon & Intel',
       icon: '/apple.svg',
-      fileName: 'Markury v1.1.0.dmg',
+      fileName: 'Markury v2.0.dmg',
       fileSize: '~20 MB',
-      url: 'https://ftp.markury.app/installers/Markury%20v1.1.0/Markury%20v1.1.0.dmg',
+      url: 'https://ftp.markury.app/installers/Markury%20v2.0/Markury%20v2.0.dmg',
       requirements: 'macOS 12 Monterey or later',
       instructions: [
         'Download the .dmg file',
@@ -45,9 +45,9 @@ export default function DownloadPage() {
       platform: 'Windows',
       subtitle: 'Windows 7, 8, 10, 11',
       icon: '/windows.svg',
-      fileName: 'Markury v1.1.0.exe',
+      fileName: 'Markury v2.0.exe',
       fileSize: '~12 MB',
-      url: 'https://ftp.markury.app/installers/Markury%20v1.1.0/Markury%20v1.1.0.exe',
+      url: 'https://ftp.markury.app/installers/Markury%20v2.0/Markury%20v2.0.exe',
       requirements: 'Windows 7, 8, 10 & 11 (64-bit)',
       instructions: [
         'Download the .exe installer',

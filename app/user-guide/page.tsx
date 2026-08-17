@@ -67,6 +67,8 @@ export default function UserGuidePage() {
                     <li><a href="#shape-tools" className="text-gray-600 hover:text-gray-900 transition-colors">Shape Tools</a></li>
                     <li><a href="#text-annotations" className="text-gray-600 hover:text-gray-900 transition-colors">Text Annotations</a></li>
                     <li><a href="#laser-pointer" className="text-gray-600 hover:text-gray-900 transition-colors">Laser Pointer</a></li>
+                    <li><a href="#magnifier-tool" className="text-gray-600 hover:text-gray-900 transition-colors">Magnifier Tool</a></li>
+                    <li><a href="#blur-tool" className="text-gray-600 hover:text-gray-900 transition-colors">Blur Tool</a></li>
                     <li><a href="#whiteboard-mode" className="text-gray-600 hover:text-gray-900 transition-colors">Whiteboard Mode</a></li>
                     <li><a href="#screenshots" className="text-gray-600 hover:text-gray-900 transition-colors">Screenshots</a></li>
                     <li><a href="#undo-redo" className="text-gray-600 hover:text-gray-900 transition-colors">Undo, Redo & Clear</a></li>
@@ -349,6 +351,7 @@ export default function UserGuidePage() {
                         <li>Clicks pass through to underlying apps</li>
                         <li>Use this when you&apos;re done annotating</li>
                         <li>Drawings remain visible but you can interact with other windows</li>
+                        <li><strong>Hold to Interact:</strong> Temporarily interact with the app behind Markury without leaving drawing mode (configure shortcut in Settings)</li>
                       </ul>
                     </div>
 
@@ -501,6 +504,7 @@ export default function UserGuidePage() {
                     <li>Text uses your current selected color</li>
                     <li>Text size is based on your stroke width setting</li>
                     <li>Text can be erased just like drawn strokes</li>
+                    <li><strong>Editable Text:</strong> Reposition, resize, and change the color of text after placing it</li>
                     <li>Position text precisely by clicking exactly where you want it</li>
                   </ul>
                   <p className="text-gray-600 italic">Great for: Labels, explanations, callouts, step numbers, notes</p>
@@ -533,6 +537,39 @@ export default function UserGuidePage() {
                   </p>
                 </section>
 
+                {/* Magnifier Tool */}
+                <section id="magnifier-tool" className="mb-16 scroll-mt-24">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">Magnifier Tool</h2>
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    Zoom in on screen content for clearer presentations and demonstrations.
+                  </p>
+
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">How It Works</h3>
+                  <ol className="list-decimal list-inside space-y-2 text-gray-700 mb-6">
+                    <li>Select the <strong>Magnifier Tool</strong> from the toolbar</li>
+                    <li>Move your mouse to zoom in on different parts of the screen</li>
+                    <li>Scroll up or down with your mouse wheel to adjust the zoom level</li>
+                    <li>Click to lock the magnifier in place and continue drawing or annotating</li>
+                  </ol>
+                  <p className="text-gray-600 italic">Great for: Showing detailed UI elements, small text, or specific areas of interest during a presentation.</p>
+                </section>
+
+                {/* Blur Tool */}
+                <section id="blur-tool" className="mb-16 scroll-mt-24">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">Blur Tool</h2>
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    Quickly blur sensitive information directly on your screen.
+                  </p>
+
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">How to Blur</h3>
+                  <ol className="list-decimal list-inside space-y-2 text-gray-700 mb-6">
+                    <li>Select the <strong>Blur Tool</strong> from the toolbar</li>
+                    <li>Click and drag over any sensitive text, images, or areas you want to hide</li>
+                    <li>The selected area will instantly become blurred, keeping your private information safe</li>
+                  </ol>
+                  <p className="text-gray-600 italic">Great for: Hiding passwords, personal information, emails, or API keys during screen recordings or live demos.</p>
+                </section>
+
                 {/* Whiteboard Mode */}
                 <section id="whiteboard-mode" className="mb-16 scroll-mt-24">
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">Whiteboard Mode</h2>
@@ -547,6 +584,11 @@ export default function UserGuidePage() {
                     <li>Draw freely on the clean canvas</li>
                     <li>Click the button again to return to normal overlay mode</li>
                   </ol>
+
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">Multi-Monitor Display Selection</h3>
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    If you have a multi-monitor setup, you can <strong>choose which monitor</strong> to use for Whiteboard mode. This is perfect for presenting on one screen while keeping your notes on another.
+                  </p>
 
                   <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">Whiteboard Colors</h3>
                   <p className="text-gray-700 mb-4 leading-relaxed">
@@ -696,7 +738,7 @@ export default function UserGuidePage() {
                 <section id="settings" className="mb-16 scroll-mt-24">
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">Settings & Customization</h2>
                   <p className="text-gray-700 mb-6 leading-relaxed">
-                    Access Settings by clicking the <strong>gear icon</strong> in the toolbar.
+                    Access the new, redesigned native Settings window by clicking the <strong>gear icon</strong> in the toolbar.
                   </p>
 
                   <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">General Settings</h3>

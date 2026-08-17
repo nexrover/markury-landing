@@ -33,9 +33,33 @@ interface ChangelogEntry {
 
 const changelog: ChangelogEntry[] = [
   {
+    version: '2.0.0',
+    date: 'August 17, 2026',
+    tag: 'latest',
+    sections: [
+      {
+        type: 'feature',
+        items: [
+          'Magnifier Tool (Zoom in on screen content for clearer presentations and demonstrations.)',
+          'Blur Tool (Quickly blur sensitive information directly on your screen.)',
+          'Hold to Interact (Temporarily interact with the app behind Markury without leaving drawing mode.)',
+          'Whiteboard Display Selection (Choose which monitor to use for Whiteboard mode in multi-monitor setups.)',
+          'Editable Text (Reposition, resize, and change the color of text after placing it.)',
+          'New Settings Window (A redesigned native window for a smoother settings experience.)',
+        ],
+      },
+      {
+        type: 'improvement',
+        items: [
+          'Improved pen responsiveness for small and precise movements, including dots, commas, and short lines.',
+          'Improved Surface Pen support for more reliable interaction with the toolbar.',
+        ],
+      },
+    ],
+  },
+  {
     version: '1.1.0',
     date: 'April 24, 2026',
-    tag: 'latest',
     sections: [
       {
         type: 'feature',
@@ -51,7 +75,7 @@ const changelog: ChangelogEntry[] = [
       {
         type: 'fix',
         items: [
-          'Improved hotkey experience—shortcuts now work only when they should, avoiding conflicts during typing or minimize mode. Default shortcuts: `Ctrl + Z` (undo) and `Ctrl + Shift + Z` (redo).',
+          'Improved hotkey experience, shortcuts now work only when they should, avoiding conflicts during typing or minimize mode. Default shortcuts: `Ctrl + Z` (undo) and `Ctrl + Shift + Z` (redo).',
           'Smoother navigation with fixes to trackpad scrolling.',
           'Prevented multiple instances from running simultaneously.',
           'Enhanced pen input detection for a more reliable drawing experience.',
