@@ -223,14 +223,14 @@ export default function ShareDiscount() {
             </div>
 
             {/* Social icons */}
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 mb-8">
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
               {SOCIAL_PLATFORMS.map(p => (
                 <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"
-                  className="group flex flex-col items-center gap-2 p-3 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all hover:-translate-y-0.5">
+                  className="group flex flex-col items-center gap-2 p-3 w-[100px] sm:w-28 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all hover:-translate-y-0.5">
                   <div className={`w-10 h-10 ${p.color} rounded-xl flex items-center justify-center text-white font-bold text-sm transition-transform group-hover:scale-110`}>
                     {p.icon}
                   </div>
-                  <span className="text-xs text-gray-500 font-medium">{p.name}</span>
+                  <span className="text-xs text-gray-500 font-medium text-center">{p.name}</span>
                 </a>
               ))}
             </div>
