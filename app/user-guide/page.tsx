@@ -351,7 +351,7 @@ export default function UserGuidePage() {
                         <li>Clicks pass through to underlying apps</li>
                         <li>Use this when you&apos;re done annotating</li>
                         <li>Drawings remain visible but you can interact with other windows</li>
-                        <li><strong>Hold to Interact:</strong> Temporarily interact with the app behind Markury without leaving drawing mode (configure shortcut in Settings)</li>
+                        <li><strong>Hold to Interact:</strong> Temporarily interact with the app behind Markury without leaving drawing mode. By default, we use Ctrl+Opt on Mac and Ctrl+Alt on Windows to allow interaction. You can customize the shortcut keys from the <b>Shortcut Settings</b> tab.</li>
                       </ul>
                     </div>
 
@@ -587,7 +587,7 @@ export default function UserGuidePage() {
 
                   <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">Multi-Monitor Display Selection</h3>
                   <p className="text-gray-700 mb-6 leading-relaxed">
-                    If you have a multi-monitor setup, you can <strong>choose which monitor</strong> to use for Whiteboard mode. This is perfect for presenting on one screen while keeping your notes on another.
+                    If you have a multi-monitor setup, you can <strong>choose which monitor</strong> to use for Whiteboard mode. This is perfect for presenting on one screen while keeping your notes on another. You can configure the display from the <b>Whiteboard Settings</b> tab.
                   </p>
 
                   <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">Whiteboard Colors</h3>
