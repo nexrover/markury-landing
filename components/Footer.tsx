@@ -7,6 +7,7 @@ export default function Footer() {
       { label: 'Pricing', href: '#pricing' },
       { label: 'Features', href: '#features' },
       { label: 'Download', href: '/download' },
+      { label: 'Previous Versions', href: '/previous-versions' },
       { label: 'Use Cases', href: '#use-cases' },
       { label: 'Affiliates', href: '/affiliates' },
     ],

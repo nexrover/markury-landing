@@ -213,7 +213,7 @@ export default function DownloadPage() {
 
           {/* Help links */}
           <div className="text-center pb-8">
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-500 text-sm mb-2">
               Need help? Check the{' '}
               <Link href="/user-guide#installation" className="text-gray-900 font-medium hover:underline">
                 Installation Guide
@@ -221,6 +221,12 @@ export default function DownloadPage() {
               or{' '}
               <Link href="/contact-support" className="text-gray-900 font-medium hover:underline">
                 Contact Support
+              </Link>
+            </p>
+            <p className="text-gray-500 text-sm">
+              Looking for older versions? Check our{' '}
+              <Link href="/previous-versions" className="text-gray-900 font-medium hover:underline">
+                Previous Versions
               </Link>
             </p>
           </div>
