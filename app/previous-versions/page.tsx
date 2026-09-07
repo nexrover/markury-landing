@@ -14,6 +14,13 @@ export const metadata = {
 export default function PreviousVersionsPage() {
   const versions = [
     {
+      version: 'v2.0.0',
+      date: 'August 2026',
+      notes: 'Major update with new drawing tools, improved performance, and a redesigned interface.',
+      macUrl: 'https://ftp.markury.app/installers/Markury%20v2.0/Markury%20v2.0.dmg',
+      winUrl: 'https://ftp.markury.app/installers/Markury%20v2.0/Markury%20v2.0.exe',
+    },
+    {
       version: 'v1.1.0',
       date: 'May 2024',
       notes: 'Added new annotation tools and improved performance.',

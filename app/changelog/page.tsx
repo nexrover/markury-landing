@@ -33,9 +33,22 @@ interface ChangelogEntry {
 
 const changelog: ChangelogEntry[] = [
   {
+    version: '2.0.1',
+    date: 'September 7, 2026',
+    tag: 'latest',
+    sections: [
+      {
+        type: 'fix',
+        items: [
+          'More reliable license validation after PC standby or network drops.',
+          'Smoother Windows startup, eliminating the brief blank window flash.',
+        ],
+      },
+    ],
+  },
+  {
     version: '2.0.0',
     date: 'August 17, 2026',
-    tag: 'latest',
     sections: [
       {
         type: 'feature',
