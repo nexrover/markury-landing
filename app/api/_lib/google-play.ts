@@ -1,15 +1,31 @@
 import { createSign } from 'crypto'
 import { PLAY_PRODUCTS } from './license-types'
-import { apiError, apiLog, apiWarn, maskToken } from './api-log'
+import { apiError, apiLog, maskToken } from './api-log'
+
+/** Google Play subscription paymentState values */
+export const PlayPaymentState = {
+  Pending: 0,
+  Received: 1,
+  FreeTrial: 2,
+  PendingDeferred: 3,
+} as const
 
 export interface PlayVerificationResult {
   valid: boolean
   orderId?: string
   productId: string
+  isSubscription: boolean
+  isTrial: boolean
+  autoRenewing: boolean
+  paymentState?: number
   purchaseState?: number
   consumptionState?: number
   acknowledgementState?: number
+  /** Epoch millis from Play (subscriptions). */
   expiryTimeMillis?: string
+  /** ISO expiry derived from Play (or null for lifetime). */
+  expiresAt: string | null
+  cancelReason?: number
   raw: unknown
   error?: string
 }
@@ -76,15 +92,60 @@ export function isKnownPlayProduct(productId: string): boolean {
   return known.has(productId)
 }
 
-function isSubscriptionLike(productId: string): boolean {
+export function isSubscriptionProduct(productId: string): boolean {
   const id = productId.toLowerCase()
   return id.includes('year') || id.includes('sub')
 }
 
+export function expiryMillisToIso(expiryTimeMillis?: string | number | null): string | null {
+  if (expiryTimeMillis == null || expiryTimeMillis === '') return null
+  const ms = typeof expiryTimeMillis === 'number'
+    ? expiryTimeMillis
+    : Number(expiryTimeMillis)
+  if (!Number.isFinite(ms) || ms <= 0) return null
+  return new Date(ms).toISOString()
+}
+
 /**
- * Verifies a Google Play purchase token.
- * Tries subscription API for yearly SKUs, then one-time products.
- * When PLAY_BILLING_MOCK=true, accepts tokens prefixed with mock_ for local testing.
+ * Decide whether a Play subscription entitles access right now.
+ * Supports free trial (paymentState=2), paid, and canceled-but-not-expired.
+ */
+export function isSubscriptionEntitled(data: {
+  expiryTimeMillis?: string | number
+  paymentState?: number
+  cancelReason?: number
+}): { entitled: boolean; isTrial: boolean; expiresAt: string | null } {
+  const expiresAt = expiryMillisToIso(data.expiryTimeMillis ?? null)
+  const expiryMs = expiresAt ? Date.parse(expiresAt) : 0
+  const notExpired = expiryMs > Date.now()
+  const paymentState = data.paymentState
+  const isTrial = paymentState === PlayPaymentState.FreeTrial
+
+  // Pending payment: do not unlock.
+  if (paymentState === PlayPaymentState.Pending) {
+    return { entitled: false, isTrial, expiresAt }
+  }
+
+  // Free trial or paid receipt.
+  if (
+    paymentState === PlayPaymentState.FreeTrial ||
+    paymentState === PlayPaymentState.Received
+  ) {
+    return { entitled: notExpired, isTrial, expiresAt }
+  }
+
+  // paymentState often omitted after cancel; access continues until expiry.
+  if (paymentState == null || paymentState === PlayPaymentState.PendingDeferred) {
+    return { entitled: notExpired, isTrial: false, expiresAt }
+  }
+
+  return { entitled: false, isTrial, expiresAt }
+}
+
+/**
+ * Verifies a Google Play purchase token against Android Publisher API.
+ * Yearly SKUs use the subscriptions endpoint (supports free trials).
+ * Lifetime uses one-time products.
  */
 export async function verifyGooglePlayPurchase(params: {
   packageName: string
@@ -92,20 +153,37 @@ export async function verifyGooglePlayPurchase(params: {
   purchaseToken: string
 }): Promise<PlayVerificationResult> {
   const { packageName, productId, purchaseToken } = params
+  const isSubscription = isSubscriptionProduct(productId)
 
   if (process.env.PLAY_BILLING_MOCK === 'true') {
     if (purchaseToken.startsWith('mock_')) {
+      const trial = purchaseToken.includes('trial')
+      const expiresAt = isSubscription
+        ? new Date(
+            Date.now() + (trial ? 7 : 365) * 24 * 60 * 60 * 1000
+          ).toISOString()
+        : null
       apiLog('google-play', 'mock_accept', {
         productId,
         purchaseToken: maskToken(purchaseToken),
+        trial,
+        expiresAt,
       })
       return {
         valid: true,
         orderId: `mock-order-${purchaseToken.slice(0, 12)}`,
         productId,
+        isSubscription,
+        isTrial: trial,
+        autoRenewing: isSubscription,
+        paymentState: trial
+          ? PlayPaymentState.FreeTrial
+          : PlayPaymentState.Received,
         purchaseState: 0,
         acknowledgementState: 1,
-        raw: { mock: true, purchaseToken },
+        expiryTimeMillis: expiresAt ? String(Date.parse(expiresAt)) : undefined,
+        expiresAt,
+        raw: { mock: true, purchaseToken, trial },
       }
     }
   }
@@ -114,11 +192,10 @@ export async function verifyGooglePlayPurchase(params: {
     packageName,
     productId,
     purchaseToken: maskToken(purchaseToken),
-    mode: isSubscriptionLike(productId) ? 'subscription' : 'product',
+    mode: isSubscription ? 'subscription' : 'product',
   })
 
   const token = await getAccessToken()
-  const isSubscription = isSubscriptionLike(productId)
 
   try {
     if (isSubscription) {
@@ -134,25 +211,42 @@ export async function verifyGooglePlayPurchase(params: {
         return {
           valid: false,
           productId,
+          isSubscription: true,
+          isTrial: false,
+          autoRenewing: false,
+          expiresAt: null,
           raw: data,
           error: data.error?.message || 'Subscription verification failed',
         }
       }
-      const expiry = data.expiryTimeMillis
-        ? Number(data.expiryTimeMillis)
-        : undefined
-      const valid =
-        data.paymentState === 1 ||
-        data.paymentState === 2 ||
-        (expiry != null && expiry > Date.now())
+
+      const entitlement = isSubscriptionEntitled(data)
+      const autoRenewing = data.autoRenewing === true
+
+      apiLog('google-play', 'subscription_result', {
+        productId,
+        valid: entitlement.entitled,
+        isTrial: entitlement.isTrial,
+        paymentState: data.paymentState ?? null,
+        autoRenewing,
+        expiresAt: entitlement.expiresAt,
+        cancelReason: data.cancelReason ?? null,
+      })
 
       return {
-        valid: !!valid,
+        valid: entitlement.entitled,
         orderId: data.orderId || undefined,
         productId,
+        isSubscription: true,
+        isTrial: entitlement.isTrial,
+        autoRenewing,
+        paymentState: data.paymentState ?? undefined,
+        acknowledgementState: data.acknowledgementState ?? undefined,
         expiryTimeMillis: data.expiryTimeMillis || undefined,
+        expiresAt: entitlement.expiresAt,
+        cancelReason: data.cancelReason ?? undefined,
         raw: data,
-        error: valid ? undefined : 'Subscription is not active',
+        error: entitlement.entitled ? undefined : 'Subscription is not active',
       }
     }
 
@@ -168,6 +262,10 @@ export async function verifyGooglePlayPurchase(params: {
       return {
         valid: false,
         productId,
+        isSubscription: false,
+        isTrial: false,
+        autoRenewing: false,
+        expiresAt: null,
         raw: data,
         error: data.error?.message || 'Product verification failed',
       }
@@ -177,9 +275,13 @@ export async function verifyGooglePlayPurchase(params: {
       valid,
       orderId: data.orderId || undefined,
       productId,
+      isSubscription: false,
+      isTrial: false,
+      autoRenewing: false,
       purchaseState: data.purchaseState ?? undefined,
       consumptionState: data.consumptionState ?? undefined,
       acknowledgementState: data.acknowledgementState ?? undefined,
+      expiresAt: null,
       raw: data,
       error: valid ? undefined : 'Purchase is not valid',
     }
@@ -191,6 +293,10 @@ export async function verifyGooglePlayPurchase(params: {
     return {
       valid: false,
       productId,
+      isSubscription,
+      isTrial: false,
+      autoRenewing: false,
+      expiresAt: null,
       raw: { error: e?.message || String(e) },
       error: e?.message || 'Google Play verification failed',
     }

@@ -16,7 +16,7 @@ import type {
   LicenseInstance,
   ValidateLicenseResponse,
 } from '@/types/lemon-squeezy'
-import { apiError, apiWarn, maskLicenseKey } from './api-log'
+import { apiError, apiLog, apiWarn, maskLicenseKey } from './api-log'
 
 export function sanitizeInstanceName(raw?: string): string {
   const trimmed = raw && typeof raw === 'string' ? raw.trim() : ''
@@ -137,6 +137,15 @@ export async function activateSupabaseLicense(
 ): Promise<ActivateLicenseResponse | { activated: false; error: string }> {
   const supabase = getSupabaseAdmin()
 
+  if (license.source === 'google_play') {
+    try {
+      license = await syncGooglePlayLicenseIfNeeded(license)
+    } catch (e: any) {
+      apiWarn('activate', 'play_sync_failed', { error: e?.message || String(e) })
+      // Fall through with cached license state if Play is temporarily down.
+    }
+  }
+
   if (!isLicenseCurrentlyValid(license)) {
     return {
       activated: false,
@@ -217,7 +226,15 @@ export async function verifySupabaseLicense(
 ): Promise<ValidateLicenseResponse> {
   const supabase = getSupabaseAdmin()
 
-  // Refresh expiry status
+  if (license.source === 'google_play') {
+    try {
+      license = await syncGooglePlayLicenseIfNeeded(license)
+    } catch (e: any) {
+      apiWarn('verify', 'play_sync_failed', { error: e?.message || String(e) })
+    }
+  }
+
+  // Refresh expiry status from stored expires_at
   if (
     license.status === 'active' &&
     license.expires_at &&
@@ -467,10 +484,14 @@ export async function createPlayLicense(params: {
   packageName: string
   raw: unknown
   discountCodeId?: string | null
+  /** ISO expiry from Google Play (subscriptions / trials). Null = lifetime. */
+  expiresAt?: string | null
+  isTrial?: boolean
+  autoRenewing?: boolean
 }): Promise<{ license: DbLicense; created: boolean }> {
   const supabase = getSupabaseAdmin()
 
-  // Idempotent: existing purchase token
+  // Idempotent: existing purchase token — refresh entitlement from latest verify.
   const { data: existingPurchase, error: findErr } = await supabase
     .from('play_purchases')
     .select('*, licenses(*)')
@@ -479,18 +500,38 @@ export async function createPlayLicense(params: {
   if (findErr) throw findErr
 
   if (existingPurchase?.licenses) {
-    return {
-      license: existingPurchase.licenses as unknown as DbLicense,
-      created: false,
-    }
+    let license = existingPurchase.licenses as unknown as DbLicense
+    license = await applyPlayEntitlementToLicense(license, {
+      expiresAt: params.expiresAt ?? null,
+      isTrial: params.isTrial === true,
+      autoRenewing: params.autoRenewing === true,
+      raw: params.raw,
+      orderId: params.orderId || null,
+      purchaseToken: params.purchaseToken,
+      productId: params.productId,
+      packageName: params.packageName,
+    })
+    return { license, created: false }
   }
 
   const key = generateMarkuryKey()
   const names = planToMeta(params.plan)
-  const expiresAt =
-    params.plan === 'pro_yearly'
-      ? new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString()
-      : null
+  const isYearly = params.plan === 'pro_yearly'
+  const expiresAt = isYearly
+    ? params.expiresAt ??
+      // Conservative fallback if Play omitted expiry (should be rare).
+      new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()
+    : null
+
+  if (isYearly && !params.expiresAt) {
+    apiWarn('play-license', 'missing_play_expiry_fallback_7d', {
+      productId: params.productId,
+    })
+  }
+
+  const variantName = params.isTrial
+    ? `${names.variant_name} Trial`
+    : names.variant_name
 
   const { data: license, error: licErr } = await supabase
     .from('licenses')
@@ -503,7 +544,7 @@ export async function createPlayLicense(params: {
       activation_usage: 0,
       customer_email: params.customerEmail || null,
       product_name: names.product_name,
-      variant_name: names.variant_name,
+      variant_name: variantName,
       expires_at: expiresAt,
     })
     .select('*')
@@ -518,7 +559,15 @@ export async function createPlayLicense(params: {
       product_id: params.productId,
       package_name: params.packageName,
       license_id: license.id,
-      raw: params.raw as object,
+      raw: {
+        ...(typeof params.raw === 'object' && params.raw ? params.raw : { value: params.raw }),
+        _markury: {
+          is_trial: params.isTrial === true,
+          auto_renewing: params.autoRenewing === true,
+          expires_at: expiresAt,
+          synced_at: new Date().toISOString(),
+        },
+      },
     })
     .select('*')
     .single()
@@ -543,7 +592,213 @@ export async function createPlayLicense(params: {
     }
   }
 
+  apiLog('play-license', 'created', {
+    plan: params.plan,
+    isTrial: params.isTrial === true,
+    expiresAt,
+    key: maskLicenseKey(key),
+  })
+
   return { license: license as DbLicense, created: true }
+}
+
+/**
+ * Apply a verified Play entitlement onto an existing license row.
+ */
+export async function applyPlayEntitlementToLicense(
+  license: DbLicense,
+  entitlement: {
+    expiresAt: string | null
+    isTrial: boolean
+    autoRenewing: boolean
+    raw: unknown
+    orderId?: string | null
+    purchaseToken: string
+    productId: string
+    packageName: string
+    forceStatus?: LicenseStatus
+  }
+): Promise<DbLicense> {
+  const supabase = getSupabaseAdmin()
+  const now = Date.now()
+  let status: LicenseStatus = license.status
+
+  if (entitlement.forceStatus) {
+    status = entitlement.forceStatus
+  } else if (license.plan === 'pro_lifetime') {
+    status = 'active'
+  } else if (entitlement.expiresAt) {
+    const exp = Date.parse(entitlement.expiresAt)
+    status = Number.isFinite(exp) && exp > now ? 'active' : 'expired'
+  } else {
+    // Yearly without expiry from Play → treat as expired for safety.
+    status = license.plan === 'pro_yearly' ? 'expired' : license.status
+  }
+
+  const variantBase = planToMeta(license.plan).variant_name
+  const variantName = entitlement.isTrial
+    ? `${variantBase} Trial`
+    : variantBase
+
+  const { data: updated, error } = await supabase
+    .from('licenses')
+    .update({
+      status,
+      expires_at: license.plan === 'pro_lifetime' ? null : entitlement.expiresAt,
+      variant_name: variantName,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', license.id)
+    .select('*')
+    .single()
+  if (error) throw error
+
+  await supabase
+    .from('play_purchases')
+    .update({
+      ...(entitlement.orderId ? { order_id: entitlement.orderId } : {}),
+      raw: {
+        ...(typeof entitlement.raw === 'object' && entitlement.raw
+          ? (entitlement.raw as object)
+          : { value: entitlement.raw }),
+        _markury: {
+          is_trial: entitlement.isTrial,
+          auto_renewing: entitlement.autoRenewing,
+          expires_at: entitlement.expiresAt,
+          synced_at: new Date().toISOString(),
+        },
+      },
+    })
+    .eq('purchase_token', entitlement.purchaseToken)
+
+  return (updated as DbLicense) || {
+    ...license,
+    status,
+    expires_at: entitlement.expiresAt,
+    variant_name: variantName,
+  }
+}
+
+const PLAY_SYNC_MIN_INTERVAL_MS = 5 * 60 * 1000 // avoid hammering Play on every verify
+
+/**
+ * Re-check Google Play for a google_play yearly license and refresh expires_at/status.
+ * Lifetime licenses are left unchanged (no subscription to poll).
+ */
+export async function syncGooglePlayLicenseIfNeeded(
+  license: DbLicense,
+  opts?: { force?: boolean }
+): Promise<DbLicense> {
+  if (license.source !== 'google_play') return license
+  if (license.plan === 'pro_lifetime' || license.plan === 'basic') return license
+
+  const supabase = getSupabaseAdmin()
+  const { data: purchase, error } = await supabase
+    .from('play_purchases')
+    .select('*')
+    .eq('license_id', license.id)
+    .limit(1)
+    .maybeSingle()
+  if (error) throw error
+  if (!purchase) {
+    apiWarn('play-sync', 'no_purchase_row', { licenseId: license.id })
+    return license
+  }
+
+  const raw = purchase.raw as { _markury?: { synced_at?: string } } | null
+  const lastSync = raw?._markury?.synced_at
+    ? Date.parse(raw._markury.synced_at)
+    : 0
+  if (
+    !opts?.force &&
+    lastSync &&
+    Date.now() - lastSync < PLAY_SYNC_MIN_INTERVAL_MS
+  ) {
+    // Still apply local expiry check.
+    if (
+      license.status === 'active' &&
+      license.expires_at &&
+      Date.parse(license.expires_at) <= Date.now()
+    ) {
+      const { data: expired } = await supabase
+        .from('licenses')
+        .update({ status: 'expired', updated_at: new Date().toISOString() })
+        .eq('id', license.id)
+        .select('*')
+        .single()
+      return (expired as DbLicense) || { ...license, status: 'expired' }
+    }
+    return license
+  }
+
+  const { verifyGooglePlayPurchase } = await import('./google-play')
+  const verification = await verifyGooglePlayPurchase({
+    packageName: purchase.package_name,
+    productId: purchase.product_id,
+    purchaseToken: purchase.purchase_token,
+  })
+
+  if (!verification.valid) {
+    const { PlayPaymentState } = await import('./google-play')
+    const graceAccess =
+      !!verification.expiresAt &&
+      Date.parse(verification.expiresAt) > Date.now() &&
+      verification.paymentState !== PlayPaymentState.Pending &&
+      verification.paymentState !== PlayPaymentState.PendingDeferred
+
+    return applyPlayEntitlementToLicense(license, {
+      expiresAt: verification.expiresAt,
+      isTrial: verification.isTrial,
+      autoRenewing: verification.autoRenewing,
+      raw: verification.raw,
+      orderId: verification.orderId || purchase.order_id,
+      purchaseToken: purchase.purchase_token,
+      productId: purchase.product_id,
+      packageName: purchase.package_name,
+      forceStatus: graceAccess
+        ? 'active'
+        : verification.cancelReason != null
+          ? 'cancelled'
+          : 'expired',
+    })
+  }
+
+  return applyPlayEntitlementToLicense(license, {
+    expiresAt: verification.expiresAt,
+    isTrial: verification.isTrial,
+    autoRenewing: verification.autoRenewing,
+    raw: verification.raw,
+    orderId: verification.orderId || purchase.order_id,
+    purchaseToken: purchase.purchase_token,
+    productId: purchase.product_id,
+    packageName: purchase.package_name,
+  })
+}
+
+/**
+ * Sync by purchase token (used by RTDN webhook).
+ */
+export async function syncGooglePlayByPurchaseToken(
+  purchaseToken: string,
+  productIdHint?: string
+): Promise<DbLicense | null> {
+  const supabase = getSupabaseAdmin()
+  const { data: purchase, error } = await supabase
+    .from('play_purchases')
+    .select('*, licenses(*)')
+    .eq('purchase_token', purchaseToken)
+    .maybeSingle()
+  if (error) throw error
+  if (!purchase?.licenses) {
+    apiWarn('play-sync', 'rtdn_unknown_token', {
+      token: purchaseToken.slice(0, 8) + '…',
+      productIdHint: productIdHint || null,
+    })
+    return null
+  }
+
+  const license = purchase.licenses as unknown as DbLicense
+  return syncGooglePlayLicenseIfNeeded(license, { force: true })
 }
 
 export function verifyLemonWebhookSignature(

@@ -18,6 +18,7 @@ import {
   maskLicenseKey,
   maskToken,
 } from '@/app/api/_lib/api-log'
+import { sendPlayPurchaseReceipt } from '@/app/api/_lib/resend-receipt'
 
 const SCOPE = 'play/verify-purchase'
 
@@ -34,12 +35,19 @@ export async function POST(request: NextRequest) {
         : process.env.PLAY_PACKAGE_NAME || 'com.nexrover.markury'
     const discountCode =
       typeof body?.discountCode === 'string' ? body.discountCode.trim() : ''
+    const customerEmailRaw =
+      typeof body?.customerEmail === 'string' ? body.customerEmail.trim() : ''
+    const customerEmail =
+      customerEmailRaw && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmailRaw)
+        ? customerEmailRaw.toLowerCase()
+        : null
 
     apiLog(SCOPE, 'request', {
       productId,
       packageName,
       purchaseToken: maskToken(purchaseToken),
       discountCode: discountCode || null,
+      customerEmail: customerEmail ? customerEmail.replace(/(.{2}).+(@.+)/, '$1***$2') : null,
     })
 
     if (!purchaseToken || !productId) {
@@ -122,19 +130,42 @@ export async function POST(request: NextRequest) {
       packageName,
       raw: verification.raw,
       discountCodeId,
+      expiresAt: verification.expiresAt,
+      isTrial: verification.isTrial,
+      autoRenewing: verification.autoRenewing,
+      customerEmail,
     })
 
     apiLog(SCOPE, 'license_issued', {
       created,
       license_key: maskLicenseKey(license.key),
       plan: license.plan,
+      isTrial: verification.isTrial,
+      expiresAt: license.expires_at,
       ms: Date.now() - started,
     })
+
+    if (created && customerEmail) {
+      const receipt = await sendPlayPurchaseReceipt({
+        license,
+        customerEmail,
+        orderId: verification.orderId || null,
+        productId,
+        isTrial: verification.isTrial,
+        created,
+      })
+      apiLog(SCOPE, 'receipt_email', {
+        sent: receipt.sent,
+        error: receipt.error || null,
+      })
+    }
 
     return NextResponse.json({
       success: true,
       created,
       license_key: license.key,
+      is_trial: verification.isTrial,
+      expires_at: license.expires_at,
       license: toApiLicenseKey(license),
       meta: toApiMeta(license),
     })
