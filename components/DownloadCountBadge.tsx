@@ -39,7 +39,7 @@ export default function DownloadCountBadge({ className = '', variant = 'neutral'
       <Download01Icon className={`w-4 h-4 ${iconStyles[variant]}`} />
       <span>
         <span className="text-highlight text-highlight--soft font-bold text-gray-900">{count.toLocaleString()}+</span>
-        {' '}professionals downloaded Markury
+        {' '}professionals use Markury
       </span>
     </div>
   )
