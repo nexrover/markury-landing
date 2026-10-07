@@ -39,13 +39,28 @@ function base64url(input: Buffer | string): string {
     .replace(/\//g, '_')
 }
 
+/** Normalize service-account PEM from env (Vercel often stores wrapping quotes). */
+function loadPlayPrivateKey(): string {
+  let key = process.env.GOOGLE_PLAY_SERVICE_ACCOUNT_PRIVATE_KEY?.trim() ?? ''
+  if (
+    (key.startsWith('"') && key.endsWith('"')) ||
+    (key.startsWith("'") && key.endsWith("'"))
+  ) {
+    key = key.slice(1, -1)
+  }
+  key = key.replace(/\\n/g, '\n').trim()
+  if (!key.includes('BEGIN') || !key.includes('PRIVATE KEY')) {
+    throw new Error(
+      'GOOGLE_PLAY_SERVICE_ACCOUNT_PRIVATE_KEY is missing or not a PEM private key'
+    )
+  }
+  return key
+}
+
 async function getAccessToken(): Promise<string> {
   const email = process.env.GOOGLE_PLAY_SERVICE_ACCOUNT_EMAIL
-  const privateKey = process.env.GOOGLE_PLAY_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(
-    /\\n/g,
-    '\n'
-  )
-  if (!email || !privateKey) {
+  const privateKey = loadPlayPrivateKey()
+  if (!email) {
     throw new Error('Google Play service account is not configured')
   }
 
