@@ -20,7 +20,6 @@ export async function POST(request: NextRequest) {
   const started = Date.now()
   try {
     const secret = process.env.GOOGLE_PLAY_RTDN_SECRET
-    console.log('secret', secret)
     if (secret) {
       const auth = request.headers.get('authorization') || ''
       const bearer = auth.startsWith('Bearer ') ? auth.slice(7) : ''
